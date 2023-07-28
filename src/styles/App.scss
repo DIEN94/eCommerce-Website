@@ -1,6 +1,6 @@
-@import "GlobalStyleSystemDesign.scss";
+@import "index.scss";
 
 .myApp {
-    font-size: $font-size-52px;
-    font-family: $font-primary;
+    font-size: 10rem;
+    font-family: var(--font-primary);
 }
