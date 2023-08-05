@@ -27,10 +27,29 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const addToCart = () => {
+    console.log("AddToCart");
+    
+  };
+
+  const executeShare = () => {
+    console.log("done share");
+    
+  };
   
+  const executeCompare = () => {
+    console.log("done compare");
+    
+  };
+
+  const executeLike = () => {
+    console.log("done like");
+    
+  };
   return (
     <div 
-    className={classes.MyCard}
+    className={classes.myCard}
     onMouseEnter={handleMouseEnter}
     onMouseLeave={handleMouseLeave}
     >
@@ -57,17 +76,17 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
       </div>
       <div className={`${classes.buttonCard} ${isHovered ? classes.show : ''}`}>
         <div className={classes.buttonContainer}>
-            <MyButton className={classes.buttonAddToCart}>Add to cart</MyButton>
+            <MyButton className={classes.buttonAddToCart} onClick={addToCart}>Add to cart</MyButton>
             <div className={classes.buttonBox}>
-            <MyButton className={classes.buttonBoxElements}>
+            <MyButton className={classes.buttonBoxElements} onClick={executeShare}>
               <img src={Vector1}/>
               <span>Share</span>
             </MyButton>
-            <MyButton className={classes.buttonBoxElements}>
+            <MyButton className={classes.buttonBoxElements} onClick={executeCompare}>
               <img src={Vector2}/>
               <span>Compare</span>
             </MyButton>
-            <MyButton className={classes.buttonBoxElements}>
+            <MyButton className={classes.buttonBoxElements} onClick={executeLike}>
               <img src={Heart}/>
               <span>Like</span>
             </MyButton>
