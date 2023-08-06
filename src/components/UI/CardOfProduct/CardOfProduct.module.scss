@@ -3,7 +3,7 @@
     width: 285px;
     height: 446px;
     margin: 12px;
-    background-color: #F4F5F7;
+    background-color: var(--card-color);
 }
 
 .imgBox {
@@ -44,7 +44,7 @@
     line-height: 29px;
     letter-spacing: 0em;
     text-align: left;
-    color: #3A3A3A;
+    color: var(--secondary-font-color);
 }
 
 .SortDescription{
@@ -76,7 +76,7 @@
     line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
-    color: #3A3A3A;
+    color: var(--secondary-font-color);
 }
 
 .OriginalPrice{
@@ -142,18 +142,12 @@
 .buttonAddToCart {
     width: 202px;
     height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
     border: 0;
 
-    font-family: var(--font-primary);
     font-size: 1.6rem;
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0em;
-    color: var(--button-color);
 }
 
 .buttonBox {
@@ -167,11 +161,7 @@
 
 .buttonBoxElements {
     height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    background-color: transparent;
+
     img {
         width: 12px;
         height: 14x;

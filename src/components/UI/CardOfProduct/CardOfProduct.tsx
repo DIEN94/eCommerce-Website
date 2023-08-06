@@ -1,10 +1,7 @@
 import React, { FC } from 'react'
 import classes from "./CardOfProduct.module.scss";
 import { useState } from 'react';
-import { MyButton } from '../button/MyButton';
-import Vector1 from './frames/Vector1.png';
-import Vector2 from './frames/Vector2.png';
-import Heart from './frames/Heart.png';
+import { Hover } from './components/Hover';
 
 interface ICard {
   src?: string 
@@ -28,25 +25,6 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
     setIsHovered(false);
   };
 
-  const addToCart = () => {
-    console.log("AddToCart");
-    
-  };
-
-  const executeShare = () => {
-    console.log("done share");
-    
-  };
-  
-  const executeCompare = () => {
-    console.log("done compare");
-    
-  };
-
-  const executeLike = () => {
-    console.log("done like");
-    
-  };
   return (
     <div 
     className={classes.myCard}
@@ -68,32 +46,7 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
           <p className={classes.OriginalPrice}>{OriginalPrice}</p>
         </div>
       </div>
-      <div 
-      className={`${classes.modalCard} ${isHovered ? classes.show : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave} 
-      >
-      </div>
-      <div className={`${classes.buttonCard} ${isHovered ? classes.show : ''}`}>
-        <div className={classes.buttonContainer}>
-            <MyButton className={classes.buttonAddToCart} onClick={addToCart}>Add to cart</MyButton>
-            <div className={classes.buttonBox}>
-            <MyButton className={classes.buttonBoxElements} onClick={executeShare}>
-              <img src={Vector1}/>
-              <span>Share</span>
-            </MyButton>
-            <MyButton className={classes.buttonBoxElements} onClick={executeCompare}>
-              <img src={Vector2}/>
-              <span>Compare</span>
-            </MyButton>
-            <MyButton className={classes.buttonBoxElements} onClick={executeLike}>
-              <img src={Heart}/>
-              <span>Like</span>
-            </MyButton>
-            </div>
-          </div>
-      </div>
-
+      <Hover isHovered={isHovered}/> 
     </div>
   )
 }

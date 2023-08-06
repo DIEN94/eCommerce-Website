@@ -13,5 +13,6 @@ import React, { RefObject, useEffect } from "react";
       return () => {
         document.removeEventListener('click', handleClick);
       };
-    });
+    }, []);
   };
+  

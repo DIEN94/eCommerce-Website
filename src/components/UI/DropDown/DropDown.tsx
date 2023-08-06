@@ -10,9 +10,10 @@ interface IDropDown {
   options: IOption[];
   defaultValue?: string;
   onChange: (value: string) => void;
+  variant: "dropDown"| "cardFilter"
 }
 
-export const DropDown: FC<IDropDown> = ({ options, defaultValue, onChange }) => {
+export const DropDown: FC<IDropDown> = ({ options, defaultValue, onChange, variant }) => {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -22,12 +23,12 @@ export const DropDown: FC<IDropDown> = ({ options, defaultValue, onChange }) => 
   };
 
   return (
-    <select className={classes.myDropdown} value={selectedValue} onChange={handleSelectChange}>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
+    <select className={classes[variant]} value={selectedValue} onChange={handleSelectChange}>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
     </select>
   );
 };

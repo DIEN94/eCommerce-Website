@@ -1,0 +1,34 @@
+button {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--font-primary);
+    border: 1 solid black;
+    color: #000000;
+    cursor: pointer;
+};
+
+.fill-orange {
+    background-color: var(--button-color);
+    color: #FFFFFF;
+    border: 0;
+}
+
+.fill-white {
+    background-color: var(--background-color-primary);
+    color: var(--button-color);
+}
+
+.fill-beige {
+    background-color: var(--background-color-secondary);
+    color: #000000;
+}
+
+.no-fill {
+    background-color: transparent;
+    color: #000000;
+    border: 0;
+}
