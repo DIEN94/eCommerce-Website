@@ -1,7 +1,7 @@
 import React, { FC, RefObject, useEffect, useRef, useState } from "react";
-import classes from "./MyModal.module.scss";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import ModalPortal from "../../ModalPortal";
+import ModalPortal from "./components/ModalPortal/ModalPortal";
+import classes from "./MyModal.module.scss";
 
 
 export interface IModal {

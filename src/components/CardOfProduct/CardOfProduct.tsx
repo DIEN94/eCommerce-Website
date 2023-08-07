@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import classes from "./CardOfProduct.module.scss";
 import { useState } from 'react';
-import { Hover } from './components/Hover';
+import { Hover } from './components/Hover/Hover';
+import classes from "./CardOfProduct.module.scss";
 
 interface ICard {
   src?: string 

@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
-import { MyButton } from "../../button/MyButton";
-import Vector1 from "../frames/Vector1.webp";
-import Vector2 from "../frames/Vector2.webp";
-import Heart from "../frames/Heart.webp";
-import classes from "../CardOfProduct.module.scss";
+import { MyButton } from "../../../Button/MyButton";
+import Heart from 'assets/CardOfProduct/frames/Heart.webp'
+import Compare from 'assets/CardOfProduct/frames/Compare.webp'
+import Share from 'assets/CardOfProduct/frames/Share.webp'
+import classes from "./Hover.module.scss";
 
 interface IHover {
     isHovered: boolean 
@@ -46,7 +46,7 @@ export const Hover: FC <IHover> = ({isHovered}) => {
               className={classes.buttonBoxElements}
               onClick={executeShare}
             >
-              <img src={Vector1} />
+              <img src={Share} />
               <span>Share</span>
             </MyButton>
             <MyButton
@@ -54,7 +54,7 @@ export const Hover: FC <IHover> = ({isHovered}) => {
               className={classes.buttonBoxElements}
               onClick={executeCompare}
             >
-              <img src={Vector2} />
+              <img src={Compare} />
               <span>Compare</span>
             </MyButton>
             <MyButton
