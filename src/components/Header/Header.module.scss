@@ -27,20 +27,25 @@
         letter-spacing: 0em;
         text-align: left;
         color: var(--primary-font-color);
+        margin-left: 5px;
     }
 }
 
 .routeButtonsBox {
-    width: 430px;
+    width: 505px;
     height: 24px;   
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 266px;
+    margin-right: 158px;
 }
 
 .routeButtons{
     height: 24px;
     padding: 0;
+    margin-left: 37.5px;
+    margin-right: 37.5px;
 
     font-family: var(--font-primary);
     font-size: 1.6rem;
@@ -48,6 +53,9 @@
     line-height: 24px;
     letter-spacing: 0em;
     color: var(--primary-font-color);
+
+    max-width: max-content;
+    min-width: min-content;
 }
 
 .headerButtonsBox {
@@ -62,4 +70,6 @@
 .headerButtons{
     width: 28px;
     height: 28px;
+    margin-left: 22.5px;
+    margin-right: 22.5px;
 }

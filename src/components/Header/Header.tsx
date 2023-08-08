@@ -4,12 +4,11 @@ import iconAccount from '../../assets/header/iconAccount.webp';
 import iconSearch from '../../assets/header/iconSearch.webp';
 import iconLike from '../../assets/header/iconLike.webp';
 import iconCart from '../../assets/header/iconCart.webp';
-import { MyButton } from "../UI/button/MyButton";
+import { MyButton } from "components/Button/MyButton";
 import classes from "./Header.module.scss"
 
 
 export const Header = () => {
-  const portalRoot = document.getElementById("modal-root");
 
   const goToHome = () => {
     console.log("goToHome");
