@@ -1,4 +1,4 @@
-declare module '*.css' {
+declare module '*.scss' {
   interface IClassNames {
     [className: string]: string
   }
@@ -7,6 +7,11 @@ declare module '*.css' {
 }
 
 declare module "*.png" {
+  const value: any;
+  export = value;
+}
+
+declare module "*.webp" {
   const value: any;
   export = value;
 }
