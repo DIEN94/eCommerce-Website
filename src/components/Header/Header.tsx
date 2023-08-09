@@ -5,12 +5,26 @@ import iconSearch from '../../assets/header/iconSearch.webp';
 import iconLike from '../../assets/header/iconLike.webp';
 import iconCart from '../../assets/header/iconCart.webp';
 import { MyButton } from "components/Button/MyButton";
-import { createNavButtonConfig } from './config';
 import classes from "./Header.module.scss"
-import { Link } from "react-router-dom";
 
 
 export const Header = () => {
+
+  const goToHome = () => {
+    console.log("goToHome");
+  };
+
+  const goToShop = () => {
+    console.log("goToShop");
+  };
+
+  const goToAbout = () => {
+    console.log("goToAbout");
+  };
+
+  const goToContact = () => {
+    console.log("goToContact");
+  };
 
   const goToAccount = () => {
     console.log("goToAccount");
@@ -25,7 +39,7 @@ export const Header = () => {
   };
 
   const goToCart = () => {
-    console.log("openModal");
+    console.log("goToCart");
   };
 
  
@@ -38,20 +52,32 @@ export const Header = () => {
         </div>
 
     {/* RouteButtonsBox */}
-
-    <nav className={classes.routeButtonsBox}>
-      {createNavButtonConfig.map(({path, text})=> {
-        return (
-          <Link to={path}>
-            <MyButton
-              variant="no-fill"
-              className={classes.routeButtons}>
-              {text}
-            </MyButton>
-          </Link>
-        );
-      })}
-    </nav>
+        <div className={classes.routeButtonsBox}>
+          <MyButton
+            variant="no-fill"
+            className={classes.routeButtons}
+            onClick={goToHome}>
+            Home
+          </MyButton>
+          <MyButton
+            variant="no-fill"
+            className={classes.routeButtons}
+            onClick={goToShop}>
+            Shop
+          </MyButton>
+          <MyButton
+            variant="no-fill"
+            className={classes.routeButtons}
+            onClick={goToAbout}>
+            About
+          </MyButton>
+          <MyButton
+            variant="no-fill"
+            className={classes.routeButtons}
+            onClick={goToContact}>
+            Contact
+          </MyButton>
+        </div>
 
     {/* HeaderButtonsBox */}
         <div className={classes.headerButtonsBox}>
