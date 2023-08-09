@@ -5,7 +5,9 @@ import iconSearch from '../../assets/header/iconSearch.webp';
 import iconLike from '../../assets/header/iconLike.webp';
 import iconCart from '../../assets/header/iconCart.webp';
 import { MyButton } from "components/Button/MyButton";
+import { createNavButtonConfig } from './config';
 import classes from "./Header.module.scss"
+import { Link } from "react-router-dom";
 
 
 export const Header = () => {
@@ -78,6 +80,20 @@ export const Header = () => {
             Contact
           </MyButton>
         </div>
+
+        {/* <nav className={classes.routeButtonsBox}>
+      {createNavButtonConfig.map(({path, text})=> {
+        return (
+          <Link to={path}>
+            <MyButton
+              variant="no-fill"
+              className={classes.routeButtons}>
+              {text}
+            </MyButton>
+          </Link>
+        );
+      })}
+    </nav> */}
 
     {/* HeaderButtonsBox */}
         <div className={classes.headerButtonsBox}>
