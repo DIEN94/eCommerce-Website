@@ -5,6 +5,7 @@ export {Cart} from "./Cart/Cart";
 export {Checkout} from "./Checkout/Checkout";
 export {Contact} from "./Contact/Contact";
 export {Like} from "./Like/Like";
+export {Login} from "./Login/Login";
 export {Search} from "./Search/Search";
 export {Shop} from "./Shop/Shop";
 export {NotFoundPage} from './NotFoundPage/NotFoundPage';
