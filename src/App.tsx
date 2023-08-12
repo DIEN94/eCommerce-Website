@@ -2,19 +2,19 @@ import React, {} from "react";
 import './styles/App.scss'
 import { Header } from './components/Header/Header';
 import Layout from "components/Layout/Layout";
-import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "components/AppRouter/AppRouter";
+import { AppRoutes } from "router/AppRouter";
+import { Providers } from "components/Providers/Providers";
 
 export function App() {
 
   return (
     <div className="myApp">
-    <BrowserRouter>
+    <Providers>
       <Layout>
         <Header/>
         <AppRoutes/>
       </Layout>
-    </BrowserRouter>
+    </Providers>
     </div>
   );
 }
