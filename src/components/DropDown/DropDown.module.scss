@@ -1,0 +1,26 @@
+select {
+    width: 100%;  
+    font-family: var(--font-primary);
+    font-weight: 400;
+    background-color: var(--background-color-primary);
+    color:#9F9F9F;
+    cursor: pointer;
+}
+
+.dropDown {
+    border-radius: 10px;
+    border: 1px solid #9F9F9F;
+    font-size: 1.6rem;
+    option {
+        font-size: 1.6rem;
+    }
+}
+
+.cardFilter {
+    border: 0;
+    font-size: 2rem;
+    appearance: none;
+    option {
+        font-size: 2rem; 
+    }
+}

@@ -1,13 +1,20 @@
 import React, {} from "react";
-import './styles/App.css'
+import './styles/App.scss'
+import { Header } from './components/Header/Header';
+import Layout from "components/Layout/Layout";
+import { AppRoutes } from "router/AppRouter";
+import { Providers } from "components/Providers/Providers";
 
-function App() {
-  
+export function App() {
+
   return (
     <div className="myApp">
-      Hello!
+    <Providers>
+      <Layout>
+        <Header/>
+        <AppRoutes/>
+      </Layout>
+    </Providers>
     </div>
   );
 }
-
-export default App;
