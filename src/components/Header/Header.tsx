@@ -12,22 +12,6 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
 
-  const goToHome = () => {
-    console.log("goToHome");
-  };
-
-  const goToShop = () => {
-    console.log("goToShop");
-  };
-
-  const goToAbout = () => {
-    console.log("goToAbout");
-  };
-
-  const goToContact = () => {
-    console.log("goToContact");
-  };
-
   const goToAccount = () => {
     console.log("goToAccount");
   };
@@ -53,38 +37,10 @@ export const Header = () => {
             <span>Furniro</span>
         </div>
 
-    {/* RouteButtonsBox */}
-        <div className={classes.routeButtonsBox}>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToHome}>
-            Home
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToShop}>
-            Shop
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToAbout}>
-            About
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToContact}>
-            Contact
-          </MyButton>
-        </div>
-
-        {/* <nav className={classes.routeButtonsBox}>
+        <nav className={classes.routeButtonsBox}>
       {createNavButtonConfig.map(({path, text})=> {
         return (
-          <Link to={path}>
+          <Link to={path} style={{ textDecoration: 'none' }}>
             <MyButton
               variant="no-fill"
               className={classes.routeButtons}>
@@ -93,7 +49,7 @@ export const Header = () => {
           </Link>
         );
       })}
-    </nav> */}
+    </nav>
 
     {/* HeaderButtonsBox */}
         <div className={classes.headerButtonsBox}>
