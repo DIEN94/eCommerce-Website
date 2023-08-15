@@ -28,6 +28,7 @@
 }
 
 .routeButtonsBox{
+    height: 536px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,14 +42,18 @@
         margin-left: 0;
     };
     text-decoration: none;
-    &.show {
-        bottom: -2px;
-        text-decoration: underline;
-    }
 }
 
 .button{
     flex-direction: column;
+    box-sizing: border-box;
+
+    &:hover {
+        border-bottom: 3px solid skyblue;
+        p{
+            margin-top: 33px; 
+        }
+    }
     
     p{
         margin-top: 30px;

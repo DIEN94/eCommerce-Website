@@ -1,21 +1,11 @@
 import React, { useState } from 'react'
 import { MyButton } from 'components';
-import classes from "./RangeList.module.scss"
-import { createNavButtonConfig } from 'pages/Home/config';
+import { createNavButtonConfig } from 'pages/Home/components/RangeList/config';
 import { Link } from 'react-router-dom';
+import classes from "./RangeList.module.scss"
 
 
 export const RangeList = () => {
-
-const [isHovered, setIsHovered] = useState(false);
-
-const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
   return (
     <div className={classes.rangeList}>
@@ -29,16 +19,13 @@ const handleMouseEnter = () => {
             {createNavButtonConfig.map(({path, text, img})=> {
             return (
                 <Link 
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                className={`${classes.link} ${isHovered ? classes.show : ""}`} 
+                className={classes.link}
                 to={path}>
                     <MyButton             
                     variant="no-fill"
                     className={classes.button}>
                     <img src={img}/>
-                    <p
-                    >{text}</p>
+                    <p>{text}</p>
                     </MyButton>
                 </Link>
             );

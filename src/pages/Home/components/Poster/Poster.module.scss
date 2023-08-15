@@ -51,7 +51,7 @@
     width: 222px;
     height: 74px;
     margin-top: 46px;
-    padding: 25px 72px 25px 72px;
+    padding: 25px 70px 25px 70px;
     gap: 10px;
 
     font-family: var(--font-primary);
@@ -61,4 +61,8 @@
     letter-spacing: 0px;
     text-align: left;
     color: #FFFFFF;
+
+    &:hover {
+        border: 2px solid skyblue;
+    }
 }
