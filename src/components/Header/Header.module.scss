@@ -64,6 +64,10 @@
 
     max-width: max-content;
     min-width: min-content;
+    
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .headerButtonsBox {
