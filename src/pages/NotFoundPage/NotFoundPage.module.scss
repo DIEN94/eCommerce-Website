@@ -1,9 +1,7 @@
-@import "../../styles/variables";
 
 .notFoundPage {
     width: 100%;
-    height: calc(100vh - $desktop-header-size);
-    max-width: 1440px;
+    height: 1000px;
     
     overflow-x:hidden;
     margin: 0 auto;
