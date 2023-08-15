@@ -1,14 +1,12 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { privateRoutes, publicRoutes } from 'router';
-import { useTypedSelector } from 'hooks/useTypedSelector';
+import { useAppSelector } from 'hooks/redux';
 
 
 export const AppRoutes = () => {
 
-  // const {isAuth} = useTypedSelector(state => state.auth)
-
-  const isAuth: boolean = false;
+  const {isAuth} = useAppSelector(state => state.auth)
 
   return (
     isAuth
