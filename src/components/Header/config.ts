@@ -4,7 +4,7 @@ import React from 'react'
 export const createNavButtonConfig = [
     {
         text:"Home",
-        path:"/home"
+        path:"/"
     },
     {
         text:"Shop",
