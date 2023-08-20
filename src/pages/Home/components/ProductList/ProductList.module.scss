@@ -1,0 +1,20 @@
+.productList {
+    width: 1236px;
+    height: 1084px;
+}
+
+.firstLevelText{
+    font-family: var(--font-primary);
+    font-size: 4.0rem;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--secondary-font-color)
+}
+
+.productBox{
+    width: 100%;
+    display: flex;
+}
