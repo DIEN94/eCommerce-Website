@@ -11,7 +11,7 @@ import Potty from "assets/page-Home/ProductList/Potty.webp";
 import thirty from "assets/page-Home/ProductList/label/thirty.webp";
 import fifty from "assets/page-Home/ProductList/label/thirty.webp";
 import NewProduct from "assets/page-Home/ProductList/label/NewProduct.webp";
-import { CardOfProduct } from 'components';
+import { CardOfProduct, MyButton } from 'components';
  
 
 export const ProductList = () => {
@@ -33,9 +33,12 @@ const [posts, setPosts] = useState([
             Our Products
         </p>
         <div className={classes.productBox}>
-            {posts.map((post)=>
+            {posts.slice(-8).map((post)=>
             <CardOfProduct src={post.src} label={post.label} ProductName={post.ProductName} SortDescription={post.SortDescription} FixPrice={post.FixPrice} OriginalPrice={post.OriginalPrice}/>)}
         </div>
+        <MyButton className={classes.button} variant='fill-white'>
+          Show More
+        </MyButton>
     </div>
   )
 }
