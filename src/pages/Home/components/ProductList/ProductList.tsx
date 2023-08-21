@@ -12,6 +12,7 @@ import thirty from "assets/page-Home/ProductList/label/thirty.webp";
 import fifty from "assets/page-Home/ProductList/label/thirty.webp";
 import NewProduct from "assets/page-Home/ProductList/label/NewProduct.webp";
 import { CardOfProduct, MyButton } from 'components';
+import { Link } from 'react-router-dom';
  
 
 export const ProductList = () => {
@@ -36,9 +37,11 @@ const [posts, setPosts] = useState([
             {posts.slice(-8).map((post)=>
             <CardOfProduct src={post.src} label={post.label} ProductName={post.ProductName} SortDescription={post.SortDescription} FixPrice={post.FixPrice} OriginalPrice={post.OriginalPrice}/>)}
         </div>
-        <MyButton className={classes.button} variant='fill-white'>
-          Show More
-        </MyButton>
+        <Link to={"/shop"} style={{ textDecoration: 'none' }}>
+          <MyButton className={classes.button} variant='fill-white'>
+            Show More
+          </MyButton>
+        </Link>
     </div>
   )
 }
