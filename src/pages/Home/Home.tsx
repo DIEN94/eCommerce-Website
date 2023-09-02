@@ -4,6 +4,7 @@ import { Poster } from './components/Poster/Poster';
 import { RangeList } from './components/RangeList/RangeList';
 import { ProductList } from './components/ProductList/ProductList';
 import { Carousel } from './components/Carousel/Carousel';
+import { Gallery } from './components/Gallery/Gallery';
 
 
 export const Home: FC = () => {
@@ -14,6 +15,7 @@ export const Home: FC = () => {
       <RangeList/>
       <ProductList/>
       <Carousel/>
+      <Gallery/>
     </div>
   )
 }
