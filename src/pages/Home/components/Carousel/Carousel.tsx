@@ -1,12 +1,12 @@
 import React from 'react'
 import { Slider } from 'components/Slider/Slider'
-import classes from "./Carusel.module.scss"
+import classes from "./Carousel.module.scss"
 import { Link } from 'react-router-dom';
 import { MyButton } from 'components';
-import Bedroom from "assets/page-Home/Carusel/imgBedRoom.webp";
-import LivingRoom from "assets/page-Home/Carusel/imgLivingRoom.webp";
-import Kitchen from "assets/page-Home/Carusel/imgKitchen.webp";
-import KidRoom from "assets/page-Home/Carusel/imgKidRoom.webp";
+import Bedroom from "assets/page-Home/Carousel/imgBedRoom.webp";
+import LivingRoom from "assets/page-Home/Carousel/imgLivingRoom.webp";
+import Kitchen from "assets/page-Home/Carousel/imgKitchen.webp";
+import KidRoom from "assets/page-Home/Carousel/imgKidRoom.webp";
 
 
 interface ICharacteristics {
@@ -15,7 +15,7 @@ interface ICharacteristics {
   name: string;
 }
 
-export const Carusel = () => {
+export const Carousel = () => {
 
   const characteristics: ICharacteristics[] = [
     {
