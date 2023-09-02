@@ -30,6 +30,7 @@ export const Slider: React.FC<ISlider> = ({ children, characteristics, PAGE_WIDT
   const [lengthPages, setLengthPages] = useState(0);
   const [activePageIndex, setActivePageIndex] = useState(0);
 
+  const NumberPage = pages.length
 
   // children
 
@@ -152,6 +153,7 @@ export const Slider: React.FC<ISlider> = ({ children, characteristics, PAGE_WIDT
         <div
           className={classes['all-pages-container']}
           style={{
+            gridTemplateColumns: `repeat(${NumberPage}, 1fr)`,
             transform: `translateX(${offsetPage}px)`,
           }}
         >
@@ -163,6 +165,7 @@ export const Slider: React.FC<ISlider> = ({ children, characteristics, PAGE_WIDT
         <div
           className={classes['all-characteristics-container']}
           style={{
+            gridTemplateColumns: `repeat(${NumberPage}, 1fr)`,
             transform: `translateX(${offsetNameStick}px)`,
           }}
         >
