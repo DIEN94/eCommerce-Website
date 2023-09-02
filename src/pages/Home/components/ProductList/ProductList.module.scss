@@ -1,0 +1,42 @@
+.productList {
+    width: 1236px;
+    height: 1084px;
+    margin-bottom: 69px;
+}
+
+.firstLevelText{
+    margin-bottom: 32px;
+    font-family: var(--font-primary);
+    font-size: 4.0rem;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--secondary-font-color)
+}
+
+.productBox{
+    width: 100%;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 285px);
+    grid-gap: 32px;
+}
+
+.button{
+    width: 245px;
+    height: 48px;
+    border: 1px solid var(--button-color);
+    margin: 0 auto;
+
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+
+    &:hover {
+        border: 2px solid skyblue;
+    }
+}

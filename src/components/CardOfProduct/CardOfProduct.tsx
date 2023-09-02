@@ -5,12 +5,12 @@ import clsx from 'clsx';
 import classes from "./CardOfProduct.module.scss";
 
 interface ICard {
-  src?: string 
+  src: string 
   label?: string 
   ProductName: string 
   SortDescription: string
   FixPrice: string
-  OriginalPrice: string
+  OriginalPrice?: string
 }
 
 
