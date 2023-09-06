@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/eCommerce-Website/static/css/main.352fb684.css",
-    "main.js": "/eCommerce-Website/static/js/main.775389df.js",
+    "main.css": "/eCommerce-Website/static/css/main.c851a258.css",
+    "main.js": "/eCommerce-Website/static/js/main.b78a676d.js",
     "static/media/home-poster.webp": "/eCommerce-Website/static/media/home-poster.fa3c4f4b5981ca827659.webp",
     "static/media/imgLivingRoom.webp": "/eCommerce-Website/static/media/imgLivingRoom.484fbbfe9dc7f1fd5cb5.webp",
     "static/media/Bedroom.webp": "/eCommerce-Website/static/media/Bedroom.2ef114544f295ad88c27.webp",
@@ -44,11 +44,11 @@
     "static/media/Compare.webp": "/eCommerce-Website/static/media/Compare.145612c4926a530ea105.webp",
     "static/media/Arrow2.webp": "/eCommerce-Website/static/media/Arrow2.26233a4c85655b36eb2d.webp",
     "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.bec0ce5ed6ef1ee575e3.webp",
-    "main.352fb684.css.map": "/eCommerce-Website/static/css/main.352fb684.css.map",
-    "main.775389df.js.map": "/eCommerce-Website/static/js/main.775389df.js.map"
+    "main.c851a258.css.map": "/eCommerce-Website/static/css/main.c851a258.css.map",
+    "main.b78a676d.js.map": "/eCommerce-Website/static/js/main.b78a676d.js.map"
   },
   "entrypoints": [
-    "static/css/main.352fb684.css",
-    "static/js/main.775389df.js"
+    "static/css/main.c851a258.css",
+    "static/js/main.b78a676d.js"
   ]
 }
