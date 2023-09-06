@@ -1,15 +1,16 @@
 import React, { FC } from 'react'
 import { useState } from 'react';
 import { Hover } from './components/Hover/Hover';
+import clsx from 'clsx';
 import classes from "./CardOfProduct.module.scss";
 
 interface ICard {
-  src?: string 
+  src: string 
   label?: string 
   ProductName: string 
   SortDescription: string
   FixPrice: string
-  OriginalPrice: string
+  OriginalPrice?: string
 }
 
 
@@ -34,7 +35,7 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
       <div className={classes.imgBox}>
         <img className={classes.img} src={src}/>
         <img 
-        className={`${classes.label} ${label ? classes.show : ''}`} 
+        className={clsx(classes.label, { [classes.show]: label })}
         src={label}
         />
       </div>

@@ -3,6 +3,7 @@ import { MyButton } from "../../../Button/MyButton";
 import Heart from 'assets/CardOfProduct/frames/Heart.webp'
 import Compare from 'assets/CardOfProduct/frames/Compare.webp'
 import Share from 'assets/CardOfProduct/frames/Share.webp'
+import clsx from 'clsx';
 import classes from "./Hover.module.scss";
 
 interface IHover {
@@ -29,9 +30,9 @@ export const Hover: FC <IHover> = ({isHovered}) => {
   return (
     <div>
       <div
-        className={`${classes.modalCard} ${isHovered ? classes.show : ""}`}
+        className={clsx(classes.modalCard, { [classes.show]: isHovered })}
       ></div>
-      <div className={`${classes.buttonCard} ${isHovered ? classes.show : ""}`}>
+      <div className={clsx(classes.buttonCard, { [classes.show]: isHovered })}>
         <div className={classes.buttonContainer}>
           <MyButton
             variant="fill-white"
