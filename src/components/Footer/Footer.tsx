@@ -18,9 +18,7 @@ export const Footer = () => {
       <div className={classes.column}>
         <span className={classes.textFurniro}>Furniro</span>
         <p className={classes.textAddress}>
-          400 University Drive Suite 200 Coral
-          Gables,<br/>
-          FL 33134 USA
+          400 University Drive Suite 200 Coral Gables, FL 33134 USA
         </p>
       </div>
       

@@ -7,24 +7,23 @@
     padding: 48px 100px 38px 100px;
     border-top: 1px solid rgba(0, 0, 0, 0.17);
 
-    @media (max-width: 970px) {
+    @media (max-width: 1140px) {
         padding: 48px 30px 38px 30px;
     }
 
     @media (max-width: $tablet-size) {
-        padding: 28px 5px 18px 5px;
+        padding: 18px 5px 18px 5px;
         max-height: max-content;
     }
 }
 
 .columnContainer{    
-    height: 312px;
+    max-height: max-content;
     margin-bottom: 48px;
     display: flex;
     justify-content: space-between;
 
     @media (max-width: $tablet-size) {
-        height: 400px;
         margin-bottom: 28px;
         flex-direction: column;
         align-items: center;
@@ -47,6 +46,7 @@
 }
 
 .textAddress{
+    width: 285px;
     margin-top: 50px;
     font-family: var(--font-primary);
     font-size: 1.6rem;
@@ -56,6 +56,11 @@
     text-align: left;
     color: #9F9F9F;  
 
+
+    @media (max-width: 1000px) {
+        width: 100%;
+    }
+
     @media (max-width: $tablet-size) {
         text-align: center;
         margin: 20px 0 20px 0;
@@ -63,7 +68,7 @@
 
     @media (max-width: $mobile-size) {
         font-size: 1.4rem; 
-        width: 175px;
+        width: 300px;
     }
 }
 
@@ -95,7 +100,6 @@
 }
 
 .routeButtonsBox1{
-    max-width: max-content;
     min-width: min-content;
     height: 233px;
 
@@ -112,8 +116,8 @@
 }
 
 .routeButtons{
+    max-width: max-content;
     height: 24px;
-    padding: 0;
 
     font-family: var(--font-primary);
     font-size: 1.6rem;
@@ -122,8 +126,6 @@
     letter-spacing: 0em;
     color: var(--primary-font-color);
 
-    max-width: max-content;
-    min-width: min-content;
     white-space: nowrap;
 
     @media (max-width: $mobile-size) {
@@ -137,20 +139,26 @@
 
 .routeButtonsBox2{
     max-width: max-content;
-    min-width: min-content;
     height: 163px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-
     @media (max-width: $tablet-size) {
-        display: flex;
+        min-width: 400px;
+        height: 24px;
+        flex-direction: row;
         align-items: center;
-        height: 100px;
         margin-bottom: 20px;
     }
+
+    @media (max-width: $mobile-size) {
+        flex-direction: column;
+        align-items: center;
+        height: 100px;
+    }
+    
 }
 
 .emailSubscribeField{
@@ -185,7 +193,7 @@
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0em;
-    text-align: left;  
+    text-align: left;
 
     border: 0;
     border-bottom: 1px solid #000000;
