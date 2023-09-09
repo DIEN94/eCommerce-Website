@@ -1,0 +1,56 @@
+
+.notFoundPage {
+    width: 100%;
+    height: calc(100vh - 200px);
+    
+    overflow-x:hidden;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-family: var(--font-primary);
+        font-size: 3.4rem;
+        font-weight: 700;
+        line-height: 41px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: var(--primary-font-color);
+    }
+
+    p{
+        font-family: var(--font-primary);
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        color: var(--primary-font-color); 
+    }
+}
+
+.link {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+.button {
+    width: 202px;
+    height: 48px;
+    border: 0;
+    text-decoration: none;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    &:hover {
+        text-decoration: underline;
+        color: blue;
+    }
+}
