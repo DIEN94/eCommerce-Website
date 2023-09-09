@@ -1,22 +1,15 @@
 
-import { MyButton } from './Button/MyButton';
-import { Hover } from './CardOfProduct/components/Hover/Hover';
-import { CardOfProduct } from './CardOfProduct/CardOfProduct';
-import { DropDown } from './DropDown/DropDown';
-import { MyInput } from './Input/MyInput';
-import { MyModal } from './Modal/MyModal';
 import ModalPortal from './Modal/components/ModalPortal/ModalPortal';
 
 
+export {MyButton} from './Button/MyButton';
 
-export {MyButton}
+export {CardOfProduct} from './CardOfProduct/CardOfProduct';
+export {Hover} from './CardOfProduct/components/Hover/Hover';
 
-export {CardOfProduct}
-export {Hover}
+export {DropDown} from './DropDown/DropDown';
 
-export {DropDown}
+export {MyInput} from './Input/MyInput';
 
-export {MyInput}
-
-export {MyModal}
-export {ModalPortal}
+export {MyModal} from './Modal/MyModal';
+export {ModalPortal} 

@@ -1,0 +1,64 @@
+.gallery{
+    position: relative;
+    width: 100%;
+    height: 780px;
+    margin-bottom: 50px;
+}
+
+.textContainer{
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+.firstLevelText{
+    margin-bottom: 8px;
+    font-family: var(--font-primary);
+    font-size: 2.0rem;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#616161;
+}
+
+.secondLevelText{
+    font-family: var(--font-primary);
+    font-size: 4.0rem;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--secondary-font-color)
+}
+
+.ImgBox{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 59px;
+}
+
+.ImgContainer{
+display: grid;
+grid-template-rows: max-content max-content;
+gap: 16px;
+}
+
+.ImgContainer1{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 16px;
+    align-items: end;
+}
+
+.ImgContainer2{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 16px;
+    align-items: start;
+}
+
+.middleImg{
+margin: 0 16px;
+}
+
