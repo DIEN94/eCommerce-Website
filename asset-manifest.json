@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/eCommerce-Website/static/css/main.988a41bc.css",
-    "main.js": "/eCommerce-Website/static/js/main.19fb40c3.js",
+    "main.css": "/eCommerce-Website/static/css/main.d4545a8b.css",
+    "main.js": "/eCommerce-Website/static/js/main.2f3e12fe.js",
     "static/media/home-poster.webp": "/eCommerce-Website/static/media/home-poster.fa3c4f4b5981ca827659.webp",
     "static/media/imgLivingRoom.webp": "/eCommerce-Website/static/media/imgLivingRoom.484fbbfe9dc7f1fd5cb5.webp",
     "static/media/Bedroom.webp": "/eCommerce-Website/static/media/Bedroom.2ef114544f295ad88c27.webp",
@@ -33,10 +33,11 @@
     "static/media/NewProduct.webp": "/eCommerce-Website/static/media/NewProduct.af48137025d4754480c3.webp",
     "index.html": "/eCommerce-Website/index.html",
     "static/media/CircleDot.webp": "/eCommerce-Website/static/media/CircleDot.6f51f47f2c71b2d12127.webp",
-    "static/media/iconCart.webp": "/eCommerce-Website/static/media/iconCart.ce0b957850e4c258c21a.webp",
-    "static/media/iconLike.webp": "/eCommerce-Website/static/media/iconLike.46bcd86c772d87cd92cd.webp",
+    "static/media/iconLike.webp": "/eCommerce-Website/static/media/iconLike.f39c0bcd83235c488704.webp",
+    "static/media/iconCart.webp": "/eCommerce-Website/static/media/iconCart.ca21c00d69333a602703.webp",
+    "static/media/iconAccount.webp": "/eCommerce-Website/static/media/iconAccount.738ddf35d9ca39169413.webp",
+    "static/media/buttonClose.webp": "/eCommerce-Website/static/media/buttonClose.349ad0081f88ee706bf0.webp",
     "static/media/iconSearch.webp": "/eCommerce-Website/static/media/iconSearch.a043ec17e397653df471.webp",
-    "static/media/iconAccount.webp": "/eCommerce-Website/static/media/iconAccount.35a29b0e8f5b674a69a4.webp",
     "static/media/Heart.webp": "/eCommerce-Website/static/media/Heart.2229c33f1e0ecfd71760.webp",
     "static/media/Share.webp": "/eCommerce-Website/static/media/Share.9c4e54b2bffd39f355b7.webp",
     "static/media/ActiveDot.webp": "/eCommerce-Website/static/media/ActiveDot.0df4dee104d003f7953b.webp",
@@ -44,11 +45,12 @@
     "static/media/Compare.webp": "/eCommerce-Website/static/media/Compare.145612c4926a530ea105.webp",
     "static/media/Arrow2.webp": "/eCommerce-Website/static/media/Arrow2.26233a4c85655b36eb2d.webp",
     "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.bec0ce5ed6ef1ee575e3.webp",
-    "main.988a41bc.css.map": "/eCommerce-Website/static/css/main.988a41bc.css.map",
-    "main.19fb40c3.js.map": "/eCommerce-Website/static/js/main.19fb40c3.js.map"
+    "static/media/imgHamburgerButton.webp": "/eCommerce-Website/static/media/imgHamburgerButton.08685ccc711b5cac8852.webp",
+    "main.d4545a8b.css.map": "/eCommerce-Website/static/css/main.d4545a8b.css.map",
+    "main.2f3e12fe.js.map": "/eCommerce-Website/static/js/main.2f3e12fe.js.map"
   },
   "entrypoints": [
-    "static/css/main.988a41bc.css",
-    "static/js/main.19fb40c3.js"
+    "static/css/main.d4545a8b.css",
+    "static/js/main.2f3e12fe.js"
   ]
 }
