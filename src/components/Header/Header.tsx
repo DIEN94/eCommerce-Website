@@ -6,8 +6,8 @@ import iconLike from '../../assets/header/iconLike.webp';
 import iconCart from '../../assets/header/iconCart.webp';
 import { MyButton } from "components/Button/MyButton";
 import { createNavButtonConfig } from './config';
-import classes from "./Header.module.scss"
 import { Link } from "react-router-dom";
+import classes from "./Header.module.scss";
 
 
 export const Header = () => {
@@ -33,14 +33,14 @@ export const Header = () => {
     // LOGO
     <div className={classes.header}>
         <div className={classes.logoBox}>
-            <img src={logo} />
+            <img src={logo} alt="logo"/>
             <span>Furniro</span>
         </div>
 
         <nav className={classes.routeButtonsBox}>
-      {createNavButtonConfig.map(({path, text})=> {
+      {createNavButtonConfig.map(({path, text}, index)=> {
         return (
-          <Link to={path} style={{ textDecoration: 'none' }}>
+          <Link to={path} key={index}>
             <MyButton
               variant="no-fill"
               className={classes.routeButtons}>
@@ -57,25 +57,25 @@ export const Header = () => {
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToAccount}>
-              <img src={iconAccount}/>
+              <img src={iconAccount} alt="iconAccount"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToSearch}>
-              <img src={iconSearch}/>
+              <img src={iconSearch} alt="iconSearch"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToLike}>
-              <img src={iconLike}/>
+              <img src={iconLike} alt="iconLike"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToCart}>
-              <img src={iconCart}/>
+              <img src={iconCart} alt="iconCart"/>
           </MyButton>
           </div>
     </div>
