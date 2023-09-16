@@ -1,28 +1,79 @@
+@import "src/styles/variables";
+
 .productList {
-    width: 1236px;
-    height: 1084px;
+    width: 100%;
+    max-width: 1300px;
+    height: 100%;
     margin-bottom: 69px;
+
+    @media (max-width: $mobile-size) {
+        margin-bottom: 49px;
+    }
 }
 
 .firstLevelText{
-    margin-bottom: 32px;
     font-family: var(--font-primary);
     font-size: 4.0rem;
     font-weight: 700;
     line-height: 48px;
-    letter-spacing: 0px;
-    letter-spacing: 0em;
     text-align: center;
-    color: var(--secondary-font-color)
+    color: var(--secondary-font-color);
+
+    @media (max-width: $tablet-size) {
+        font-size: 3.8rem;
+        line-height: 46px;
+    }
+
+    @media (max-width: $mobile-size) {
+        font-size: 3.6rem;
+        line-height: 43px;
+    }
+
+    @media (max-width: 500px) {
+        font-size: 3.0rem;
+        line-height: 36px;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 2.6rem;
+        line-height: 32px;
+    }
+    
 }
 
-.productBox{
+.productBox {
     width: 100%;
-    margin-bottom: 32px;
-    display: grid;
-    grid-template-columns: repeat(4, 285px);
-    grid-gap: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+
+    @media (max-width: 919px) {
+        padding: 12px;
+    }
+    
+    @media (max-width: 634px) {
+        padding: 8px;
+    }
 }
+
+  .cardContainer{
+    margin: 16px;
+    flex-basis: calc(25% - 32px); 
+    max-width: calc(25% - 32px);
+    box-sizing: border-box;
+
+    @media (max-width: 919px) {
+        margin: 12px;
+        flex-basis: calc(33.3333333% - 24px); 
+        max-width: calc(33.3333333% - 24px);
+    }
+
+    @media (max-width: 634px) {
+        margin: 8px;
+        flex-basis: calc(50% - 16px); 
+        max-width: calc(50% - 16px);
+    }
+  }
 
 .button{
     width: 245px;
@@ -35,6 +86,11 @@
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0em;
+
+    @media (max-width: $mobile-size) {
+        width: 196px;
+        height: 39px;
+    }
 
     &:hover {
         border: 2px solid skyblue;

@@ -16,16 +16,18 @@ export const RangeList = () => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
         <nav className={classes.routeButtonsBox}>
-            {createNavButtonConfig.map(({path, text, img})=> {
+            {createNavButtonConfig.map(({path, text, img}, index)=> {
             return (
                 <Link 
                 className={classes.link}
+                key={index}
                 to={path}>
                     <MyButton             
                     variant="no-fill"
                     className={classes.button}>
-                    <img src={img}/>
+                        <img src={img} alt={`${img}`}/>
                     <p>{text}</p>
+                    <div className={classes.line}></div>
                     </MyButton>
                 </Link>
             );
