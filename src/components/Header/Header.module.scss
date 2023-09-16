@@ -23,7 +23,7 @@
     }
 
     @media (max-width: $mobile-size) {
-        padding: 0 50px 0 50px;
+        justify-content: end;
     }
 }
 
@@ -42,7 +42,7 @@
 
     @media (max-width: $mobile-size) {
         position: absolute;
-        right: 10px;
+        left: 60px;
         margin: 0;
     }
 
@@ -74,6 +74,16 @@
         }
 
         @media (max-width: $tablet-size) {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        @media (max-width: $mobile-size) {
+            position: static;
+            visibility: visible;
+        }
+        
+        @media (max-width: 445px) {
             position: absolute;
             visibility: hidden;
         }
@@ -132,12 +142,12 @@
     }
 
     @media (max-width: $mobile-size) {
-        margin: 0 auto;
+        margin: 0;
     } 
 
-    @media (max-width: 360px) {
-        width: 172px;
-    } 
+    // @media (max-width: 360px) {
+    //     width: 172px;
+    // } 
 }
 
 .headerButtons{

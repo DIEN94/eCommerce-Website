@@ -8,10 +8,11 @@ export interface IModal {
   isOpen: boolean;
   onClose: () => void;
   className?: string;
-  animateClasses?:{
-    show?:string;
-    hide?:string;
-  }
+  animateClasses?: {
+    show?: string;
+    hide?: string;
+  };
+  closeDelay?: number;
 }
 
 export const MyModal: FC<IModal> = ({
@@ -19,35 +20,49 @@ export const MyModal: FC<IModal> = ({
   isOpen,
   onClose,
   className,
-  animateClasses
+  animateClasses,
+  closeDelay = 500,
 }) => {
   const [open, setOpen] = useState(isOpen);
   const ref = useRef<HTMLDivElement>(null);
-  const rootClasses:Array<string|undefined> = [classes.myModal];
+  const timeOut = useRef<any>(null);
+  const rootClasses: Array<string | undefined> = [classes.myModal];
 
   if (open) {
-    rootClasses.push(classes.active,);
+    rootClasses.push(classes.active);
   }
   if (!open) {
-    rootClasses.push(classes.hide,);
+    rootClasses.push(classes.hide);
   }
 
   useClickOutside(ref, onClose);
 
   useEffect(() => {
+    if (isOpen) {
       setOpen(isOpen);
+    } else {
+      if (!ref.current) return;
+      ref.current.classList.remove(animateClasses?.show || "");
+      ref.current.classList.add(animateClasses?.hide || "");
+      timeOut.current = setTimeout(() => {
+        setOpen(isOpen);
+      }, closeDelay);
+    }
+    return () => {
+      clearTimeout(timeOut.current);
+    };
   }, [isOpen]);
 
   useEffect(() => {
-    if(!ref.current) return
+    if (!ref.current) return;
     if (open) {
-      setTimeout(()=>{
-      if(!ref.current) return
-      ref.current.classList.remove(animateClasses?.hide || "")
-      ref.current.classList.add(animateClasses?.show || "")}, 100)
-    }else{
-      ref.current.classList.remove(animateClasses?.show || "")
-      ref.current.classList.add(animateClasses?.hide || "")
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (!ref.current) return;
+          ref.current.classList.remove(animateClasses?.hide || "");
+          ref.current.classList.add(animateClasses?.show || "");
+        });
+      });
     }
   }, [open]);
 
@@ -61,11 +76,10 @@ export const MyModal: FC<IModal> = ({
   return (
     <ModalPortal>
       <div className={rootClasses.join(" ")}>
-      <div className={`${classes.modalContent} ${className}`} ref={ref}>
+        <div className={`${classes.modalContent} ${className}`} ref={ref}>
           {children}
         </div>
       </div>
     </ModalPortal>
   );
 };
-
