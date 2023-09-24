@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/eCommerce-Website/static/css/main.d4545a8b.css",
-    "main.js": "/eCommerce-Website/static/js/main.2f3e12fe.js",
+    "main.css": "/eCommerce-Website/static/css/main.532e8cba.css",
+    "main.js": "/eCommerce-Website/static/js/main.467c07fa.js",
     "static/media/home-poster.webp": "/eCommerce-Website/static/media/home-poster.fa3c4f4b5981ca827659.webp",
     "static/media/imgLivingRoom.webp": "/eCommerce-Website/static/media/imgLivingRoom.484fbbfe9dc7f1fd5cb5.webp",
     "static/media/Bedroom.webp": "/eCommerce-Website/static/media/Bedroom.2ef114544f295ad88c27.webp",
@@ -20,7 +20,7 @@
     "static/media/Muggo.webp": "/eCommerce-Website/static/media/Muggo.cd4ae94e1a986aa3ecae.webp",
     "static/media/img9.webp": "/eCommerce-Website/static/media/img9.db39e22cb89ac93dc0a5.webp",
     "static/media/img4.webp": "/eCommerce-Website/static/media/img4.b50feb08fbb3f61e90ed.webp",
-    "static/media/Leviosa.webp": "/eCommerce-Website/static/media/Leviosa.1e18172a31226d8693be.webp",
+    "static/media/Leviosa.webp": "/eCommerce-Website/static/media/Leviosa.1263e290f25a5b061606.webp",
     "static/media/img3.webp": "/eCommerce-Website/static/media/img3.84c81df43189aa0d63d0.webp",
     "static/media/Lolito.webp": "/eCommerce-Website/static/media/Lolito.08dba98326ac33d996ab.webp",
     "static/media/Syltherine.webp": "/eCommerce-Website/static/media/Syltherine.de5ed4a2c3f13e8fe676.webp",
@@ -43,14 +43,13 @@
     "static/media/ActiveDot.webp": "/eCommerce-Website/static/media/ActiveDot.0df4dee104d003f7953b.webp",
     "static/media/Dot.webp": "/eCommerce-Website/static/media/Dot.d765bf894ca60544c1d1.webp",
     "static/media/Compare.webp": "/eCommerce-Website/static/media/Compare.145612c4926a530ea105.webp",
-    "static/media/Arrow2.webp": "/eCommerce-Website/static/media/Arrow2.26233a4c85655b36eb2d.webp",
     "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.bec0ce5ed6ef1ee575e3.webp",
     "static/media/imgHamburgerButton.webp": "/eCommerce-Website/static/media/imgHamburgerButton.08685ccc711b5cac8852.webp",
-    "main.d4545a8b.css.map": "/eCommerce-Website/static/css/main.d4545a8b.css.map",
-    "main.2f3e12fe.js.map": "/eCommerce-Website/static/js/main.2f3e12fe.js.map"
+    "main.532e8cba.css.map": "/eCommerce-Website/static/css/main.532e8cba.css.map",
+    "main.467c07fa.js.map": "/eCommerce-Website/static/js/main.467c07fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4545a8b.css",
-    "static/js/main.2f3e12fe.js"
+    "static/css/main.532e8cba.css",
+    "static/js/main.467c07fa.js"
   ]
 }
