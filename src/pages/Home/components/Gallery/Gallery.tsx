@@ -22,27 +22,29 @@ export const Gallery = () => {
         </h2>
         </div>
         <div className={classes.ImgBox}>
-            <div className={classes.ImgContainer}>
-                <div className={classes.ImgContainer1}>
-                    <img src={img1}/>
-                    <img src={img2}/>
+            <div className={classes.ImgContainer1}>
+                <div className={classes.ImgContainer1_1}>
+                    <div><img src={img1}/></div>
+                    <div><img src={img2}/></div>
                 </div>
-                <div className={classes.ImgContainer2}>
-                    <img src={img3}/>
-                    <img src={img4}/>
-                </div>
-            </div>
-                <img src={img5} className={classes.middleImg}/>
-            <div className={classes.ImgContainer}>
-                <div className={classes.ImgContainer1}>
-                    <img src={img6}/>
-                    <img src={img7}/>
-                </div>
-                <div className={classes.ImgContainer2}>
-                    <img src={img8}/>
-                    <img src={img9}/>          
+                <div className={classes.ImgContainer1_2}>
+                    <div><img src={img3}/></div>
+                    <div><img src={img4}/></div>
                 </div>
             </div>
+            <div className={classes.ImgContainer2}>
+                <img src={img5}/>                
+            </div>
+                <div className={classes.ImgContainer3}>
+                    <div className={classes.ImgContainer3_1}>
+                        <div><img src={img6}/></div>
+                        <div><img src={img7}/></div>
+                    </div>
+                    <div className={classes.ImgContainer3_2}>
+                        <div><img src={img8}/></div>
+                        <div><img src={img9}/></div>        
+                    </div>
+                </div>
         </div>
     </div>   
   )
