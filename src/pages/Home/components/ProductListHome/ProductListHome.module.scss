@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.productList {
+.productListHome {
     width: 100%;
     max-width: 1300px;
     height: 100%;
@@ -45,33 +45,33 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 16px;
+    padding: $productList-padding-size;
 
     @media (max-width: 919px) {
-        padding: 12px;
+        padding: calc(#{$productList-padding-size} * 0.75);
     }
     
     @media (max-width: 634px) {
-        padding: 8px;
+        padding: calc(#{$productList-padding-size} * 0.5);
     }
 }
 
   .cardContainer{
     margin: 16px;
-    flex-basis: calc(25% - 32px); 
-    max-width: calc(25% - 32px);
+    flex-basis: calc(25% - (#{$productList-padding-size}*2)); 
+    max-width: calc(25% - (#{$productList-padding-size}*2));
     box-sizing: border-box;
 
     @media (max-width: 919px) {
         margin: 12px;
-        flex-basis: calc(33.3333333% - 24px); 
-        max-width: calc(33.3333333% - 24px);
+        flex-basis: calc(33.3333333% - (#{$productList-padding-size}*1.5)); 
+        max-width: calc(33.3333333% - (#{$productList-padding-size}*1.5));
     }
 
     @media (max-width: 634px) {
         margin: 8px;
-        flex-basis: calc(50% - 16px); 
-        max-width: calc(50% - 16px);
+        flex-basis: calc(50% - #{$productList-padding-size}); 
+        max-width: calc(50% - #{$productList-padding-size});
     }
   }
 

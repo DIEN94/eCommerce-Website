@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { CardOfProduct, MyButton } from 'components';
 import { Link } from 'react-router-dom';
-import { postsList } from './config';
-import classes from "./ProductList.module.scss"
+import { postsListHome } from './config';
+import classes from "./ProductListHome.module.scss"
 
-export const ProductList = () => {
+export const ProductListHome = () => {
 
-  const [posts, setPosts] = useState(postsList)
+  const [posts, setPosts] = useState(postsListHome)
 
   return (
-    <div className={classes.productList}>
+    <div className={classes.productListHome}>
       <p className={classes.firstLevelText}>
         Our Products
       </p>

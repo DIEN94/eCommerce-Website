@@ -1,13 +1,13 @@
 import React from 'react'
-import homePoster from "assets/page-Home/Poster/home-poster.webp";
+import homePoster from "assets/page-Home/PosterHome/home-poster.webp";
 import { MyButton } from 'components';
 import { Link } from 'react-router-dom';
-import classes from "./Poster.module.scss"
+import classes from "./PosterHome.module.scss"
 
-export const Poster = () => {
+export const PosterHome = () => {
 
   return (
-    <div className={classes.poster}>
+    <div className={classes.posterHome}>
         <div className={classes.imgContainer}>
         <img src={homePoster} alt="homePoster"/>
         </div>
