@@ -1,15 +1,13 @@
 import React, { FC, useState } from "react";
 import { MyButton } from "../../../Button/MyButton";
-import Heart from 'assets/CardOfProduct/frames/Heart.webp'
-import Compare from 'assets/CardOfProduct/frames/Compare.webp'
-import Share from 'assets/CardOfProduct/frames/Share.webp'
+import { hoverConfig } from "./config";
 import clsx from 'clsx';
 import classes from "./Hover.module.scss";
 
 interface IHover {
-    isHovered: boolean 
+  isHovered: boolean
 }
-export const Hover: FC <IHover> = ({isHovered}) => {
+export const Hover: FC<IHover> = ({ isHovered }) => {
 
   const addToCart = () => {
     console.log("AddToCart");
@@ -47,7 +45,7 @@ export const Hover: FC <IHover> = ({isHovered}) => {
               className={classes.buttonBoxElements}
               onClick={executeShare}
             >
-              <img src={Share} />
+              <img src={hoverConfig.Share} alt="Share" />
               <span>Share</span>
             </MyButton>
             <MyButton
@@ -55,7 +53,7 @@ export const Hover: FC <IHover> = ({isHovered}) => {
               className={classes.buttonBoxElements}
               onClick={executeCompare}
             >
-              <img src={Compare} />
+              <img src={hoverConfig.Compare} alt="Compare" />
               <span>Compare</span>
             </MyButton>
             <MyButton
@@ -63,7 +61,7 @@ export const Hover: FC <IHover> = ({isHovered}) => {
               className={classes.buttonBoxElements}
               onClick={executeLike}
             >
-              <img src={Heart} />
+              <img src={hoverConfig.Heart} alt="Heart" />
               <span>Like</span>
             </MyButton>
           </div>

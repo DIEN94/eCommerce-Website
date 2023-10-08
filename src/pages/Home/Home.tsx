@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
 import classes from "./Home.module.scss"
-import { Poster } from './components/Poster/Poster';
+import { PosterHome } from './components/PosterHome/PosterHome';
 import { RangeList } from './components/RangeList/RangeList';
-import { ProductList } from './components/ProductList/ProductList';
+import { ProductListHome } from './components/ProductListHome/ProductListHome';
 import { Carousel } from './components/Carousel/Carousel';
 import { Gallery } from './components/Gallery/Gallery';
 
@@ -11,9 +11,9 @@ export const Home: FC = () => {
 
   return (
     <div className={classes.home}>
-      <Poster/>
+      <PosterHome/>
       <RangeList/>
-      <ProductList/>
+      <ProductListHome/>
       <Carousel/>
       <Gallery/>
     </div>
