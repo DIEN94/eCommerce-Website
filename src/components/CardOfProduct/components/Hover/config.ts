@@ -1,10 +1,13 @@
 import React, { FC, useState } from "react";
-import Heart from 'assets/CardOfProduct/frames/Heart.webp'
-import Compare from 'assets/CardOfProduct/frames/Compare.webp'
-import Share from 'assets/CardOfProduct/frames/Share.webp'
+import heart from 'assets/CardOfProduct/frames/Heart.webp'
+import compare from 'assets/CardOfProduct/frames/Compare.webp'
+import share from 'assets/CardOfProduct/frames/Share.webp'
 
-export const hoverConfig = {
-    Heart: Heart,
-    Compare: Compare,
-    Share: Share,
-}
+
+export type Keys = "share" | "compare" | "like"
+
+export const hoverConfig: Array<{key: Keys, src:string, text:string}> = [
+    { key: "share",src: share, text:"Share"}, 
+    { key: "compare",src: compare, text:"Compare"}, 
+    { key: "like", src: heart, text:"Like"}, 
+]
