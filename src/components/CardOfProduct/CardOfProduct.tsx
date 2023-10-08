@@ -4,7 +4,7 @@ import { Hover } from './components/Hover/Hover';
 import clsx from 'clsx';
 import classes from "./CardOfProduct.module.scss";
 
-interface ICard {
+interface ICardProps {
   src: string
   label?: string
   ProductName: string
@@ -14,7 +14,7 @@ interface ICard {
 }
 
 
-export const CardOfProduct: FC<ICard> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice }) => {
+export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -44,11 +44,11 @@ export const CardOfProduct: FC<ICard> = ({ src, label, ProductName, SortDescript
       </div>
       <div className={classes.textContainer}>
         <div className={classes.textCard}>
-          <h1 className={classes.ProductName}>{ProductName}</h1>
-          <p className={classes.SortDescription}>{SortDescription}</p>
+          <h1 className={classes.productName}>{ProductName}</h1>
+          <p className={classes.sortDescription}>{SortDescription}</p>
           <div className={classes.priceBox}>
-            <p className={classes.FixPrice}>{FixPrice}</p>
-            <p className={classes.OriginalPrice}>{OriginalPrice}</p>
+            <p className={classes.fixPrice}>{FixPrice}</p>
+            <p className={classes.originalPrice}>{OriginalPrice}</p>
           </div>
         </div>
       </div>
