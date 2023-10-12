@@ -3,8 +3,11 @@
     position: absolute;
     top:0;
     left: 0;
-    width: 285px;
-    height: 446px;
+    width: 100%;
+    height: 100%;
+    max-width: 285px;
+    max-height: 446px;
+    z-index: 200;
 
     display: flex;
     justify-content: center;
@@ -23,8 +26,12 @@
     position: absolute;
     top:0;
     left: 0;
-    width: 285px;
-    height: 446px;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    max-width: 285px;
+    max-height: 446px;
+    z-index: 300;
 
     display: flex;
     justify-content: center;
@@ -36,8 +43,8 @@
 }
 
 .buttonContainer {
-    width: 252px;
-    height: 96px;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,19 +60,45 @@
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0em;
+
+    @media (max-width: 1200px) {
+        width: 160px;
+        height: 38px;
+    }
+
+    @media (max-width: 450px) {
+        width: 110px;
+        height: 30px;
+    }
+    
+    &:hover {
+        border: 2px solid skyblue;
+    }
 }
 
 .buttonBox {
-    width: 252px;
-    height: 24px;
+    width: 100%;
+    height: 100%;
+    max-width: 252px;
+    max-height: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 24px;
+
+    @media (max-width: 1200px) {
+        max-height: 102px;
+        flex-direction: column;
+    }
 }
 
 .buttonBoxElements {
+    max-width: max-content;
     height: 24px;
+
+    @media (max-width: 1200px) {
+        margin-bottom: 10px;
+    }
 
     img {
         width: 12px;

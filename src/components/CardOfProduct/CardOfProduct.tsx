@@ -4,17 +4,17 @@ import { Hover } from './components/Hover/Hover';
 import clsx from 'clsx';
 import classes from "./CardOfProduct.module.scss";
 
-interface ICard {
-  src: string 
-  label?: string 
-  ProductName: string 
+interface ICardProps {
+  src: string
+  label?: string
+  ProductName: string
   SortDescription: string
   FixPrice: string
   OriginalPrice?: string
 }
 
 
-export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescription, FixPrice, OriginalPrice}) => {
+export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -27,27 +27,32 @@ export const CardOfProduct: FC <ICard> = ({src, label, ProductName, SortDescript
   };
 
   return (
-    <div 
-    className={classes.myCard}
-    onMouseEnter={handleMouseEnter}
-    onMouseLeave={handleMouseLeave}
+    <div
+      className={classes.myCard}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={classes.imgBox}>
-        <img className={classes.img} src={src}/>
-        <img 
-        className={clsx(classes.label, { [classes.show]: label })}
-        src={label}
+        <div className={classes.imgContainer}>
+          <img className={classes.img} src={src} alt={`${ProductName}`} />
+        </div>
+        <img
+          className={clsx(classes.label, { [classes.show]: label })}
+          src={label}
+          alt={`${label}`}
         />
       </div>
-      <div className={classes.textCard}>
-        <h1 className={classes.ProductName}>{ProductName}</h1>
-        <p className={classes.SortDescription}>{SortDescription}</p>
-        <div className={classes.priceBox}>
-          <p className={classes.FixPrice}>{FixPrice}</p>
-          <p className={classes.OriginalPrice}>{OriginalPrice}</p>
+      <div className={classes.textContainer}>
+        <div className={classes.textCard}>
+          <h1 className={classes.productName}>{ProductName}</h1>
+          <p className={classes.sortDescription}>{SortDescription}</p>
+          <div className={classes.priceBox}>
+            <p className={classes.fixPrice}>{FixPrice}</p>
+            <p className={classes.originalPrice}>{OriginalPrice}</p>
+          </div>
         </div>
       </div>
-      <Hover isHovered={isHovered}/> 
+      <Hover isHovered={isHovered} />
     </div>
   )
 }
