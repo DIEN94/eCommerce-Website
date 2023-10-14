@@ -1,10 +1,12 @@
 select {
     width: 100%;  
+    max-width: max-content;
     font-family: var(--font-primary);
     font-weight: 400;
     background-color: var(--background-color-primary);
     color:#9F9F9F;
     cursor: pointer;
+    padding: 0 5px;
 }
 
 .dropDown {
