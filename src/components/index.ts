@@ -3,7 +3,7 @@ import ModalPortal from './Modal/components/ModalPortal/ModalPortal';
 export {MyButton} from './Button/MyButton';
 
 export {CardOfProduct} from './CardOfProduct/CardOfProduct';
-// export {CardOfProductWide} from './CardOfProductWide/CardOfProductWide';
+export {CardOfProductWide} from './CardOfProductWide/CardOfProductWide';
 export {Hover} from './CardOfProduct/components/Hover/Hover';
 
 export {DropDown} from './DropDown/DropDown';
