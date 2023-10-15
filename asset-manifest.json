@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/eCommerce-Website/static/css/main.532e8cba.css",
-    "main.js": "/eCommerce-Website/static/js/main.467c07fa.js",
+    "main.css": "/eCommerce-Website/static/css/main.004f3bbd.css",
+    "main.js": "/eCommerce-Website/static/js/main.28db1b33.js",
     "static/media/home-poster.webp": "/eCommerce-Website/static/media/home-poster.fa3c4f4b5981ca827659.webp",
+    "static/media/shop-poster.webp": "/eCommerce-Website/static/media/shop-poster.f22ae0c73545ace03bde.webp",
     "static/media/imgLivingRoom.webp": "/eCommerce-Website/static/media/imgLivingRoom.484fbbfe9dc7f1fd5cb5.webp",
     "static/media/Bedroom.webp": "/eCommerce-Website/static/media/Bedroom.2ef114544f295ad88c27.webp",
     "static/media/imgKidRoom.webp": "/eCommerce-Website/static/media/imgKidRoom.fdb27ad71ada856a1287.webp",
@@ -19,6 +20,7 @@
     "static/media/img2.webp": "/eCommerce-Website/static/media/img2.9ccfdaaff28e767539ee.webp",
     "static/media/Muggo.webp": "/eCommerce-Website/static/media/Muggo.cd4ae94e1a986aa3ecae.webp",
     "static/media/img9.webp": "/eCommerce-Website/static/media/img9.db39e22cb89ac93dc0a5.webp",
+    "static/media/Asgaard.webp": "/eCommerce-Website/static/media/Asgaard.99e851352b9e54a7ea00.webp",
     "static/media/img4.webp": "/eCommerce-Website/static/media/img4.b50feb08fbb3f61e90ed.webp",
     "static/media/Leviosa.webp": "/eCommerce-Website/static/media/Leviosa.1263e290f25a5b061606.webp",
     "static/media/img3.webp": "/eCommerce-Website/static/media/img3.84c81df43189aa0d63d0.webp",
@@ -29,8 +31,12 @@
     "static/media/img8.webp": "/eCommerce-Website/static/media/img8.b3a1ba04c67491a81020.webp",
     "static/media/Circle.webp": "/eCommerce-Website/static/media/Circle.45bb8a98f38a84c7324b.webp",
     "static/media/logo.webp": "/eCommerce-Website/static/media/logo.70bdd936e749dd14e0dd.webp",
+    "static/media/support.webp": "/eCommerce-Website/static/media/support.20b7459a78ad0d3fde5e.webp",
+    "static/media/warrantyProtection.webp": "/eCommerce-Website/static/media/warrantyProtection.df3bed17fcb40d4278ba.webp",
     "static/media/thirty.webp": "/eCommerce-Website/static/media/thirty.d0ba72a74c4fb5d142b7.webp",
     "static/media/NewProduct.webp": "/eCommerce-Website/static/media/NewProduct.af48137025d4754480c3.webp",
+    "static/media/highQuality.webp": "/eCommerce-Website/static/media/highQuality.514a373317c8cddab62d.webp",
+    "static/media/freeShipping.webp": "/eCommerce-Website/static/media/freeShipping.585e64b9d11dfceab7c2.webp",
     "index.html": "/eCommerce-Website/index.html",
     "static/media/CircleDot.webp": "/eCommerce-Website/static/media/CircleDot.6f51f47f2c71b2d12127.webp",
     "static/media/iconLike.webp": "/eCommerce-Website/static/media/iconLike.f39c0bcd83235c488704.webp",
@@ -38,18 +44,24 @@
     "static/media/iconAccount.webp": "/eCommerce-Website/static/media/iconAccount.738ddf35d9ca39169413.webp",
     "static/media/buttonClose.webp": "/eCommerce-Website/static/media/buttonClose.349ad0081f88ee706bf0.webp",
     "static/media/iconSearch.webp": "/eCommerce-Website/static/media/iconSearch.a043ec17e397653df471.webp",
+    "static/media/filterIcon.webp": "/eCommerce-Website/static/media/filterIcon.f0d6dcc865878092fcb5.webp",
+    "static/media/fourDots.webp": "/eCommerce-Website/static/media/fourDots.6c5825c08f00afac3696.webp",
     "static/media/Heart.webp": "/eCommerce-Website/static/media/Heart.2229c33f1e0ecfd71760.webp",
+    "static/media/scrollIcon.webp": "/eCommerce-Website/static/media/scrollIcon.0da28bc508aa2d2bc4cb.webp",
     "static/media/Share.webp": "/eCommerce-Website/static/media/Share.9c4e54b2bffd39f355b7.webp",
     "static/media/ActiveDot.webp": "/eCommerce-Website/static/media/ActiveDot.0df4dee104d003f7953b.webp",
     "static/media/Dot.webp": "/eCommerce-Website/static/media/Dot.d765bf894ca60544c1d1.webp",
     "static/media/Compare.webp": "/eCommerce-Website/static/media/Compare.145612c4926a530ea105.webp",
-    "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.bec0ce5ed6ef1ee575e3.webp",
+    "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.26233a4c85655b36eb2d.webp",
+    "static/media/ArrowLeft.webp": "/eCommerce-Website/static/media/ArrowLeft.65454610fe7a2e5ece05.webp",
+    "static/media/ArrowRight.webp": "/eCommerce-Website/static/media/ArrowRight.bec0ce5ed6ef1ee575e3.webp",
     "static/media/imgHamburgerButton.webp": "/eCommerce-Website/static/media/imgHamburgerButton.08685ccc711b5cac8852.webp",
-    "main.532e8cba.css.map": "/eCommerce-Website/static/css/main.532e8cba.css.map",
-    "main.467c07fa.js.map": "/eCommerce-Website/static/js/main.467c07fa.js.map"
+    "static/media/arrow.webp": "/eCommerce-Website/static/media/arrow.135310aec73e051a10b3.webp",
+    "main.004f3bbd.css.map": "/eCommerce-Website/static/css/main.004f3bbd.css.map",
+    "main.28db1b33.js.map": "/eCommerce-Website/static/js/main.28db1b33.js.map"
   },
   "entrypoints": [
-    "static/css/main.532e8cba.css",
-    "static/js/main.467c07fa.js"
+    "static/css/main.004f3bbd.css",
+    "static/js/main.28db1b33.js"
   ]
 }
