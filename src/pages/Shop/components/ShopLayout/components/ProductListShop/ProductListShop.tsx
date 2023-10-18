@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { CardOfProduct, CardOfProductWide, MyButton } from 'components'
 import { postsListShop } from './config'
 import classes from "./ProductListShop.module.scss"
-import clsx from 'clsx';
+import { Pagination } from './components/Pagination/Pagination';
 
 
 interface IProductListShopProps {
@@ -12,82 +12,56 @@ interface IProductListShopProps {
 
 export const ProductListShop: React.FC<IProductListShopProps> = ({limitCardNumber, typeCard}) => {
 
-  const [totalCard, setTotalCard] = useState(0);
-  const [cardArray, setCardArray] = useState<number[]>([]);
   const [page, setPage] = useState(1);
-
   const totalCount = postsListShop.length
-  console.log(totalCount);
+  const CardComponent = typeCard === "Card" ? CardOfProduct : CardOfProductWide;
   
 
   const getPageCount = (totalCount: number, limitCardNumber: number) => {
     return Math.ceil (totalCount/limitCardNumber)
   }
  
-  useMemo (  () => {
-    setTotalCard(getPageCount(totalCount, limitCardNumber));
+  const cardArray = useMemo (  () => {
+    const totalCard = getPageCount(totalCount, limitCardNumber)
     let newCardArray = []
     for (let i = 0; i < totalCard; i++) {
       newCardArray.push(i+1)
     }
-  
-    console.log(newCardArray);
-    setCardArray (newCardArray)
-  }, [totalCard, limitCardNumber])
-
-  // const onChangePage
+    return newCardArray
+  }, [totalCount, limitCardNumber])
 
   const cardsToShow = postsListShop.slice(
     (page - 1) * limitCardNumber,
     page * limitCardNumber
   );
 
+  const addToCart = () => {
+    console.log("addToCart")
+  };
+
   return (
     <div className={classes.productListShop}>
     <div className={typeCard === "Card" ? classes.productCardBox : classes.productCardWideBox}>
     {cardsToShow.slice(-limitCardNumber).map((post, index) => (
   <div className={typeCard === "Card" ? classes.cardContainer : classes.cardWideContainer} key={index}>
-    {typeCard === "Card" ? (
-      <CardOfProduct
+      <CardComponent
         src={post.src}
         label={post.label}
         ProductName={post.ProductName}
         SortDescription={post.SortDescription}
         FixPrice={post.FixPrice}
         OriginalPrice={post.OriginalPrice}
+        addToCart={addToCart}
       />
-    ) : (
-      <CardOfProductWide
-        src={post.src}
-        label={post.label}
-        ProductName={post.ProductName}
-        SortDescription={post.SortDescription}
-        FixPrice={post.FixPrice}
-        OriginalPrice={post.OriginalPrice}
-      />
-    )}
   </div>
 ))}
     </div>
-    <div className={classes.buttonContainer}>
-      {cardArray.map(number => (
-        <MyButton 
-        onClick={()=>setPage(number)}
-        className={page === number ? classes.buttonCurrent : classes.button} 
-        variant="fill-beige" 
-        key={number}
-        >
-          {number}
-        </MyButton>)
-      )}
-      <MyButton 
-      onClick={()=>{cardArray.length !== page ? setPage(page+1): setPage(1)}}
-      className={classes.buttonNext} 
-      variant="fill-beige" 
-      >
-      Next
-    </MyButton>
-    </div>
+    <Pagination 
+    cardArray={cardArray} 
+    page={page} 
+    onChangePage={(newPage) => {
+        setPage(newPage);
+    }}/>
   </div>
   )
 }
