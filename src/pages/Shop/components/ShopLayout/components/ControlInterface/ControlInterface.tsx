@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { MyButton } from 'components/Button/MyButton';
-import classes from "./ControlInterface.module.scss"
+import { DropDown, MyButton } from 'components';
 import { imgControlInterfaceConfig, optionsNumberCardConfig, optionsSortByConfig } from './config';
-import { DropDown } from 'components';
+import classes from "./ControlInterface.module.scss"
 
 interface IControlInterfaceProps {
   cardNumber: number;
