@@ -64,8 +64,8 @@
 
     @media (max-width: 919px) {
         margin: 12px;
-        flex-basis: calc(33.3333333% - (#{$productList-padding-size}*1.5)); 
-        max-width: calc(33.3333333% - (#{$productList-padding-size}*1.5));
+        flex-basis: calc(33.33% - (#{$productList-padding-size}*1.5)); 
+        max-width: calc(33.33% - (#{$productList-padding-size}*1.5));
     }
 
     @media (max-width: 634px) {
