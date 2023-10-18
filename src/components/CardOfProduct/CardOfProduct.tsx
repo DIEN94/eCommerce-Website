@@ -11,10 +11,11 @@ interface ICardProps {
   SortDescription: string
   FixPrice: string
   OriginalPrice?: string
+  addToCart: () => void;
 }
 
 
-export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice }) => {
+export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice, addToCart }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -52,7 +53,7 @@ export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDes
           </div>
         </div>
       </div>
-      <Hover isHovered={isHovered} />
+      <Hover isHovered={isHovered} addToCart={addToCart}/>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { Link } from 'react-router-dom';
 import { MyButton } from "../../../Button/MyButton";
 import { Keys, hoverConfig } from "./config";
 import clsx from 'clsx';
@@ -6,8 +7,9 @@ import classes from "./Hover.module.scss";
 
 interface IHover {
   isHovered: boolean
+  addToCart: () => void;
 }
-export const Hover: FC<IHover> = ({ isHovered }) => {
+export const Hover: FC<IHover> = ({ isHovered, addToCart }) => {
 
 const methods: Record<Keys, () => void> = {
 share: () => {
@@ -21,10 +23,6 @@ like: () => {
 }, 
 }
 
-const addToCart = () => {
-  console.log("AddToCart");
-};
-
   return (
     <div>
       <div
@@ -32,9 +30,17 @@ const addToCart = () => {
       ></div>
       <div className={clsx(classes.buttonCard, { [classes.show]: isHovered })}>
         <div className={classes.buttonContainer}>
+          <Link to={"/shop/id"}>
           <MyButton
             variant="fill-white"
-            className={classes.buttonAddToCart}
+            className={classes.buttonBig}
+            >
+              Details
+          </MyButton>
+          </Link>
+          <MyButton
+            variant="fill-white"
+            className={classes.buttonBig}
             onClick={addToCart}
           >
             Add to cart

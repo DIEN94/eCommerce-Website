@@ -49,9 +49,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 10px;
 }
 
-.buttonAddToCart {
+.buttonBig {
     width: 202px;
     height: 48px;
     border: 0;
@@ -84,7 +85,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 24px;
 
     @media (max-width: 1200px) {
         max-height: 102px;
