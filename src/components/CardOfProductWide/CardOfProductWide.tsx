@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MyButton } from './../Button/MyButton';
 import clsx from 'clsx';
 import classes from "./CardOfProductWide.module.scss";
@@ -10,13 +11,10 @@ interface ICardWide {
     SortDescription: string
     FixPrice: string
     OriginalPrice?: string
+    addToCart: () => void;
   }
 
-export const CardOfProductWide: FC<ICardWide> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice }) => {
-
-    const addToCart = () => {
-        console.log("AddToCart");
-      };
+export const CardOfProductWide: FC<ICardWide> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice, addToCart }) => {
 
   return (
     <div className={classes.myCard}>
@@ -33,22 +31,32 @@ export const CardOfProductWide: FC<ICardWide> = ({ src, label, ProductName, Sort
     </div>
     <div className={classes.textContainer}>
       <div className={classes.textCard}>
-        <h1 className={classes.ProductName}>{ProductName}</h1>
-        <p className={classes.SortDescription}>{SortDescription}</p>
+        <h1 className={classes.productName}>{ProductName}</h1>
+        <p className={classes.sortDescription}>{SortDescription}</p>
         <div className={classes.priceBox}>
-          <p className={classes.FixPrice}>{FixPrice}</p>
-          <p className={classes.OriginalPrice}>{OriginalPrice}</p>
+          <p className={classes.fixPrice}>{FixPrice}</p>
+          <p className={classes.originalPrice}>{OriginalPrice}</p>
         </div>
       </div>
     </div>
     </div>
-    <MyButton
-        variant="fill-white"
-        className={classes.buttonAddToCart}
-        onClick={addToCart}
-        >
-        Add to cart
-    </MyButton>
+    <div className={classes.buttonContainer}>
+      <Link to={"/shop/id"}>
+        <MyButton
+          variant="fill-white"
+          className={classes.button}
+          >
+            Details
+        </MyButton>
+      </Link>
+      <MyButton
+          variant="fill-white"
+          className={classes.button}
+          onClick={addToCart}
+          >
+          Add to cart
+      </MyButton>
+    </div>
   </div>
   )
 }

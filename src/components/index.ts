@@ -1,4 +1,3 @@
-import ModalPortal from './Modal/components/ModalPortal/ModalPortal';
 
 export {MyButton} from './Button/MyButton';
 
@@ -11,6 +10,6 @@ export {DropDown} from './DropDown/DropDown';
 export {MyInput} from './Input/MyInput';
 
 export {MyModal} from './Modal/MyModal';
-export {ModalPortal}
+export {default as ModalPortal} from './Modal/components/ModalPortal/ModalPortal';
 
 export {PosterPage} from './PosterPage/PosterPage';
