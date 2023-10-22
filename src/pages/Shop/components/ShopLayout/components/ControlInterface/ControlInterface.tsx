@@ -59,25 +59,25 @@ export const ControlInterface: React.FC<IControlInterfaceProps> = ({cardNumber, 
       Showing 1–16 of {cardNumber} results
     </p>
     </div>
-    <div className={classes.dropDownContainer}>
-      <div className={classes.dropDownShowContainer}>
-      <p>Show</p>
+    <div className={classes.dropDownBox}>
+      <div className={classes.dropDownContainer}>
+      <p className={classes.text}>Show</p>
       <DropDown 
       className={classes.dropDownShow}
       options={optionsNumberCardConfig} 
       defaultValue="16"
+      arrow = {false}
       onChange={handleChangeCardNumber}
-      variant="cardFilter"
       />
       </div>
-      <div className={classes.dropDownSortByContainer}>
-      <p>Short by</p>
+      <div className={classes.dropDownContainer}>
+      <p className={classes.text}>Short by</p>
       <DropDown 
       className={classes.dropDownSortBy}
       options={optionsSortByConfig} 
       defaultValue="Default"
+      arrow = {false}
       onChange={handleDropDownSort}
-      variant="cardFilter"
       />
       </div>
     </div>
