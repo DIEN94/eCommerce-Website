@@ -2,6 +2,7 @@ import { MyInput } from 'components';
 import React, { FC } from 'react'
 import {useForm} from 'react-hook-form'
 import classes from "./Login.module.scss"
+import { LoginForm } from 'components/LoginForm/LoginForm'
 
 export const Login: FC = () => {
 
