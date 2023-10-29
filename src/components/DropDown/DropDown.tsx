@@ -1,25 +1,25 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState, ReactNode  } from 'react';
 import arrowDown from "assets/DropDown/arrowDown.webp";
 import arrowUp from "assets/DropDown/arrowUp.webp";
-import classes from "./DropDown.module.scss";
 import { clsx } from 'clsx';
+import classes from "./DropDown.module.scss";
 
 interface IOption {
   value: string;
   label: string;
 }
 
-interface IDropDown {
+interface IDropDownProps {
   className?: string;
   options: IOption[];
-  defaultValue?: string;
+  defaultValue?: ReactNode;
   arrow: boolean;
   onChange: (value: string) => void;
 }
 
-export const DropDown: FC<IDropDown> = ({className, options, defaultValue, arrow, onChange}) => {
+export const DropDown: FC<IDropDownProps> = ({className, options, defaultValue, arrow, onChange}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+  const [selectedValue, setSelectedValue] = useState<ReactNode | undefined>(defaultValue);
   const dropDownRef = useRef<HTMLDivElement | null>(null);
 
   const toggleDropdown = () => {
