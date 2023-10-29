@@ -1,32 +1,14 @@
-import React from "react";
-import logo from '../../assets/header/logo.webp';
-import iconAccount from '../../assets/header/iconAccount.webp';
-import iconSearch from '../../assets/header/iconSearch.webp';
-import iconLike from '../../assets/header/iconLike.webp';
-import iconCart from '../../assets/header/iconCart.webp';
+import React, { useState } from "react";
+import { createNavButtonConfig, imgConfig } from './config';
 import { MyButton } from "components/Button/MyButton";
-import { createNavButtonConfig } from './config';
-import classes from "./Header.module.scss"
 import { Link } from "react-router-dom";
+import { ModalWindowHeader } from "./components/ModalWindowHeader";
+import classes from "./Header.module.scss";
+
 
 
 export const Header = () => {
-
-  const goToHome = () => {
-    console.log("goToHome");
-  };
-
-  const goToShop = () => {
-    console.log("goToShop");
-  };
-
-  const goToAbout = () => {
-    console.log("goToAbout");
-  };
-
-  const goToContact = () => {
-    console.log("goToContact");
-  };
+  const [open, setOpen] = useState(false);
 
   const goToAccount = () => {
     console.log("goToAccount");
@@ -44,47 +26,28 @@ export const Header = () => {
     console.log("goToCart");
   };
 
- 
+  const openMenu = (event:any) => {
+    event.stopPropagation()
+    setOpen(true);
+  };
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
   return (
-    // LOGO
+// LOGO
     <div className={classes.header}>
-        <div className={classes.logoBox}>
-            <img src={logo} />
+      <Link to="/" className={classes.logoBox}>
+      <img src={imgConfig.logo} alt="logo"/>
             <span>Furniro</span>
-        </div>
+      </Link>
 
-    {/* RouteButtonsBox */}
-        <div className={classes.routeButtonsBox}>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToHome}>
-            Home
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToShop}>
-            Shop
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToAbout}>
-            About
-          </MyButton>
-          <MyButton
-            variant="no-fill"
-            className={classes.routeButtons}
-            onClick={goToContact}>
-            Contact
-          </MyButton>
-        </div>
-
-        {/* <nav className={classes.routeButtonsBox}>
-      {createNavButtonConfig.map(({path, text})=> {
+{/* RouteButtons */}
+    <nav className={classes.routeButtonsBox}>
+      {createNavButtonConfig.map(({path, text}, index)=> {
         return (
-          <Link to={path}>
+          <Link to={path} key={index}>
             <MyButton
               variant="no-fill"
               className={classes.routeButtons}>
@@ -93,35 +56,47 @@ export const Header = () => {
           </Link>
         );
       })}
-    </nav> */}
+    </nav>
 
-    {/* HeaderButtonsBox */}
+{/* HeaderButtons */}
         <div className={classes.headerButtonsBox}>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToAccount}>
-              <img src={iconAccount}/>
+              <img src={imgConfig.iconAccount} alt="iconAccount"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToSearch}>
-              <img src={iconSearch}/>
+              <img src={imgConfig.iconSearch} alt="iconSearch"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToLike}>
-              <img src={iconLike}/>
+              <img src={imgConfig.iconLike} alt="iconLike"/>
           </MyButton>
           <MyButton             
             variant="no-fill"
             className={classes.headerButtons}
             onClick={goToCart}>
-              <img src={iconCart}/>
+              <img src={imgConfig.iconCart} alt="iconCart"/>
           </MyButton>
           </div>
+
+{/* BurgerButton */}
+          <MyButton             
+            variant="no-fill"
+            className={classes.burgerButton}
+            onClick={openMenu}>
+              <img src={imgConfig.imgHamburgerButton} alt="imgHamburgerButton"/>
+          </MyButton>
+
+{/* ModalWindow */}
+          <ModalWindowHeader isOpen = {open} onClose={closeMenu}/>
     </div>
   )
 }
+

@@ -1,70 +1,64 @@
 import React, { FC, useState } from "react";
+import { Link } from 'react-router-dom';
 import { MyButton } from "../../../Button/MyButton";
-import Heart from 'assets/CardOfProduct/frames/Heart.webp'
-import Compare from 'assets/CardOfProduct/frames/Compare.webp'
-import Share from 'assets/CardOfProduct/frames/Share.webp'
+import { Keys, hoverConfig } from "./config";
+import clsx from 'clsx';
 import classes from "./Hover.module.scss";
 
 interface IHover {
-    isHovered: boolean 
+  isHovered: boolean
+  addToCart: () => void;
 }
-export const Hover: FC <IHover> = ({isHovered}) => {
+export const Hover: FC<IHover> = ({ isHovered, addToCart }) => {
 
-  const addToCart = () => {
-    console.log("AddToCart");
-  };
-
-  const executeShare = () => {
-    console.log("done share");
-  };
-
-  const executeCompare = () => {
-    console.log("done compare");
-  };
-
-  const executeLike = () => {
-    console.log("done like");
-  };
+const methods: Record<Keys, () => void> = {
+share: () => {
+  console.log("done share");
+},
+compare: () => {
+  console.log("done compare");
+}, 
+like: () => {
+  console.log("done like");
+}, 
+}
 
   return (
     <div>
       <div
-        className={`${classes.modalCard} ${isHovered ? classes.show : ""}`}
+        className={clsx(classes.modalCard, { [classes.show]: isHovered })}
       ></div>
-      <div className={`${classes.buttonCard} ${isHovered ? classes.show : ""}`}>
+      <div className={clsx(classes.buttonCard, { [classes.show]: isHovered })}>
         <div className={classes.buttonContainer}>
+          <Link to={"/shop/id"}>
           <MyButton
             variant="fill-white"
-            className={classes.buttonAddToCart}
+            className={classes.buttonBig}
+            >
+              Details
+          </MyButton>
+          </Link>
+          <MyButton
+            variant="fill-white"
+            className={classes.buttonBig}
             onClick={addToCart}
           >
             Add to cart
           </MyButton>
           <div className={classes.buttonBox}>
-            <MyButton
-              variant="no-fill"
-              className={classes.buttonBoxElements}
-              onClick={executeShare}
-            >
-              <img src={Share} />
-              <span>Share</span>
-            </MyButton>
-            <MyButton
-              variant="no-fill"
-              className={classes.buttonBoxElements}
-              onClick={executeCompare}
-            >
-              <img src={Compare} />
-              <span>Compare</span>
-            </MyButton>
-            <MyButton
-              variant="no-fill"
-              className={classes.buttonBoxElements}
-              onClick={executeLike}
-            >
-              <img src={Heart} />
-              <span>Like</span>
-            </MyButton>
+            {hoverConfig.map(({ key, src, text }) => {
+              return (
+                <MyButton
+                key={key}
+                variant="no-fill"
+                className={classes.buttonBoxElements}
+                onClick={methods[key]}
+              >
+                <img src={src} alt={key} />
+                <span>{text}</span>
+              </MyButton>
+              );
+            })}
           </div>
         </div>
       </div>

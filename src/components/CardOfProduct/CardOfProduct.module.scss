@@ -1,20 +1,27 @@
+@import "src/styles/variables";
+
 .myCard {
     position: relative;
-    width: 285px;
-    height: 446px;
-    margin: 12px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    max-width: 285px;
+    max-height: 446px;
     background-color: var(--card-color);
+    z-index: 100;
 }
 
 .imgBox {
     position: relative;
-    width: 285px;
-    height: 301px;
+    max-width: 285px;
+    max-height: 301px;
 }
 
 .img {
-    width: 285px;
-    height: 301px;
+    width: 100%;
+    height: 100%;
+    max-width: 285px;
+    max-height: 301px;
 }
 
 .label {
@@ -23,21 +30,38 @@
     width: 48px;
     height: 48px;
 
-    top: 24px;
-    left: 213px;
+    top: 8%;
+    right: 8%;
     &.show {
         visibility: visible;
+    }
+
+    @media (max-width: $mobile-size) {
+        width: 36px;
+        height: 36px;
     }
 }
 
 .textCard {
-    width: 249px;
-    height: 99px;
-    margin: 16px 20px 30px 16px;
+    width: 100%;
+    height: 100%;
+    max-width: 254px;
+    max-height: 99px;
+    margin: 16px 15px 30px 16px;
+
+    @media (max-width: 1270px) {
+        margin: 8px 15px 6px 16px;
+        max-height: 130px;
+        width: 90%;
+    }
+
+    @media (max-width: 500px) {
+        width: 80%;
+    }
 }
 
-.ProductName {
-    margin: 4px 0 4px 0;
+.productName {
+    margin-bottom: 8px;
     font-family: var(--font-primary);
     font-size: 2.4rem;
     font-weight: 600;
@@ -45,10 +69,22 @@
     letter-spacing: 0em;
     text-align: left;
     color: var(--secondary-font-color);
+
+    @media (max-width: 1270px) {
+        font-size: 2.2rem;
+        line-height: 26px;
+        margin-bottom: 6px;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 2.0rem;
+        line-height: 23px;
+        margin-bottom: 4px;
+    }
 }
 
-.SortDescription{
-    margin: 4px 0 4px 0;
+.sortDescription{
+    margin-bottom: 8px;
     font-family: var(--font-primary);
     font-size: 1.6rem;
     font-weight: 500;
@@ -56,17 +92,31 @@
     letter-spacing: 0em;
     text-align: left;
     color: #898989;
+
+    @media (max-width: 1270px) {
+        margin-bottom: 6px;
+        line-height: 22px;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+        line-height: 20px;
+    }
 }
 
 .priceBox{
-    display: grid;
-    grid-template-columns: 131px 1fr;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    margin: 4px 0 4px 0;
-    
+
+    @media (max-width: 1270px) {
+        flex-direction: column;
+        align-items: start;
+    }
 }
 
-.FixPrice{
+.fixPrice{
     margin: 0;
     padding: 0;
 
@@ -77,9 +127,19 @@
     letter-spacing: 0em;
     text-align: left;
     color: var(--secondary-font-color);
+
+    @media (max-width: 1270px) {
+        font-size: 1.8rem;
+        line-height: 24px;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 1.6rem;
+        line-height: 18px;
+    }
 }
 
-.OriginalPrice{
+.originalPrice{
     margin: 0;
     padding: 0 0 0 16px;
 
@@ -91,4 +151,16 @@
     text-decoration: line-through;
     text-align: left;
     color: #B0B0B0;
+
+    @media (max-width: 1270px) {
+    margin: 5px 0;
+    line-height: 22px;
+    padding: 0;
+    }
+
+    @media (max-width: 400px) {
+        margin: 3px 0;
+        font-size: 1.4rem;
+        line-height: 20px;
+    }
 }
