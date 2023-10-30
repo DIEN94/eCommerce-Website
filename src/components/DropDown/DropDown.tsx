@@ -1,41 +1,72 @@
-import React, { FC, useState } from 'react';
-import classes from "./DropDown.module.scss";
+import React, { FC, useEffect, useRef, useState, ReactNode  } from 'react';
+import arrowDown from "assets/DropDown/arrowDown.webp";
+import arrowUp from "assets/DropDown/arrowUp.webp";
 import { clsx } from 'clsx';
+import classes from "./DropDown.module.scss";
 
 interface IOption {
   value: string;
   label: string;
 }
 
-interface IDropDown {
+interface IDropDownProps {
   className?: string;
   options: IOption[];
-  defaultValue?: string;
+  defaultValue?: ReactNode;
+  arrow: boolean;
   onChange: (value: string) => void;
-  variant: "dropDown"| "cardFilter"
 }
 
-export const DropDown: FC<IDropDown> = ({className, options, defaultValue, onChange, variant }) => {
-  const [selectedValue, setSelectedValue] = useState<string | undefined>(defaultValue);
+export const DropDown: FC<IDropDownProps> = ({className, options, defaultValue, arrow, onChange}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState<ReactNode | undefined>(defaultValue);
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
 
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.target.value;
-    setSelectedValue(selectedValue);
-    onChange(selectedValue);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);    
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropDownRef.current && !dropDownRef.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
 
-  return (
-    <select 
-    className={clsx(classes[variant], className)} 
-    value={selectedValue} 
-    onChange={handleSelectChange}>
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const handleSelectChange = (option: IOption) => {
+    setSelectedValue(option.value);
+    onChange(option.value);
+    setIsOpen(false)
+  };
+
+return (
+  <div className={clsx(classes.dropDown, {[`${className}`]: className })} ref={dropDownRef}>
+    <div className={classes.dropDownButton} onClick={toggleDropdown}>
+      <p>{selectedValue}</p>
+      <div className={clsx(classes.dropDownArrow, { [classes.show]: arrow })}>
+        <img src={isOpen?arrowUp:arrowDown} alt="arrow"/>
+      </div>
+    </div>
+    {isOpen && (
+    <div className={classes.options}>
         {options.map((option) => (
-          <option key={option.value} value={option.value}>
+          <p key={option.value} onClick={() => handleSelectChange(option)}>
             {option.label}
-          </option>
+          </p>
         ))}
-    </select>
-  );
-};
-
+    </div>
+    )}
+  </div>
+);
+}

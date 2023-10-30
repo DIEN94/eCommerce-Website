@@ -1,28 +1,35 @@
-select {
-    width: 100%;  
-    max-width: max-content;
-    font-family: var(--font-primary);
-    font-weight: 400;
-    background-color: var(--background-color-primary);
-    color:#9F9F9F;
-    cursor: pointer;
-    padding: 0 5px;
-}
-
 .dropDown {
-    border-radius: 10px;
-    border: 1px solid #9F9F9F;
-    font-size: 1.6rem;
-    option {
-        font-size: 1.6rem;
+    width: 100%;
+    max-width: max-content;
+    background-color: var(--background-color-primary);
+    cursor: pointer;
+
+}
+
+.dropDownButton{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropDownArrow{
+    position: absolute;
+    visibility: hidden;
+    margin: 5px;
+
+    &.show {
+        position: static;
+        visibility: visible;
     }
 }
 
-.cardFilter {
-    border: 0;
-    font-size: 2rem;
-    appearance: none;
-    option {
-        font-size: 2rem; 
-    }
+.options{
+    position: absolute;
+    padding: 0 5px;
+    background-color: var(--background-color-primary);
+    z-index: 400;
 }
