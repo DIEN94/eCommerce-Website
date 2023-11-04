@@ -42,6 +42,10 @@ export const MyModal: FC<IModal> = ({
       setOpen(isOpen);
     } else {
       if (!ref.current) return;
+      if (!animateClasses) {
+        setOpen(isOpen)
+        return;
+      }
       ref.current.classList.remove(animateClasses?.show || "");
       ref.current.classList.add(animateClasses?.hide || "");
       timeOut.current = setTimeout(() => {
@@ -55,6 +59,7 @@ export const MyModal: FC<IModal> = ({
 
   useEffect(() => {
     if (!ref.current) return;
+    if (!animateClasses) return;
     if (open) {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
