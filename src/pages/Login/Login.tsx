@@ -4,7 +4,14 @@ import { useForm } from 'react-hook-form'
 import { ModalWindowRegister } from './components/ModalWindowRegister/ModalWindowRegister';
 import { FormField } from './components/FormField/FormField';
 import { loginFormFieldsConfig } from './config';
+import { postRequest } from 'utils/postRequest';
 import classes from "./Login.module.scss"
+
+
+type UserAuthorization = {
+  email: string;
+  password: string;
+}
 
 export const Login: FC = () => {
 
@@ -31,9 +38,18 @@ export const Login: FC = () => {
     {mode: "onBlur"}
   );
 
-  const onSubmit = (data:any) => {
-    alert(JSON.stringify(data))
-    reset();
+  const urlLogin = "http://localhost:8000/account/login";
+
+  const onSubmit = async (dataSubmit:any) => {
+    const config = {
+      data: dataSubmit,
+    };
+    try {
+      await postRequest<UserAuthorization>(urlLogin, config);
+      reset(); 
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -63,6 +79,7 @@ export const Login: FC = () => {
                 <MyButton 
                 className={classes.button}
                 variant='fill-orange'
+                type="button"
                 onClick={openMenu}
                 >
                     Create new account

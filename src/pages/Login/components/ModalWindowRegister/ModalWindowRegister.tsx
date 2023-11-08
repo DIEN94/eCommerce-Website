@@ -4,10 +4,17 @@ import { MyButton } from "components";
 import { useForm } from 'react-hook-form'
 import { registerFormFieldsConfig } from "./config";
 import { FormField } from "../FormField/FormField";
-import exit from 'assets/page-Login/components/ModalWindowRegister/exit.webp'
+import { postRequest } from "utils/postRequest";
+import exit from 'assets/page-Login/components/ModalWindowRegister/exit.webp';
 import classes from "./ModalWindowRegister.module.scss";
 
 export interface IModalWindowRegisterProps extends Pick<IModal, "onClose" | "isOpen"> {}
+
+type UserRegistration = {
+  email: string;
+  password: string;
+  name: string;
+}
 
 export const ModalWindowRegister: FC<IModalWindowRegisterProps> = ({isOpen, onClose,}) => {
 
@@ -23,13 +30,23 @@ export const ModalWindowRegister: FC<IModalWindowRegisterProps> = ({isOpen, onCl
     {mode: "onBlur"}
   );
 
-  const onSubmit = (data:any) => {
-    alert(JSON.stringify(data))
-    reset();
-  }
   const closeMenu = () => {
     onClose();
   };
+
+  const urlRegister = "http://localhost:8000/account/register";
+
+  const onSubmit = async (dataSubmit:any) => {
+    const config = {
+      data: dataSubmit,
+    };
+    try {
+      await postRequest<UserRegistration>(urlRegister, config);
+      reset(); 
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <MyModal
@@ -66,6 +83,7 @@ export const ModalWindowRegister: FC<IModalWindowRegisterProps> = ({isOpen, onCl
           <MyButton 
             className={classes.buttonExit}
             variant='fill-white'
+            type="button"
             onClick={closeMenu}
             >
               <img src={exit} alt="exitImg"/>
