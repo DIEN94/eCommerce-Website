@@ -5,12 +5,12 @@ import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPag
 
 
 export enum RouteNames {
+    HOME = '/',
     ABOUT = 'about',
     CABINET = '/cabinet',
     CART = '/cart',
-    CHECHOUT = '/checkout',
+    CHECKOUT = '/checkout',
     CONTACT = '/contact',
-    HOME = '/',
     LIKE = '/like',
     LOGIN = '/login',
     NOT_FOUND_PAGE = '404',
@@ -20,11 +20,11 @@ export enum RouteNames {
 }
 
 export const publicRoutes: RouteProps[] = [
+    {path: RouteNames.HOME, element: <Home/>},
     {path: RouteNames.ABOUT, element: <About/>},
     {path: RouteNames.CART, element: <Cart/>},
-    {path: RouteNames.CHECHOUT, element: <Checkout/>},
+    {path: RouteNames.CHECKOUT, element: <Checkout/>},
     {path: RouteNames.CONTACT, element: <Contact/>},
-    {path: RouteNames.HOME, element: <Home/>},
     {path: RouteNames.LOGIN, element: <Login/>},
     {path: RouteNames.NOT_FOUND_PAGE, element: <NotFoundPage/>},
     {path: RouteNames.SEARCH, element: <Search/>},
@@ -38,7 +38,7 @@ export const publicRoutes: RouteProps[] = [
 export const privateRoutes: RouteProps[] = [
     {path: RouteNames.ABOUT, element: <About/>},
     {path: RouteNames.CART, element: <Cart/>},
-    {path: RouteNames.CHECHOUT, element: <Checkout/>},
+    {path: RouteNames.CHECKOUT, element: <Checkout/>},
     {path: RouteNames.CONTACT, element: <Contact/>},
     {path: RouteNames.HOME, element: <Home/>},
     {path: RouteNames.NOT_FOUND_PAGE, element: <NotFoundPage/>},
