@@ -1,0 +1,19 @@
+.validationMassage{
+    height: 30px;
+    padding: 2px;
+    p{
+        font-family: var(--font-primary);
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 18px;
+        color: red;
+    }
+}
+
+.formText{
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--primary-font-color);
+}
