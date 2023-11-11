@@ -45,7 +45,8 @@ export const Login: FC = () => {
       data: dataSubmit,
     };
     try {
-      await postRequest<UserAuthorization>(urlLogin, config);
+      const tokenUserAuthorization = await postRequest<UserAuthorization>(urlLogin, config);
+      localStorage.setItem('TokenUserAuthorization', tokenUserAuthorization)
       reset(); 
     } catch (error) {
       console.error(error);

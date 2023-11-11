@@ -41,7 +41,8 @@ export const ModalWindowRegister: FC<IModalWindowRegisterProps> = ({isOpen, onCl
       data: dataSubmit,
     };
     try {
-      await postRequest<UserRegistration>(urlRegister, config);
+      const tokenUserRegistration = await postRequest<UserRegistration>(urlRegister, config);
+      localStorage.setItem('TokenUserRegistration', tokenUserRegistration)
       reset(); 
     } catch (error) {
       console.error(error);
