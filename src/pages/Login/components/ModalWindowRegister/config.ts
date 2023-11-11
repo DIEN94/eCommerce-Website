@@ -15,10 +15,6 @@ export const registerFormFieldsConfig = [
       name: "password",
       validationRules: {
         required: "This field is required",
-        minLength: {
-          value: 5,
-          message: 'Minimum 5 characters',
-        },
       },
       type: "password",
     },
