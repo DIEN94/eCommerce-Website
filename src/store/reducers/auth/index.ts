@@ -4,9 +4,14 @@ interface AuthState {
   isAuth: boolean;
 }
 
-const initialState:AuthState = {
-    isAuth: false
-}
+const getInitialAuthState = (): AuthState => {
+  const token = localStorage.getItem("TokenUserAuthorization");
+  return {
+    isAuth: token ? true : false,
+  };
+};
+
+const initialState: AuthState = getInitialAuthState();
 
 export const authSlice = createSlice({
     name: 'auth',
