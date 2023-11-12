@@ -1,5 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
-import { createNavButtonConfig, imgConfig } from "../config";
+import React, { FC } from "react";
+import { createNavButtonConfig, imgConfig } from "components/Header/config";
 import { IModal, MyModal } from "components/Modal/MyModal";
 import { Link } from "react-router-dom";
 import { MyButton } from "components/Button/MyButton";
