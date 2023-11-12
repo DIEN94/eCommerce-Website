@@ -2,37 +2,58 @@ import React, { useState } from "react";
 import { createNavButtonConfig, imgConfig } from './config';
 import { MyButton } from "components/Button/MyButton";
 import { Link } from "react-router-dom";
-import { ModalWindowHeader } from "./components/ModalWindowHeader";
+import { ModalWindowLogin } from "./components/ModalWindowLogin/ModalWindowLogin";
+import { ModalWindowHeader } from "./components/ModalWindowHeader/ModalWindowHeader";
+import { useNavigate  } from "react-router-dom";
+import { useAppSelector } from "hooks/redux";
 import classes from "./Header.module.scss";
 
 
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
+  const [openModalWindowRoute, setOpenModalWindowRoute] = useState(false);
+  const [openModalWindowLogin, setOpenModalWindowLogin] = useState(false);
+  const navigate = useNavigate();
+  const {isAuth} = useAppSelector(state => state.auth)
 
-  const goToAccount = () => {
-    console.log("goToAccount");
+
+  const closeMenuLogin = () => {
+    setOpenModalWindowLogin(false);
+  };
+
+  const openMenuRoute = (event:any) => {
+    event.stopPropagation()
+    setOpenModalWindowRoute(true);
+  };
+
+  const closeMenuRoute = () => {
+    setOpenModalWindowRoute(false);
+  };
+
+  const goToAccount = (event:any) => {
+    isAuth
+    ?
+    navigate('/cabinet')
+    :
+    event.stopPropagation()
+    setOpenModalWindowLogin(true);
   };
  
   const goToSearch = () => {
-    console.log("goToSearch");
+    navigate('/search');
   };
 
-  const goToLike = () => {
-    console.log("goToLike");
+  const goToLike = (event:any) => {
+    isAuth
+    ?
+    navigate('/like')
+    :
+    event.stopPropagation()
+    setOpenModalWindowLogin(true);
   };
 
   const goToCart = () => {
-    console.log("goToCart");
-  };
-
-  const openMenu = (event:any) => {
-    event.stopPropagation()
-    setOpen(true);
-  };
-
-  const closeMenu = () => {
-    setOpen(false);
+    navigate('/cart');
   };
 
   return (
@@ -90,12 +111,14 @@ export const Header = () => {
           <MyButton             
             variant="no-fill"
             className={classes.burgerButton}
-            onClick={openMenu}>
+            onClick={openMenuRoute}>
               <img src={imgConfig.imgHamburgerButton} alt="imgHamburgerButton"/>
           </MyButton>
 
-{/* ModalWindow */}
-          <ModalWindowHeader isOpen = {open} onClose={closeMenu}/>
+{/* ModalWindowRoute */}
+          <ModalWindowHeader isOpen = {openModalWindowRoute} onClose={closeMenuRoute}/>
+{/* ModalWindowLogin */}
+          <ModalWindowLogin isOpen = {openModalWindowLogin} onClose={closeMenuLogin}/>
     </div>
   )
 }

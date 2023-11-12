@@ -1,0 +1,94 @@
+.modalWindowLogin {
+  position: absolute;
+  width: 430px;
+  height: 380px;
+  padding: 7px;
+
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+    @media (max-width: 430px) {
+      width: 320px;
+    }
+  }
+  
+.loginContainerText{
+  margin-bottom: 15px;
+  font-family: var(--font-primary);
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 36px;
+  color: var(--primary-font-color);  
+
+    @media (max-width: 430px) {
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 24px;
+    }
+}
+
+.formText{
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--primary-font-color);
+}
+
+.validationMassage{
+  height: 30px;
+  padding: 2px;
+    p{
+      font-family: var(--font-primary);
+      font-size: 1.2rem;
+      font-weight: 500;
+      line-height: 18px;
+      color: red;
+    }
+}
+
+.buttonBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  max-width: max-content;
+  height: 30px;
+
+  margin: 10px;
+  padding: 5px 10px;
+
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: white; 
+    
+    border-radius: 6px;
+}
+
+.buttonExit{
+  position: absolute;
+  top:10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border: 0;
+
+    @media (max-width: 430px) {
+      width: 20px;
+      height: 20px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+}
+  
