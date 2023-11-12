@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, RouteProps } from 'react-router-dom';
-import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPage, Search, Shop } from "pages";
+import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPage, Search, Shop, Registration } from "pages";
 
 
 
@@ -16,6 +16,7 @@ export enum RouteNames {
     NOT_FOUND_PAGE = '404',
     SEARCH = '/search',
     SHOP = '/shop',
+    REGISTRATION = 'registration',
     REDIRECT = '*'
 }
 
@@ -29,6 +30,7 @@ export const publicRoutes: RouteProps[] = [
     {path: RouteNames.NOT_FOUND_PAGE, element: <NotFoundPage/>},
     {path: RouteNames.SEARCH, element: <Search/>},
     {path: RouteNames.SHOP, element: <Shop/>},
+    {path: RouteNames.REGISTRATION, element: <Registration/>},
     // private
     {path: RouteNames.CABINET, element: <Navigate to={RouteNames.LOGIN} replace />},
     {path: RouteNames.LIKE, element: <Navigate to={RouteNames.LOGIN} replace />},
