@@ -9,3 +9,4 @@ export {Login} from "./Login/Login";
 export {Search} from "./Search/Search";
 export {Shop} from "./Shop/Shop";
 export {NotFoundPage} from './NotFoundPage/NotFoundPage';
+export {Registration} from './Registration/Registration';

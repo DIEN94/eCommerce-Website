@@ -1,0 +1,59 @@
+.registrationPage{
+    width: 100%;
+    height: calc(100vh - 200px);
+    
+    overflow-x:hidden;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registrationContainer{
+    padding: 10px;
+    width: 320px;
+    height: 400px;
+    background-color: bisque;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    border-radius: 4px;
+}
+  
+  .registrationContainerText{
+    margin-bottom: 15px;
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 36px;
+    color: var(--primary-font-color);  
+}
+
+.buttonBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    max-width: max-content;
+    height: 30px;
+
+    margin: 10px;
+    padding: 5px 10px;
+
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: white; 
+    
+    border-radius: 4px;
+}
+
+  
