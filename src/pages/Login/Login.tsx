@@ -1,11 +1,14 @@
-import React, { FC, useState } from 'react'
-import { MyButton, MyInput } from 'components';
+import React, { FC } from 'react'
+import { MyButton } from 'components';
 import { useForm } from 'react-hook-form'
-import { ModalWindowRegister } from './components/ModalWindowRegister/ModalWindowRegister';
-import { FormField } from './components/FormField/FormField';
+import { FormField } from 'components/FormField/FormField';
 import { loginFormFieldsConfig } from './config';
 import { postRequest } from 'utils/postRequest';
+import { Link } from 'react-router-dom';
+import { useAppDispatch } from 'hooks/redux';
+import { setAuth } from 'store/reducers/auth';
 import classes from "./Login.module.scss"
+
 
 
 type UserAuthorization = {
@@ -15,29 +18,17 @@ type UserAuthorization = {
 
 export const Login: FC = () => {
 
-  const [open, setOpen] = useState(false);
-
-  const openMenu = (event:any) => {
-    event.stopPropagation()
-    setOpen(true);
-};
-
-  const closeMenu = () => {
-    setOpen(false);
-  };
-
   const {
     register,
     formState: {
       errors,
-      isValid
     },
     handleSubmit,
     reset,
   } = useForm(
     {mode: "onBlur"}
   );
-
+  const dispatch = useAppDispatch()
   const urlLogin = "http://localhost:8000/account/login";
 
   const onSubmit = async (dataSubmit:any) => {
@@ -46,7 +37,14 @@ export const Login: FC = () => {
     };
     try {
       const tokenUserAuthorization = await postRequest<UserAuthorization>(urlLogin, config);
-      localStorage.setItem('TokenUserAuthorization', tokenUserAuthorization)
+      
+      if (tokenUserAuthorization) {
+        localStorage.setItem('TokenUserAuthorization', tokenUserAuthorization);
+        dispatch(setAuth(true))
+      } else {
+        console.error('Error of request');
+      }
+      
       reset(); 
     } catch (error) {
       console.error(error);
@@ -70,24 +68,23 @@ export const Login: FC = () => {
             />
           ))}
             <div className={classes.buttonBox}>
+              <MyButton 
+              className={classes.button}
+              variant='fill-orange'
+              type="submit"
+              >
+                Log In
+              </MyButton>
+              <Link to="/registration">
                 <MyButton 
-                className={classes.button}
+                className={classes.button}            
                 variant='fill-orange'
-                type="submit"
-                >
-                    Log In
+                type="button">
+                  Create account
                 </MyButton>
-                <MyButton 
-                className={classes.button}
-                variant='fill-orange'
-                type="button"
-                onClick={openMenu}
-                >
-                    Create new account
-                </MyButton>
+              </Link>
             </div>
           </form>
-          <ModalWindowRegister isOpen = {open} onClose={closeMenu}/>
         </div>
     </div>
   )
