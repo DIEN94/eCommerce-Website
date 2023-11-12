@@ -39,6 +39,7 @@ export const Slider: React.FC<ISlider> = ({ children, characteristics, PAGE_WIDT
         if(index === lengthPages) {
           return cloneElement(child as React.ReactElement, {
             className: classes['active-page'],
+            key: index,
             style: {
               minWidth: `${PAGE_WIDTH}px`,
               maxWidth: `${PAGE_WIDTH}px`,
@@ -48,6 +49,7 @@ export const Slider: React.FC<ISlider> = ({ children, characteristics, PAGE_WIDT
   
         return cloneElement(child as React.ReactElement, {
           className: classes.page,
+          key: index,
           style: {
             minWidth: `${PAGE_WIDTH}px`,
             maxWidth: `${PAGE_WIDTH}px`,
