@@ -5,7 +5,7 @@ export {Hover} from './CardOfProduct/components/Hover/Hover';
 export {DropDown} from './DropDown/DropDown';
 export {Footer} from './Footer/Footer';
 export {FormField} from './FormField/FormField';
-export {Header} from './Header/Header';
+
 export {InformationBoard} from './InformationBoard/InformationBoard';
 export {MyInput} from './Input/MyInput';
 export {default as Layout} from './Layout/Layout';
