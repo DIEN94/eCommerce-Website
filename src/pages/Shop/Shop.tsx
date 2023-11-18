@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react'
-import { PosterPage } from 'components';
+import { PosterPage, InformationBoard } from 'components';
 import { ShopLayout } from './components/ShopLayout/ShopLayout';
-import { InformationBoard } from './components/InformationBoard/InformationBoard';
 import classes from "./Shop.module.scss"
 
 export const Shop: FC = () => {
