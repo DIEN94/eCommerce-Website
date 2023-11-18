@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { informationBoardConfig } from './config'
 import classes from "./InformationBoard.module.scss"
 
-export const InformationBoard = () => {
+export const InformationBoard: FC = () => {
 
   return (
     <div className={classes.informationBoard}>

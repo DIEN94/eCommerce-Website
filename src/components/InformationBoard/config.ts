@@ -1,7 +1,7 @@
-import highQuality from "assets/page-Shop/InformationBoard/highQuality.webp";
-import warrantyProtection from "assets/page-Shop/InformationBoard/warrantyProtection.webp";
-import freeShipping from "assets/page-Shop/InformationBoard/freeShipping.webp";
-import support from "assets/page-Shop/InformationBoard/support.webp";
+import highQuality from "assets/InformationBoard/highQuality.webp";
+import warrantyProtection from "assets/InformationBoard/warrantyProtection.webp";
+import freeShipping from "assets/InformationBoard/freeShipping.webp";
+import support from "assets/InformationBoard/support.webp";
 
 export const informationBoardConfig = [
     {
