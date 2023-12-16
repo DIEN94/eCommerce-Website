@@ -17,9 +17,13 @@ export const postRequest = async <TResponse>(url: string, config: IConfig) => {
       headers: requestHeaders,
       body: requestBody,
     });
-
+    
+    if(!response.ok){
+      const message = 'Error'+response.status;
+      throw new Error (message)
+    }
+    
     const responseData = await response.json();
-    console.log(responseData)
     return responseData;
     
   } catch (error) {
