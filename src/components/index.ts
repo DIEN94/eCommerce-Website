@@ -1,5 +1,6 @@
 export {MyButton} from './Button/MyButton';
 export {CardOfProduct} from './CardOfProduct/CardOfProduct';
+export {CardOfProductCart} from './CardOfProductCart/CardOfProductCart';
 export {CardOfProductWide} from './CardOfProductWide/CardOfProductWide';
 export {Hover} from './CardOfProduct/components/Hover/Hover';
 export {DropDown} from './DropDown/DropDown';
