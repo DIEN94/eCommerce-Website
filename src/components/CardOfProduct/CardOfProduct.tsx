@@ -1,22 +1,30 @@
-import React, { FC } from 'react'
-import { useState } from 'react';
-import { Hover } from './components/Hover/Hover';
-import clsx from 'clsx';
+import React, { FC } from "react";
+import { useState } from "react";
+import { Hover } from "./components/Hover/Hover";
+import clsx from "clsx";
 import classes from "./CardOfProduct.module.scss";
 
 interface ICardProps {
-  src: string
-  label?: string
-  ProductName: string
-  SortDescription: string
-  FixPrice: string
-  OriginalPrice?: string
+  src: string;
+  label?: string;
+  ProductName: string;
+  SortDescription: string;
+  FixPrice: string;
+  OriginalPrice?: string;
+  id: number;
   addToCart: () => void;
 }
 
-
-export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDescription, FixPrice, OriginalPrice, addToCart }) => {
-
+export const CardOfProduct: FC<ICardProps> = ({
+  src,
+  label,
+  ProductName,
+  SortDescription,
+  FixPrice,
+  OriginalPrice,
+  id,
+  addToCart,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -53,7 +61,7 @@ export const CardOfProduct: FC<ICardProps> = ({ src, label, ProductName, SortDes
           </div>
         </div>
       </div>
-      <Hover isHovered={isHovered} addToCart={addToCart}/>
+      <Hover isHovered={isHovered} addToCart={addToCart} id={id} />
     </div>
-  )
-}
+  );
+};
