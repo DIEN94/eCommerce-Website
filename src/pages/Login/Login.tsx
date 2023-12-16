@@ -4,12 +4,10 @@ import { useForm } from 'react-hook-form'
 import { FormField } from 'components/FormField/FormField';
 import { loginFormFieldsConfig } from './config';
 import { postRequest } from 'utils/postRequest';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from 'hooks/redux';
-import { setAuth } from 'store/reducers/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { authFetching, authFetchingError, authFetchingSuccess } from 'store/reducers/auth';
 import classes from "./Login.module.scss"
-
-
 
 type UserAuthorization = {
   email: string;
@@ -28,7 +26,9 @@ export const Login: FC = () => {
   } = useForm(
     {mode: "onBlur"}
   );
+  const navigate = useNavigate();
   const dispatch = useAppDispatch()
+  const { isLoading, error} = useAppSelector(state => state.auth)
   const urlLogin = "http://localhost:8000/account/login";
 
   const onSubmit = async (dataSubmit:any) => {
@@ -36,13 +36,15 @@ export const Login: FC = () => {
       data: dataSubmit,
     };
     try {
+      dispatch(authFetching())
       const tokenUserAuthorization = await postRequest<UserAuthorization>(urlLogin, config);
       
       if (tokenUserAuthorization) {
         localStorage.setItem('TokenUserAuthorization', tokenUserAuthorization);
-        dispatch(setAuth(true))
+        dispatch(authFetchingSuccess(true))
+        navigate('/cabinet')
       } else {
-        console.error('Error of request');
+        dispatch(authFetchingError("Error 404"))
       }
       
       reset(); 
@@ -83,6 +85,8 @@ export const Login: FC = () => {
                   Create account
                 </MyButton>
               </Link>
+              {isLoading && <h1>Loading...</h1>}
+              {error && <h1>{error}</h1>}
             </div>
           </form>
         </div>
