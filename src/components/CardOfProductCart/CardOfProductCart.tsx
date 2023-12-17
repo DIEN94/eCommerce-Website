@@ -1,10 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useMemo, useState } from "react";
 import { MyButton, MyInput } from "components";
 import imgCart from "assets/CardOfProductCart/imgCart.webp";
 import { useAppSelector } from "hooks/redux";
 import classes from "./CardOfProductCart.module.scss";
 
-interface ICardCardOfProductCartProps {
+interface ICardOfProductCartProps {
   src: string;
   ProductName: string;
   ProductPrice: string;
@@ -13,7 +13,7 @@ interface ICardCardOfProductCartProps {
   onChangeQuantity: (newQuantity: number) => void;
 }
 
-export const CardOfProductCart: FC<ICardCardOfProductCartProps> = ({
+export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   src,
   ProductName,
   ProductPrice,
@@ -31,6 +31,15 @@ export const CardOfProductCart: FC<ICardCardOfProductCartProps> = ({
   };
 
   const [quantity, setQuantity] = useState(initialQuantity(id));
+
+  useMemo(() => {
+    let initialQuantityObj = cartList.find((obj) => {
+      return obj.id === id;
+    });
+    return initialQuantityObj?.quantity
+      ? setQuantity(initialQuantityObj?.quantity)
+      : 1;
+  }, [cartList]);
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
