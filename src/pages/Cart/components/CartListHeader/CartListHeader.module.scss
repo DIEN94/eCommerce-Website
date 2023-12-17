@@ -1,0 +1,23 @@
+.cartListHeader{
+    display: block;
+    width: 817px;
+    height: 55px;
+    padding-left: 142px;
+    background-color: #F9F1E7;
+
+    display: grid;
+    grid-template-columns: 177px 177px 106px 215px;
+    align-items: center;
+
+    @media (max-width: 840px) {
+        display: none;
+    }
+
+    p {
+        font-family: var(--font-primary);
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 24px;
+        color: var(--primary-font-color);
+    }
+}
