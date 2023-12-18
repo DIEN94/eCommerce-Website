@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/eCommerce-Website/static/css/main.c400c946.css",
-    "main.js": "/eCommerce-Website/static/js/main.22733138.js",
+    "main.css": "/eCommerce-Website/static/css/main.df339348.css",
+    "main.js": "/eCommerce-Website/static/js/main.7cfcc14d.js",
     "static/media/home-poster.webp": "/eCommerce-Website/static/media/home-poster.fa3c4f4b5981ca827659.webp",
     "static/media/shop-poster.webp": "/eCommerce-Website/static/media/shop-poster.f22ae0c73545ace03bde.webp",
     "static/media/imgLivingRoom.webp": "/eCommerce-Website/static/media/imgLivingRoom.484fbbfe9dc7f1fd5cb5.webp",
@@ -68,11 +68,11 @@
     "static/media/Arrow.webp": "/eCommerce-Website/static/media/Arrow.bec0ce5ed6ef1ee575e3.webp",
     "static/media/imgHamburgerButton.webp": "/eCommerce-Website/static/media/imgHamburgerButton.08685ccc711b5cac8852.webp",
     "static/media/arrow.webp": "/eCommerce-Website/static/media/arrow.135310aec73e051a10b3.webp",
-    "main.c400c946.css.map": "/eCommerce-Website/static/css/main.c400c946.css.map",
-    "main.22733138.js.map": "/eCommerce-Website/static/js/main.22733138.js.map"
+    "main.df339348.css.map": "/eCommerce-Website/static/css/main.df339348.css.map",
+    "main.7cfcc14d.js.map": "/eCommerce-Website/static/js/main.7cfcc14d.js.map"
   },
   "entrypoints": [
-    "static/css/main.c400c946.css",
-    "static/js/main.22733138.js"
+    "static/css/main.df339348.css",
+    "static/js/main.7cfcc14d.js"
   ]
 }
