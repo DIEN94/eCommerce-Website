@@ -50,6 +50,7 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
       ProductName: productName,
       ProductPrice: productPrice,
       id: id,
+      quantity: 1,
     };
 
     try {
