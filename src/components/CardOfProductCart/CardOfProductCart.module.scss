@@ -1,0 +1,80 @@
+.myCard{
+display: flex;
+width: 100%;
+height: 105px;
+}
+
+.imgContainer {
+    width: 108px;
+    height: 105px;
+
+    @media (max-width: 840px) {
+        width: 88px;
+    }
+
+    img {
+        width: 108px;
+        height: 105px;
+
+        
+    @media (max-width: 840px) {
+        width: 88px;
+    }
+    }   
+}
+.cardContainer{
+    width: 100%;
+    padding: 0 0 0 34px;
+    background-color: #F9F1E7;
+
+    display: grid;
+    grid-template-columns: 177px 177px 106px 162px;
+    align-items: center;
+
+    @media (max-width: 840px) {
+    
+    padding: 0 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    }
+
+    p, h1 {
+        font-family: var(--font-primary);
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 24px;
+        color: #9F9F9F;
+    }
+
+    .input{
+        width: 32px;
+        height: 32px;
+        margin: 0 19px;
+        text-align: center;
+
+        @media (max-width: 840px) {
+        margin: 0;
+        }
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+}
+
+.buttonContainer{
+    width: 48px;
+    height: 105px;
+    background-color: #F9F1E7;
+
+    display: flex;
+    align-items: center;
+    
+    .button{
+        width: 28px;
+        height: 28px;
+    }
+}
