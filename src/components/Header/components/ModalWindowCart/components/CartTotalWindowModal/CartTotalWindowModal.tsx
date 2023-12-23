@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from "react";
+import { useState, FC, useMemo } from "react";
 import classes from "./CartTotalWindowModal.module.scss";
 
 type cartListType = {
@@ -6,7 +6,7 @@ type cartListType = {
   ProductName: string;
   ProductPrice: string;
   id: number;
-  quantity?: number;
+  quantity: number;
 };
 
 interface ICartTotalsWindowModalProps {
@@ -16,21 +16,20 @@ interface ICartTotalsWindowModalProps {
 export const CartTotalsWindowModal: FC<ICartTotalsWindowModalProps> = ({
   cartList,
 }) => {
-  const [totalSum, setTotalSum] = useState<string>("");
 
-  useEffect(() => {
+  let totalSum = useMemo(() => {
     const sumProductPrices = (cartList: cartListType[]) => {
       const newTotalSum = cartList.reduce((accumulator, product) => {
         const priceString = product.ProductPrice.replace("Rp ", "");
         const priceNumber = parseFloat(priceString.replace(/\./g, ""));
-        const quantity = product.quantity ? product.quantity : 1;
+        const quantity = product.quantity ? product.quantity : 0;
         return accumulator + quantity * priceNumber;
       }, 0);
       return newTotalSum.toLocaleString("en-US");
     };
 
     const newTotalSumPrice = sumProductPrices(cartList);
-    setTotalSum(newTotalSumPrice);
+    return newTotalSumPrice
   }, [cartList]);
 
   return (
