@@ -5,7 +5,7 @@ type cartProps = {
     ProductName: string;
     ProductPrice: string;
     id:number;
-    quantity?: number;
+    quantity: number;
 }
 
 interface CartState {
@@ -21,6 +21,7 @@ const getInitialCartState = (): CartState => {
     const storedCartArray = JSON.parse(cartArrayLS);
     cartArray=storedCartArray
   } else {
+    localStorage.setItem('CartArray', '[]');
     console.log('Array not found in localStorage');
   }
   
