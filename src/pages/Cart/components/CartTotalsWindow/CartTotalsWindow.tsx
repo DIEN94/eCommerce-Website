@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react";
 import { MyButton } from "components";
+import { useNavigate } from "react-router-dom";
 import classes from "./CartTotalsWindow.module.scss";
 
 type cartListType = {
@@ -15,6 +16,8 @@ interface ICartTotalsWindowProps {
 }
 
 export const CartTotalsWindow: FC<ICartTotalsWindowProps> = ({ cartList }) => {
+  const navigate = useNavigate();
+
   let totalSum = useMemo(() => {
     const sumProductPrices = (cartList: cartListType[]) => {
       const newTotalSum = cartList.reduce((accumulator, product) => {
@@ -23,6 +26,7 @@ export const CartTotalsWindow: FC<ICartTotalsWindowProps> = ({ cartList }) => {
         const quantity = product.quantity ? product.quantity : 0;
         return accumulator + quantity * priceNumber;
       }, 0);
+      localStorage.setItem("totalSum", `${newTotalSum}`);
       return newTotalSum.toLocaleString("en-US");
     };
 
@@ -31,7 +35,16 @@ export const CartTotalsWindow: FC<ICartTotalsWindowProps> = ({ cartList }) => {
   }, [cartList]);
 
   const CheckOut = () => {
-    console.log("CheckOut");
+    const totalSumLS = localStorage.getItem("totalSum");
+    if (totalSumLS) {
+      const parseTotalSumLS = JSON.parse(totalSumLS);
+      if (parseTotalSumLS !== 0) {
+        navigate("/checkout");
+      } else {
+        alert("First, please add the product to your cart!");
+        navigate("/shop");
+      }
+    }
   };
 
   return (
