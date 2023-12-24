@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { IModal, MyModal } from "components/Modal/MyModal";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { MyButton } from "components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cartFetchingSuccess } from "store/reducers/cart";
 import { CardOfProductModalCart } from "./components/CardOfProductModalCart/CardOfProductModalCart";
 import { CartTotalsWindowModal } from "./components/CartTotalWindowModal/CartTotalWindowModal";
@@ -18,6 +18,7 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
 }) => {
   const { cartList } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const deleteCard = (id: number) => {
     const filteredCartList = cartList.filter((p) => p.id !== id);
@@ -33,6 +34,20 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
 
   const closeMenu = () => {
     onClose();
+  };
+
+  const CheckOut = () => {
+    const totalSumLS = localStorage.getItem("totalSum");
+    onClose();
+    if (totalSumLS) {
+      const parseTotalSumLS = JSON.parse(totalSumLS);
+      if (parseTotalSumLS !== 0) {
+        navigate("/checkout");
+      } else {
+        alert("First, please add the product to your cart!");
+        navigate("/shop");
+      }
+    }
   };
 
   return (
@@ -83,15 +98,13 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
             Cart
           </MyButton>
         </Link>
-        <Link to={"/checkout"}>
-          <MyButton
-            className={classes.buttonCheckout}
-            variant="fill-white"
-            onClick={closeMenu}
-          >
-            Checkout
-          </MyButton>
-        </Link>
+        <MyButton
+          variant="fill-white"
+          className={classes.buttonCheckout}
+          onClick={CheckOut}
+        >
+          Checkout
+        </MyButton>
       </div>
     </MyModal>
   );

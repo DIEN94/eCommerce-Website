@@ -16,7 +16,6 @@ interface ICartTotalsWindowModalProps {
 export const CartTotalsWindowModal: FC<ICartTotalsWindowModalProps> = ({
   cartList,
 }) => {
-
   let totalSum = useMemo(() => {
     const sumProductPrices = (cartList: cartListType[]) => {
       const newTotalSum = cartList.reduce((accumulator, product) => {
@@ -25,11 +24,12 @@ export const CartTotalsWindowModal: FC<ICartTotalsWindowModalProps> = ({
         const quantity = product.quantity ? product.quantity : 0;
         return accumulator + quantity * priceNumber;
       }, 0);
+      localStorage.setItem("totalSum", `${newTotalSum}`);
       return newTotalSum.toLocaleString("en-US");
     };
 
     const newTotalSumPrice = sumProductPrices(cartList);
-    return newTotalSumPrice
+    return newTotalSumPrice;
   }, [cartList]);
 
   return (
