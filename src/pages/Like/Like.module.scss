@@ -1,0 +1,52 @@
+@import "src/styles/variables";
+
+.like{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.likeListContainer {
+    width: 100%;
+    max-width: 1300px;
+    height: 100%;
+    margin-bottom: 69px;
+
+    @media (max-width: $mobile-size) {
+        margin-bottom: 49px;
+    }
+}
+
+.likeListBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: $productList-padding-size;
+
+    @media (max-width: 919px) {
+        padding: calc(#{$productList-padding-size} * 0.75);
+    }
+    
+    @media (max-width: 634px) {
+        padding: calc(#{$productList-padding-size} * 0.5);
+    }
+}
+
+.cardContainer{
+    margin: 16px;
+    flex-basis: calc(25% - (#{$productList-padding-size}*2)); 
+    max-width: calc(25% - (#{$productList-padding-size}*2));
+    box-sizing: border-box;
+
+    @media (max-width: 919px) {
+        margin: 12px;
+        flex-basis: calc(33.33% - (#{$productList-padding-size}*1.5)); 
+        max-width: calc(33.33% - (#{$productList-padding-size}*1.5));
+    }
+
+    @media (max-width: 634px) {
+        margin: 8px;
+        flex-basis: calc(50% - #{$productList-padding-size}); 
+        max-width: calc(50% - #{$productList-padding-size});
+    }
+  }
