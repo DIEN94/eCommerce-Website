@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { postsListHome } from "./config";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
+import { likeFetchingError, likeFetchingSuccess } from "store/reducers/like";
 import classes from "./ProductListHome.module.scss";
 
 export const ProductListHome = () => {
@@ -38,6 +39,39 @@ export const ProductListHome = () => {
     }
   };
 
+  const addToLikeList = (id: number) => {
+    const newLikeItem = {
+      id: id,
+    };
+
+    try {
+      const likeListToken = localStorage.getItem("LikeArray");
+      if (likeListToken) {
+        const storedLikeArray = JSON.parse(likeListToken);
+        storedLikeArray.push(newLikeItem);
+        dispatch(likeFetchingSuccess(storedLikeArray));
+      } else {
+        dispatch(likeFetchingError("Error"));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteLike = (id: number) => {
+    interface LikeListItem {
+      id: number;
+    }
+    const likeListToken = localStorage.getItem("LikeArray");
+    if (likeListToken) {
+      const storedLikeArray = JSON.parse(likeListToken);
+      const newLikeArray = storedLikeArray.filter(
+        (item: LikeListItem) => item.id !== id
+      );
+      dispatch(likeFetchingSuccess(newLikeArray));
+    }
+  };
+
   return (
     <div className={classes.productListHome}>
       <p className={classes.firstLevelText}>Our Products</p>
@@ -56,6 +90,8 @@ export const ProductListHome = () => {
               addToCart={() =>
                 addToCart(post.src, post.ProductName, post.FixPrice, post.id)
               }
+              addToLikeList={() => addToLikeList(post.id)}
+              deleteLike={() => deleteLike(post.id)}
             />
           </div>
         ))}

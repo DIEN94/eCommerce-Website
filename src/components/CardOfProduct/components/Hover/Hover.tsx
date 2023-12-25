@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 import { MyButton } from "../../../Button/MyButton";
 import { Keys, hoverConfig } from "./config";
 import { useAppSelector } from "hooks/redux";
+import heart from 'assets/CardOfProduct/frames/Heart.webp'
+import heartLiked from 'assets/CardOfProduct/frames/HeartLiked.webp'
 import clsx from "clsx";
 import classes from "./Hover.module.scss";
 
 interface IHover {
   isHovered: boolean;
   addToCart: () => void;
+  addToLikeList: () => void;
+  deleteLike: () => void;
   id: number;
 }
-export const Hover: FC<IHover> = ({ isHovered, addToCart, id }) => {
+export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteLike, id }) => {
   const methods: Record<Keys, () => void> = {
     share: () => {
       console.log("done share");
@@ -19,13 +23,18 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, id }) => {
     compare: () => {
       console.log("done compare");
     },
-    like: () => {
-      console.log("done like");
-    },
   };
 
   const handleAddToCart = () => {
     addToCart();
+  };
+
+  const handleAddToLikeList = () => {
+    addToLikeList();
+  };
+
+  const handleDeleteLike = () => {
+    deleteLike();
   };
 
   const { cartList } = useAppSelector((state) => state.cart);
@@ -36,6 +45,16 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, id }) => {
     });
     return !!addedToCart;
   }, [cartList]);
+
+
+  const { likeListId } = useAppSelector((state) => state.like);
+
+  let addedToLikeList = useMemo(() => {
+    let addedToLikeList = likeListId.find((obj) => {
+      return obj.id === id;
+    });
+    return !!addedToLikeList;
+  }, [likeListId]);
 
   return (
     <div>
@@ -78,6 +97,26 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, id }) => {
                 </MyButton>
               );
             })}
+            {addedToLikeList? (
+                <MyButton
+                variant="no-fill"
+                className={classes.buttonBoxElementsLiked}
+                onClick={handleDeleteLike}
+              >
+                <img src={heartLiked} alt="heartLiked" />
+                <span>Like</span>
+              </MyButton>
+            ) : (
+              <MyButton
+                variant="no-fill"
+                className={classes.buttonBoxElements}
+                onClick={handleAddToLikeList}
+              >
+                <img src={heart} alt="like" />
+                <span>Like</span>
+              </MyButton>
+            )
+            }
           </div>
         </div>
       </div>

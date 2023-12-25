@@ -4,6 +4,7 @@ import { postsListShop } from "./config";
 import { Pagination } from "./components/Pagination/Pagination";
 import { useAppDispatch } from "hooks/redux";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
+import { likeFetchingError, likeFetchingSuccess } from "store/reducers/like";
 import classes from "./ProductListShop.module.scss";
 
 interface IProductListShopProps {
@@ -67,6 +68,39 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
     }
   };
 
+  const addToLikeList = (id: number) => {
+    const newLikeItem = {
+      id: id,
+    };
+
+    try {
+      const likeListToken = localStorage.getItem("LikeArray");
+      if (likeListToken) {
+        const storedLikeArray = JSON.parse(likeListToken);
+        storedLikeArray.push(newLikeItem);
+        dispatch(likeFetchingSuccess(storedLikeArray));
+      } else {
+        dispatch(likeFetchingError("Error"));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteLike = (id: number) => {
+    interface LikeListItem {
+      id: number;
+    }
+    const likeListToken = localStorage.getItem("LikeArray");
+    if (likeListToken) {
+      const storedLikeArray = JSON.parse(likeListToken);
+      const newLikeArray = storedLikeArray.filter(
+        (item: LikeListItem) => item.id !== id
+      );
+      dispatch(likeFetchingSuccess(newLikeArray));
+    }
+  };
+
   return (
     <div className={classes.productListShop}>
       <div
@@ -96,6 +130,8 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
               addToCart={() =>
                 addToCart(post.src, post.ProductName, post.FixPrice, post.id)
               }
+              addToLikeList={() => addToLikeList(post.id)}
+              deleteLike={() => deleteLike(post.id)}
             />
           </div>
         ))}

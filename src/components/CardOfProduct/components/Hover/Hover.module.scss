@@ -92,7 +92,8 @@
     }
 }
 
-.buttonBoxElements {
+.buttonBoxElements,
+.buttonBoxElementsLiked {
     max-width: max-content;
     height: 24px;
 
@@ -102,9 +103,10 @@
 
     img {
         width: 12px;
-        height: 14x;
+        height: 14px;
         margin: 0 2px 0 2px;
     }
+
     span {
         font-family: var(--font-primary);
         font-size: 1.6rem;
@@ -113,5 +115,11 @@
         letter-spacing: 0em;
         text-align: left;
         color: white;
+    }
+}
+
+.buttonBoxElementsLiked {
+    span {
+        color: red;
     }
 }

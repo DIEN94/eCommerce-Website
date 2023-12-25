@@ -13,6 +13,8 @@ interface ICardProps {
   OriginalPrice?: string;
   id: number;
   addToCart: () => void;
+  addToLikeList: () => void;
+  deleteLike: () => void;
 }
 
 export const CardOfProduct: FC<ICardProps> = ({
@@ -24,6 +26,8 @@ export const CardOfProduct: FC<ICardProps> = ({
   OriginalPrice,
   id,
   addToCart,
+  addToLikeList,
+  deleteLike,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -61,7 +65,13 @@ export const CardOfProduct: FC<ICardProps> = ({
           </div>
         </div>
       </div>
-      <Hover isHovered={isHovered} addToCart={addToCart} id={id} />
+      <Hover
+        isHovered={isHovered}
+        addToCart={addToCart}
+        addToLikeList={addToLikeList}
+        deleteLike={deleteLike}
+        id={id}
+      />
     </div>
   );
 };
