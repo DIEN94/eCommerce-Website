@@ -29,21 +29,24 @@ export const Cart: FC = () => {
         <div className={classes.cartListContainer}>
           <CartListHeader />
           <div className={classes.cardListBox}>
-            {cartList.map(({ src, ProductName, ProductPrice, id }, index) => (
-              <div className={classes.cardContainer} key={index}>
-                <CardOfProductCart
-                  key={index}
-                  src={src}
-                  ProductName={ProductName}
-                  ProductPrice={ProductPrice}
-                  id={id}
-                  deleteCard={() => deleteCard(id)}
-                  onChangeQuantity={(newQuantity) => {
-                    handleChangeQuantity(id, newQuantity);
-                  }}
-                />
-              </div>
-            ))}
+            {cartList.map(
+              ({ src, ProductName, ProductPrice, id, quantity }) => (
+                <div className={classes.cardContainer} key={id}>
+                  <CardOfProductCart
+                    key={id}
+                    src={src}
+                    ProductName={ProductName}
+                    ProductPrice={ProductPrice}
+                    id={id}
+                    quantity={quantity}
+                    deleteCard={() => deleteCard(id)}
+                    onChangeQuantity={(newQuantity) => {
+                      handleChangeQuantity(id, newQuantity);
+                    }}
+                  />
+                </div>
+              )
+            )}
           </div>
         </div>
         <CartTotalsWindow cartList={cartList} />

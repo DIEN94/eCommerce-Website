@@ -6,36 +6,36 @@ import { ModalWindowCart } from "./components/ModalWindowCart/ModalWindowCart";
 import { ModalWindowLogin } from "./components/ModalWindowLogin/ModalWindowLogin";
 import { ModalWindowHeader } from "./components/ModalWindowHeader/ModalWindowHeader";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "hooks/redux";
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { closeModal, openModal } from "store/reducers/modalOpen";
 import classes from "./Header.module.scss";
 
 export const Header = () => {
-  const [openModalWindowRoute, setOpenModalWindowRoute] = useState(false);
-  const [openModalWindowLogin, setOpenModalWindowLogin] = useState(false);
-  const [openModalWindowCart, setOpenModalWindowCart] = useState(false);
   const navigate = useNavigate();
   const { isAuth } = useAppSelector((state) => state.auth);
+  const { modals } = useAppSelector((state) => state.openModal);
+  const dispatch = useAppDispatch();
+
+  const closeMenuRoute = () => {
+    dispatch(closeModal("route"));
+  };
 
   const closeMenuCart = () => {
-    setOpenModalWindowCart(false);
+    dispatch(closeModal("cart"));
   };
 
   const closeMenuLogin = () => {
-    setOpenModalWindowLogin(false);
+    dispatch(closeModal("login"));
   };
 
   const openMenuRoute = (event: any) => {
     event.stopPropagation();
-    setOpenModalWindowRoute(true);
-  };
-
-  const closeMenuRoute = () => {
-    setOpenModalWindowRoute(false);
+    dispatch(openModal("route"));
   };
 
   const goToAccount = (event: any) => {
     isAuth ? navigate("/cabinet") : event.stopPropagation();
-    setOpenModalWindowLogin(true);
+    dispatch(openModal("login"));
   };
 
   const goToSearch = () => {
@@ -44,17 +44,12 @@ export const Header = () => {
 
   const goToLike = (event: any) => {
     isAuth ? navigate("/like") : event.stopPropagation();
-    setOpenModalWindowLogin(true);
+    dispatch(openModal("login"));
   };
 
   const goToCart = (event: any) => {
-    if (isAuth) {
-      event.stopPropagation();
-      setOpenModalWindowCart(true);
-    } else {
-      event.stopPropagation();
-      setOpenModalWindowLogin(true);
-    }
+    event.stopPropagation();
+    dispatch(openModal("cart"));
   };
 
   return (
@@ -121,16 +116,19 @@ export const Header = () => {
 
       {/* ModalWindowRoute */}
       <ModalWindowHeader
-        isOpen={openModalWindowRoute}
+        isOpen={modals.some((modal) => modal.id === "route" && modal.isOpen)}
         onClose={closeMenuRoute}
       />
       {/* ModalWindowLogin */}
       <ModalWindowLogin
-        isOpen={openModalWindowLogin}
+        isOpen={modals.some((modal) => modal.id === "login" && modal.isOpen)}
         onClose={closeMenuLogin}
       />
-      {/* ModalWindowLogin */}
-      <ModalWindowCart isOpen={openModalWindowCart} onClose={closeMenuCart} />
+      {/* ModalWindowCart */}
+      <ModalWindowCart
+        isOpen={modals.some((modal) => modal.id === "cart" && modal.isOpen)}
+        onClose={closeMenuCart}
+      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React, { FC, useMemo, useState } from "react";
 import { MyButton, MyInput } from "components";
-import { useAppSelector } from "hooks/redux";
 import deleteModalCart from "assets/header/ModalWindowCart/CardOfProductModalCart/deleteModalCart.webp";
 import classes from "./CardOfProductModalCart.module.scss";
 
@@ -9,6 +8,7 @@ interface ICardOfProductModalCartProps {
   ProductName: string;
   ProductPrice: string;
   id: number;
+  quantity: number;
   deleteCard: () => void;
   onChangeQuantity: (newQuantity: number) => void;
 }
@@ -18,32 +18,12 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
   ProductName,
   ProductPrice,
   id,
+  quantity,
   deleteCard,
   onChangeQuantity,
 }) => {
-  const { cartList } = useAppSelector((state) => state.cart);
-
-  const initialQuantity = (id: number) => {
-    let initialQuantityObj = cartList.find((obj) => {
-      return obj.id === id;
-    });
-    return initialQuantityObj?.quantity ? initialQuantityObj?.quantity : 1;
-  };
-
-  const [quantity, setQuantity] = useState(initialQuantity(id));
-
-  useMemo(() => {
-    let initialQuantityObj = cartList.find((obj) => {
-      return obj.id === id;
-    });
-    return initialQuantityObj?.quantity
-      ? setQuantity(initialQuantityObj?.quantity)
-      : 1;
-  }, [cartList]);
-
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
-    setQuantity(newQuantity);
     onChangeQuantity(newQuantity);
   };
 
