@@ -19,7 +19,7 @@ export const Search: FC = () => {
     }
 
     return postsListShop.filter((product) =>
-      product.ProductName.toLowerCase().startsWith(searchValue.toLowerCase())
+      product.productName.toLowerCase().startsWith(searchValue.toLowerCase())
     );
   }, [searchValue]);
 
