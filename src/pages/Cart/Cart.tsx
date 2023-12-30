@@ -30,13 +30,13 @@ export const Cart: FC = () => {
           <CartListHeader />
           <div className={classes.cardListBox}>
             {cartList.map(
-              ({ src, ProductName, ProductPrice, id, quantity }) => (
+              ({ src, productName, productPrice, id, quantity }) => (
                 <div className={classes.cardContainer} key={id}>
                   <CardOfProductCart
                     key={id}
                     src={src}
-                    ProductName={ProductName}
-                    ProductPrice={ProductPrice}
+                    productName={productName}
+                    productPrice={productPrice}
                     id={id}
                     quantity={quantity}
                     deleteCard={() => deleteCard(id)}

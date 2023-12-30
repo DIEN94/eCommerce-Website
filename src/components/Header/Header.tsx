@@ -34,7 +34,12 @@ export const Header = () => {
   };
 
   const goToAccount = (event: any) => {
-    isAuth ? navigate("/cabinet") : event.stopPropagation();
+    if (isAuth) {
+      navigate("/cabinet");
+      return;
+    } else {
+      event.stopPropagation();
+    }
     dispatch(openModal("login"));
   };
 
@@ -43,7 +48,12 @@ export const Header = () => {
   };
 
   const goToLike = (event: any) => {
-    isAuth ? navigate("/like") : event.stopPropagation();
+    if (isAuth) {
+      navigate("/like");
+      return;
+    } else {
+      event.stopPropagation();
+    }
     dispatch(openModal("login"));
   };
 

@@ -70,13 +70,13 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
         </MyButton>
       </div>
       <div className={classes.cartContainer}>
-        {cartList.map(({ src, ProductName, ProductPrice, id, quantity }) => (
+        {cartList.map(({ src, productName, productPrice, id, quantity }) => (
           <div className={classes.cardContainer} key={id}>
             <CardOfProductModalCart
               key={id}
               src={src}
-              ProductName={ProductName}
-              ProductPrice={ProductPrice}
+              productName={productName}
+              productPrice={productPrice}
               id={id}
               quantity={quantity}
               deleteCard={() => deleteCard(id)}
