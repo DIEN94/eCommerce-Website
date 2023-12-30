@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { CardOfProduct, MyButton } from "components";
 import { Link } from "react-router-dom";
-import { postsListHome } from "./config";
+import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
 import classes from "./ProductListHome.module.scss";
 
 export const ProductListHome = () => {
-  const [posts, setPosts] = useState(postsListHome);
+  const [posts, setPosts] = useState(postsListShop);
 
   return (
     <div className={classes.productListHome}>
