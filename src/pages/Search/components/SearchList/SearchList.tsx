@@ -9,9 +9,9 @@ interface ISearchListProps {
     id: number;
     src: string;
     label?: string;
-    ProductName: string;
-    SortDescription: string;
-    FixPrice: string;
+    productName: string;
+    sortDescription: string;
+    fixPrice: string;
     OriginalPrice?: string;
   }[];
 }
@@ -55,9 +55,9 @@ export const SearchList: FC<ISearchListProps> = ({ searchProducts }) => {
             key={post.id}
             src={post.src}
             label={post.label}
-            productName={post.ProductName}
-            sortDescription={post.SortDescription}
-            fixPrice={post.FixPrice}
+            productName={post.productName}
+            sortDescription={post.sortDescription}
+            fixPrice={post.fixPrice}
             originalPrice={post.OriginalPrice}
             id={post.id}
           />
