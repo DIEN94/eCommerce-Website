@@ -50,3 +50,19 @@
         max-width: calc(50% - #{$productList-padding-size});
     }
   }
+  
+  .emptyText{
+    margin: 0 auto;
+    font-family: var(--font-primary);
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 36px;
+    color: var(--primary-font-color);
+    text-align: center;
+
+    @media (max-width: $mobile-size) {
+        font-size: 2.0rem;
+        font-weight: 400;
+        line-height: 30px;
+    }
+}

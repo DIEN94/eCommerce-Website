@@ -3,16 +3,16 @@ import { MyButton, MyInput, PosterPage } from "components";
 import { useAppSelector } from "hooks/redux";
 import classes from "./CheckoutWindow.module.scss";
 
-export const CheckoutWindow = (isValid:any) => {
+export const CheckoutWindow = (isValid: any) => {
   const { cartList } = useAppSelector((state) => state.cart);
   const totalSumLS = localStorage.getItem("totalSum");
   const totalSum = totalSumLS
     ? parseFloat(totalSumLS).toLocaleString("en-US")
     : 0;
 
-const placeOrder = () => {
-    alert("Order is accepted!")
-}
+  const placeOrder = () => {
+    alert("Order is accepted!");
+  };
 
   return (
     <div className={classes.checkoutWindowContainer}>
@@ -21,14 +21,14 @@ const placeOrder = () => {
         <p>Subtotal</p>
       </div>
       <div className={classes.checkoutListContainer}>
-        {cartList.map(({ ProductName, ProductPrice, id, quantity }) => (
+        {cartList.map(({ productName, productPrice, id, quantity }) => (
           <div className={classes.cardContainer} key={id}>
             <div className={classes.nameContainer}>
-              <p>{ProductName}</p>
+              <p>{productName}</p>
               <p>x</p>
               <p>{quantity}</p>
             </div>
-            <p>{ProductPrice}</p>
+            <p>{productPrice}</p>
           </div>
         ))}
         <div className={classes.totalContainer}>
@@ -41,10 +41,10 @@ const placeOrder = () => {
         this website, to manage access to your account, and for other purposes
         described in our privacy policy.
       </p>
-      <MyButton 
-      variant="fill-white" 
-      className={classes.buttonCheckout}
-      onClick={placeOrder}
+      <MyButton
+        variant="fill-white"
+        className={classes.buttonCheckout}
+        onClick={placeOrder}
       >
         Place order
       </MyButton>

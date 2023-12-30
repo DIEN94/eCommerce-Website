@@ -2,8 +2,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type cartProps = {
     src: string;
-    ProductName: string;
-    ProductPrice: string;
+    productName: string;
+    productPrice: string;
     id:number;
     quantity: number;
 }

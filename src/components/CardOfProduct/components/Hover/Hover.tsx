@@ -1,21 +1,31 @@
-import React, { FC, useState, useEffect, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { MyButton } from "../../../Button/MyButton";
 import { Keys, hoverConfig } from "./config";
-import { useAppSelector } from "hooks/redux";
-import heart from 'assets/CardOfProduct/frames/Heart.webp'
-import heartLiked from 'assets/CardOfProduct/frames/HeartLiked.webp'
+import { useAppDispatch, useAppSelector } from "hooks/redux";
+import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
+import { likeFetchingError, likeFetchingSuccess } from "store/reducers/like";
+import heart from "assets/CardOfProduct/frames/Heart.webp";
+import heartLiked from "assets/CardOfProduct/frames/HeartLiked.webp";
 import clsx from "clsx";
 import classes from "./Hover.module.scss";
 
 interface IHover {
   isHovered: boolean;
-  addToCart: () => void;
-  addToLikeList: () => void;
-  deleteLike: () => void;
+  src: string;
+  productName: string;
+  productPrice: string;
   id: number;
 }
-export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteLike, id }) => {
+
+export const Hover: FC<IHover> = ({
+  isHovered,
+  src,
+  productName,
+  productPrice,
+  id,
+}) => {
+  const dispatch = useAppDispatch();
   const methods: Record<Keys, () => void> = {
     share: () => {
       console.log("done share");
@@ -25,16 +35,37 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
     },
   };
 
-  const handleAddToCart = () => {
-    addToCart();
+  const addToLikeList = (id: number) => {
+    const newLikeItem = {
+      id: id,
+    };
+
+    try {
+      const likeListToken = localStorage.getItem("LikeArray");
+      if (likeListToken) {
+        const storedLikeArray = JSON.parse(likeListToken);
+        storedLikeArray.push(newLikeItem);
+        dispatch(likeFetchingSuccess(storedLikeArray));
+      } else {
+        dispatch(likeFetchingError("Error"));
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const handleAddToLikeList = () => {
-    addToLikeList();
-  };
-
-  const handleDeleteLike = () => {
-    deleteLike();
+  const deleteLike = (id: number) => {
+    interface LikeListItem {
+      id: number;
+    }
+    const likeListToken = localStorage.getItem("LikeArray");
+    if (likeListToken) {
+      const storedLikeArray = JSON.parse(likeListToken);
+      const newLikeArray = storedLikeArray.filter(
+        (item: LikeListItem) => item.id !== id
+      );
+      dispatch(likeFetchingSuccess(newLikeArray));
+    }
   };
 
   const { cartList } = useAppSelector((state) => state.cart);
@@ -46,7 +77,6 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
     return !!addedToCart;
   }, [cartList]);
 
-
   const { likeListId } = useAppSelector((state) => state.like);
 
   let addedToLikeList = useMemo(() => {
@@ -55,6 +85,34 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
     });
     return !!addedToLikeList;
   }, [likeListId]);
+
+  const addToCart = (
+    src: string,
+    productName: string,
+    productPrice: string,
+    id: number
+  ) => {
+    const newItem = {
+      src: src,
+      productName: productName,
+      productPrice: productPrice,
+      id: id,
+      quantity: 1,
+    };
+
+    try {
+      const cartListToken = localStorage.getItem("CartArray");
+      if (cartListToken) {
+        const storedCartArray = JSON.parse(cartListToken);
+        storedCartArray.push(newItem);
+        dispatch(cartFetchingSuccess(storedCartArray));
+      } else {
+        dispatch(cartFetchingError("Error"));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -78,7 +136,7 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
             <MyButton
               variant="fill-white"
               className={classes.buttonBig}
-              onClick={handleAddToCart}
+              onClick={() => addToCart(src, productName, productPrice, id)}
             >
               Add to cart
             </MyButton>
@@ -97,11 +155,11 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
                 </MyButton>
               );
             })}
-            {addedToLikeList? (
-                <MyButton
+            {addedToLikeList ? (
+              <MyButton
                 variant="no-fill"
                 className={classes.buttonBoxElementsLiked}
-                onClick={handleDeleteLike}
+                onClick={() => deleteLike(id)}
               >
                 <img src={heartLiked} alt="heartLiked" />
                 <span>Like</span>
@@ -110,13 +168,12 @@ export const Hover: FC<IHover> = ({ isHovered, addToCart, addToLikeList, deleteL
               <MyButton
                 variant="no-fill"
                 className={classes.buttonBoxElements}
-                onClick={handleAddToLikeList}
+                onClick={() => addToLikeList(id)}
               >
                 <img src={heart} alt="like" />
                 <span>Like</span>
               </MyButton>
-            )
-            }
+            )}
           </div>
         </div>
       </div>
