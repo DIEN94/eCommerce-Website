@@ -2,6 +2,7 @@ import React, { FC, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { MyButton } from "../../../Button/MyButton";
 import { Keys, hoverConfig } from "./config";
+import { useAddedToCart } from "hooks/useAddedToCart";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
 import { likeFetchingError, likeFetchingSuccess } from "store/reducers/like";
@@ -68,15 +69,6 @@ export const Hover: FC<IHover> = ({
     }
   };
 
-  const { cartList } = useAppSelector((state) => state.cart);
-
-  let addedToCart = useMemo(() => {
-    let addedToCart = cartList.find((obj) => {
-      return obj.id === id;
-    });
-    return !!addedToCart;
-  }, [cartList]);
-
   const { likeListId } = useAppSelector((state) => state.like);
 
   let addedToLikeList = useMemo(() => {
@@ -114,6 +106,8 @@ export const Hover: FC<IHover> = ({
     }
   };
 
+  let addedToCart: boolean = useAddedToCart(id);
+
   return (
     <div>
       <div
@@ -121,7 +115,7 @@ export const Hover: FC<IHover> = ({
       ></div>
       <div className={clsx(classes.buttonCard, { [classes.show]: isHovered })}>
         <div className={classes.buttonContainer}>
-          <Link to={"/shop/id"}>
+          <Link to={`/shop/${id}`}>
             <MyButton variant="fill-white" className={classes.buttonBig}>
               Details
             </MyButton>
