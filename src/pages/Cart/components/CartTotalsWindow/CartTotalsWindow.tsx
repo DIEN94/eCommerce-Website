@@ -5,8 +5,8 @@ import classes from "./CartTotalsWindow.module.scss";
 
 type cartListType = {
   src: string;
-  ProductName: string;
-  ProductPrice: string;
+  productName: string;
+  productPrice: string;
   id: number;
   quantity: number;
 };
@@ -21,7 +21,7 @@ export const CartTotalsWindow: FC<ICartTotalsWindowProps> = ({ cartList }) => {
   let totalSum = useMemo(() => {
     const sumProductPrices = (cartList: cartListType[]) => {
       const newTotalSum = cartList.reduce((accumulator, product) => {
-        const priceString = product.ProductPrice.replace("Rp ", "");
+        const priceString = product.productPrice.replace("Rp ", "");
         const priceNumber = parseFloat(priceString.replace(/\./g, ""));
         const quantity = product.quantity ? product.quantity : 0;
         return accumulator + quantity * priceNumber;

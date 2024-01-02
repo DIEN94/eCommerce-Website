@@ -9,9 +9,9 @@ interface ISearchListProps {
     id: number;
     src: string;
     label?: string;
-    ProductName: string;
-    SortDescription: string;
-    FixPrice: string;
+    productName: string;
+    sortDescription: string;
+    fixPrice: string;
     OriginalPrice?: string;
   }[];
 }
@@ -49,20 +49,17 @@ export const SearchList: FC<ISearchListProps> = ({ searchProducts }) => {
 
   return (
     <div className={classes.searchListContainer}>
-      {searchProducts.map((post, index) => (
-        <div className={classes.cardContainer} key={index}>
+      {searchProducts.map((post) => (
+        <div className={classes.cardContainer} key={post.id}>
           <CardOfProductWide
-            key={index}
+            key={post.id}
             src={post.src}
             label={post.label}
-            ProductName={post.ProductName}
-            SortDescription={post.SortDescription}
-            FixPrice={post.FixPrice}
-            OriginalPrice={post.OriginalPrice}
+            productName={post.productName}
+            sortDescription={post.sortDescription}
+            fixPrice={post.fixPrice}
+            originalPrice={post.OriginalPrice}
             id={post.id}
-            addToCart={() =>
-              addToCart(post.src, post.ProductName, post.FixPrice, post.id)
-            }
           />
         </div>
       ))}

@@ -5,8 +5,8 @@ import classes from "./CardOfProductModalCart.module.scss";
 
 interface ICardOfProductModalCartProps {
   src: string;
-  ProductName: string;
-  ProductPrice: string;
+  productName: string;
+  productPrice: string;
   id: number;
   quantity: number;
   deleteCard: () => void;
@@ -15,8 +15,8 @@ interface ICardOfProductModalCartProps {
 
 export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
   src,
-  ProductName,
-  ProductPrice,
+  productName,
+  productPrice,
   id,
   quantity,
   deleteCard,
@@ -35,10 +35,10 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src} alt={`${ProductName}`} />
+        <img src={src} alt={`${productName}`} />
       </div>
       <div className={classes.cardContainer}>
-        <h1>{ProductName}</h1>
+        <h1>{productName}</h1>
         <div className={classes.priceContainer}>
           <MyInput
             className={classes.input}
@@ -47,7 +47,7 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
             onChange={handleQuantityChange}
           />
           <p>x</p>
-          <p>{ProductPrice}</p>
+          <p>{productPrice}</p>
         </div>
       </div>
       <div className={classes.buttonContainer}>

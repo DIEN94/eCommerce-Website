@@ -5,8 +5,8 @@ import classes from "./CardOfProductCart.module.scss";
 
 interface ICardOfProductCartProps {
   src: string;
-  ProductName: string;
-  ProductPrice: string;
+  productName: string;
+  productPrice: string;
   id: number;
   quantity: number;
   deleteCard: () => void;
@@ -15,20 +15,19 @@ interface ICardOfProductCartProps {
 
 export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   src,
-  ProductName,
-  ProductPrice,
+  productName,
+  productPrice,
   id,
   quantity,
   deleteCard,
   onChangeQuantity,
 }) => {
-
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
     onChangeQuantity(newQuantity);
   };
 
-  const priceString = ProductPrice.replace("Rp ", "");
+  const priceString = productPrice.replace("Rp ", "");
   const priceNumber = parseFloat(priceString.replace(/\./g, ""));
   const newTotalSum = priceNumber * quantity;
   const calculatedPrice = newTotalSum
@@ -38,11 +37,11 @@ export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src} alt={`${ProductName}`} />
+        <img src={src} alt={`${productName}`} />
       </div>
       <div className={classes.cardContainer}>
-        <h1>{ProductName}</h1>
-        <p>{ProductPrice}</p>
+        <h1>{productName}</h1>
+        <p>{productPrice}</p>
         <MyInput
           className={classes.input}
           type="number"

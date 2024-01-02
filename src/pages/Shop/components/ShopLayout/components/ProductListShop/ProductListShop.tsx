@@ -2,9 +2,6 @@ import React, { useMemo, useState } from "react";
 import { CardOfProduct, CardOfProductWide, MyButton } from "components";
 import { postsListShop } from "./config";
 import { Pagination } from "./components/Pagination/Pagination";
-import { useAppDispatch } from "hooks/redux";
-import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
-import { likeFetchingError, likeFetchingSuccess } from "store/reducers/like";
 import classes from "./ProductListShop.module.scss";
 
 interface IProductListShopProps {
@@ -38,69 +35,6 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
     page * limitCardNumber
   );
 
-  const dispatch = useAppDispatch();
-
-  const addToCart = (
-    src: string,
-    productName: string,
-    productPrice: string,
-    id: number
-  ) => {
-    const newItem = {
-      src: src,
-      ProductName: productName,
-      ProductPrice: productPrice,
-      id: id,
-      quantity: 1,
-    };
-
-    try {
-      const cartListToken = localStorage.getItem("CartArray");
-      if (cartListToken) {
-        const storedCartArray = JSON.parse(cartListToken);
-        storedCartArray.push(newItem);
-        dispatch(cartFetchingSuccess(storedCartArray));
-      } else {
-        dispatch(cartFetchingError("Error"));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const addToLikeList = (id: number) => {
-    const newLikeItem = {
-      id: id,
-    };
-
-    try {
-      const likeListToken = localStorage.getItem("LikeArray");
-      if (likeListToken) {
-        const storedLikeArray = JSON.parse(likeListToken);
-        storedLikeArray.push(newLikeItem);
-        dispatch(likeFetchingSuccess(storedLikeArray));
-      } else {
-        dispatch(likeFetchingError("Error"));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const deleteLike = (id: number) => {
-    interface LikeListItem {
-      id: number;
-    }
-    const likeListToken = localStorage.getItem("LikeArray");
-    if (likeListToken) {
-      const storedLikeArray = JSON.parse(likeListToken);
-      const newLikeArray = storedLikeArray.filter(
-        (item: LikeListItem) => item.id !== id
-      );
-      dispatch(likeFetchingSuccess(newLikeArray));
-    }
-  };
-
   return (
     <div className={classes.productListShop}>
       <div
@@ -110,28 +44,23 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
             : classes.productCardWideBox
         }
       >
-        {cardsToShow.slice(-limitCardNumber).map((post, index) => (
+        {cardsToShow.slice(-limitCardNumber).map((post) => (
           <div
             className={
               typeCard === "Card"
                 ? classes.cardContainer
                 : classes.cardWideContainer
             }
-            key={index}
+            key={post.id}
           >
             <CardComponent
               src={post.src}
               label={post.label}
-              ProductName={post.ProductName}
-              SortDescription={post.SortDescription}
-              FixPrice={post.FixPrice}
-              OriginalPrice={post.OriginalPrice}
+              productName={post.productName}
+              sortDescription={post.sortDescription}
+              fixPrice={post.fixPrice}
+              originalPrice={post.originalPrice}
               id={post.id}
-              addToCart={() =>
-                addToCart(post.src, post.ProductName, post.FixPrice, post.id)
-              }
-              addToLikeList={() => addToLikeList(post.id)}
-              deleteLike={() => deleteLike(post.id)}
             />
           </div>
         ))}
