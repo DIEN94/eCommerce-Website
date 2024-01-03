@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, RouteProps } from 'react-router-dom';
-import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPage, Search, Shop, Registration } from "pages";
+import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPage, Search, Shop, Registration, Product } from "pages";
 
 
 
@@ -17,6 +17,7 @@ export enum RouteNames {
     SEARCH = '/search',
     SHOP = '/shop',
     REGISTRATION = 'registration',
+    PRODUCT = '/shop/:id',
     REDIRECT = '*'
 }
 
@@ -31,6 +32,7 @@ export const publicRoutes: RouteProps[] = [
     {path: RouteNames.SEARCH, element: <Search/>},
     {path: RouteNames.SHOP, element: <Shop/>},
     {path: RouteNames.REGISTRATION, element: <Registration/>},
+    {path: RouteNames.PRODUCT, element: <Product/> },
     // private
     {path: RouteNames.CABINET, element: <Navigate to={RouteNames.LOGIN} replace />},
     {path: RouteNames.LIKE, element: <Navigate to={RouteNames.LOGIN} replace />},
@@ -46,6 +48,7 @@ export const privateRoutes: RouteProps[] = [
     {path: RouteNames.NOT_FOUND_PAGE, element: <NotFoundPage/>},
     {path: RouteNames.SEARCH, element: <Search/>},
     {path: RouteNames.SHOP, element: <Shop/>},
+    {path: RouteNames.PRODUCT, element: <Product/> },
     // private
     {path: RouteNames.CABINET, element: <Cabinet/>},
     {path: RouteNames.LIKE, element: <Like/>},
