@@ -1,12 +1,16 @@
 import React, { FC, useMemo, useState } from "react";
 import { MyInput } from "components";
-import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
 import iconSearch from "assets/page-Search/iconSearch.webp";
 import { SearchList } from "./components/SearchList/SearchList";
+import { useFetchProductsData } from "hooks/useFetchProductsData";
 import classes from "./Search.module.scss";
 
 export const Search: FC = () => {
   const [searchValue, setSearchValue] = useState<string>();
+  const page = 1;
+  const limit = 18;
+
+  const { productsList, totalPages } = useFetchProductsData(page, limit);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -18,8 +22,8 @@ export const Search: FC = () => {
       return [];
     }
 
-    return postsListShop.filter((product) =>
-      product.productName.toLowerCase().startsWith(searchValue.toLowerCase())
+    return productsList.filter((product) =>
+      product.name.toLowerCase().startsWith(searchValue.toLowerCase())
     );
   }, [searchValue]);
 

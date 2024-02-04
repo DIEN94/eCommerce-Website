@@ -1,13 +1,13 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC } from "react";
 import { MyButton, MyInput } from "components";
 import imgCart from "assets/CardOfProductCart/imgCart.webp";
 import classes from "./CardOfProductCart.module.scss";
 
 interface ICardOfProductCartProps {
-  src: string;
-  productName: string;
-  productPrice: string;
-  id: number;
+  src: string[];
+  name: string;
+  price: number;
+  id: string;
   quantity: number;
   deleteCard: () => void;
   onChangeQuantity: (newQuantity: number) => void;
@@ -15,8 +15,8 @@ interface ICardOfProductCartProps {
 
 export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   src,
-  productName,
-  productPrice,
+  name,
+  price,
   id,
   quantity,
   deleteCard,
@@ -27,28 +27,24 @@ export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
     onChangeQuantity(newQuantity);
   };
 
-  const priceString = productPrice.replace("Rp ", "");
-  const priceNumber = parseFloat(priceString.replace(/\./g, ""));
-  const newTotalSum = priceNumber * quantity;
-  const calculatedPrice = newTotalSum
-    ? newTotalSum.toLocaleString("en-US")
-    : "-";
+  const newTotalSum = price * quantity;
+  const calculatedPrice = newTotalSum ? newTotalSum : "-";
 
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src} alt={`${productName}`} />
+        <img src={src[0]} alt={`${name}`} />
       </div>
       <div className={classes.cardContainer}>
-        <h1>{productName}</h1>
-        <p>{productPrice}</p>
+        <h1>{name}</h1>
+        <p>{`${price}.00`}</p>
         <MyInput
           className={classes.input}
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
         />
-        <p>{calculatedPrice}</p>
+        <p>{`${calculatedPrice}.00`}</p>
       </div>
       <div className={classes.buttonContainer}>
         <MyButton

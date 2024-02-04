@@ -1,17 +1,21 @@
 import React, { FC, useMemo } from "react";
 import { CardOfProduct, PosterPage } from "components";
 import { useAppSelector } from "hooks/redux";
-import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
+import { useFetchProductsData } from "hooks/useFetchProductsData";
 import classes from "./Like.module.scss";
 
 export const Like: FC = () => {
   const { likeListId } = useAppSelector((state) => state.like);
+  const page = 1;
+  const limit = 18;
+
+  const { productsList, totalPages } = useFetchProductsData(page, limit);
 
   let likeListChange = useMemo(() => {
-    return postsListShop.filter((product) =>
-      likeListId.some((likedProduct) => likedProduct.id === product.id)
+    return productsList.filter((product) =>
+      likeListId.some((likedProduct) => likedProduct.id === product._id)
     );
-  }, [likeListId, postsListShop]);
+  }, [likeListId, productsList]);
 
   return (
     <div className={classes.like}>
@@ -19,17 +23,18 @@ export const Like: FC = () => {
       <div className={classes.likeListContainer}>
         <div className={classes.likeListBox}>
           {likeListChange.length ? (
-            likeListChange.map((post) => (
-              <div className={classes.cardContainer} key={post.id}>
+            likeListChange.map((product) => (
+              <div className={classes.cardContainer} key={product._id}>
                 <CardOfProduct
-                  key={post.id}
-                  src={post.src}
-                  label={post.label}
-                  productName={post.productName}
-                  sortDescription={post.sortDescription}
-                  fixPrice={post.fixPrice}
-                  originalPrice={post.originalPrice}
-                  id={post.id}
+                  key={product._id}
+                  src={product.img}
+                  discount={
+                    product.discount !== null ? product.discount : undefined
+                  }
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                  id={product._id}
                 />
               </div>
             ))

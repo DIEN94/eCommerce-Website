@@ -10,12 +10,12 @@ export const Cart: FC = () => {
   const { cartList } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
-  const deleteCard = (id: number) => {
+  const deleteCard = (id: string) => {
     const filteredCartList = cartList.filter((p) => p.id !== id);
     dispatch(cartFetchingSuccess(filteredCartList));
   };
 
-  const handleChangeQuantity = (id: number, newQuantity: number) => {
+  const handleChangeQuantity = (id: string, newQuantity: number) => {
     const updatedCartList = cartList.map((item) =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
@@ -29,24 +29,22 @@ export const Cart: FC = () => {
         <div className={classes.cartListContainer}>
           <CartListHeader />
           <div className={classes.cardListBox}>
-            {cartList.map(
-              ({ src, productName, productPrice, id, quantity }) => (
-                <div className={classes.cardContainer} key={id}>
-                  <CardOfProductCart
-                    key={id}
-                    src={src}
-                    productName={productName}
-                    productPrice={productPrice}
-                    id={id}
-                    quantity={quantity}
-                    deleteCard={() => deleteCard(id)}
-                    onChangeQuantity={(newQuantity) => {
-                      handleChangeQuantity(id, newQuantity);
-                    }}
-                  />
-                </div>
-              )
-            )}
+            {cartList.map(({ src, name, price, id, quantity }) => (
+              <div className={classes.cardContainer} key={id}>
+                <CardOfProductCart
+                  key={id}
+                  src={src}
+                  name={name}
+                  price={price}
+                  id={id}
+                  quantity={quantity}
+                  deleteCard={() => deleteCard(id)}
+                  onChangeQuantity={(newQuantity) => {
+                    handleChangeQuantity(id, newQuantity);
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <CartTotalsWindow cartList={cartList} />

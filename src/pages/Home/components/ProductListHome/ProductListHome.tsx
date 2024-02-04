@@ -1,27 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardOfProduct, MyButton } from "components";
 import { Link } from "react-router-dom";
-import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
+import { useFetchProductsData } from "hooks/useFetchProductsData";
 import classes from "./ProductListHome.module.scss";
 
 export const ProductListHome = () => {
-  const [posts, setPosts] = useState(postsListShop);
+  const page = 1;
+  const limit = 8;
+
+  const productsList = useFetchProductsData(page, limit).productsList;
 
   return (
     <div className={classes.productListHome}>
       <p className={classes.firstLevelText}>Our Products</p>
       <div className={classes.productBox}>
-        {posts.slice(-8).map((post) => (
-          <div className={classes.cardContainer} key={post.id}>
+        {productsList.map((product) => (
+          <div className={classes.cardContainer} key={product._id}>
             <CardOfProduct
-              key={post.id}
-              src={post.src}
-              label={post.label}
-              productName={post.productName}
-              sortDescription={post.sortDescription}
-              fixPrice={post.fixPrice}
-              originalPrice={post.originalPrice}
-              id={post.id}
+              key={product._id}
+              src={product.img}
+              discount={
+                product.discount !== null ? product.discount : undefined
+              }
+              name={product.name}
+              description={product.description}
+              price={product.price}
+              id={product._id}
             />
           </div>
         ))}

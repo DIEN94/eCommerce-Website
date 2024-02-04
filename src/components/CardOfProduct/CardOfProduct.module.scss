@@ -83,7 +83,7 @@
     }
 }
 
-.sortDescription{
+.description{
     margin-bottom: 8px;
     font-family: var(--font-primary);
     font-size: 1.6rem;
@@ -140,6 +140,7 @@
 }
 
 .originalPrice{
+    visibility: hidden;
     margin: 0;
     padding: 0 0 0 16px;
 
@@ -151,6 +152,10 @@
     text-decoration: line-through;
     text-align: left;
     color: #B0B0B0;
+
+    &.show {
+        visibility: visible;
+    }
 
     @media (max-width: 1270px) {
     margin: 5px 0;
