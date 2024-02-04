@@ -1,10 +1,18 @@
 
 type IConfig  = {
   headers?: HeadersInit;
-  data: any;
+  data: Record<string, any>;
+  method?: 'POST' | 'GET' | 'PUT' | 'DELETE'
 }
 
-export const postRequest = async <TResponse>(url: string, config: IConfig) => {
+type ResponseType <TResponse> = {
+  data?: TResponse;
+  error?: string;
+}
+
+export const postRequest = async <TResponse>(url: string, config: IConfig)  => {
+  let postResult = {} as ResponseType<TResponse>
+  let method = config.method || 'POST'  
   const requestHeaders = {
     'Content-Type': 'application/json',
     ...config.headers,
@@ -13,7 +21,7 @@ export const postRequest = async <TResponse>(url: string, config: IConfig) => {
 
   try {
     let response = await fetch(url, {
-      method: 'POST',
+      method,
       headers: requestHeaders,
       body: requestBody,
     });
@@ -24,9 +32,11 @@ export const postRequest = async <TResponse>(url: string, config: IConfig) => {
     }
     
     const responseData = await response.json();
-    return responseData;
+    postResult.data = responseData as TResponse;
     
   } catch (error) {
-    console.error(error);
+    postResult.error = 'something went wrong'
   }
+
+  return postResult
 };

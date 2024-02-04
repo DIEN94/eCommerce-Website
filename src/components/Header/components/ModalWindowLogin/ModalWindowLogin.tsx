@@ -18,9 +18,8 @@ import classes from "./ModalWindowLogin.module.scss";
 export interface IModalWindowLoginProps
   extends Pick<IModal, "onClose" | "isOpen"> {}
 
-type UserAuthorization = {
-  email: string;
-  password: string;
+type RequestAuthorization = {
+  token: string;
 };
 
 export const ModalWindowLogin: FC<IModalWindowLoginProps> = ({
@@ -49,14 +48,17 @@ export const ModalWindowLogin: FC<IModalWindowLoginProps> = ({
     };
     try {
       dispatch(authFetching());
-      const tokenUserAuthorization = await postRequest<UserAuthorization>(
+      const tokenUserAuthorization = await postRequest<RequestAuthorization>(
         urlLogin,
         config
       );
       console.log(tokenUserAuthorization);
 
-      if (tokenUserAuthorization) {
-        localStorage.setItem("TokenUserAuthorization", tokenUserAuthorization);
+      if (tokenUserAuthorization.data) {
+        localStorage.setItem(
+          "TokenUserAuthorization",
+          tokenUserAuthorization.data.token
+        );
         dispatch(authFetchingSuccess(true));
         closeMenu();
         navigate("/cabinet");

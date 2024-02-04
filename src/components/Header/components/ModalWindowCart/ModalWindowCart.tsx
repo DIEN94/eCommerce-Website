@@ -20,12 +20,12 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const deleteCard = (id: number) => {
+  const deleteCard = (id: string) => {
     const filteredCartList = cartList.filter((p) => p.id !== id);
     dispatch(cartFetchingSuccess(filteredCartList));
   };
 
-  const handleChangeQuantity = (id: number, newQuantity: number) => {
+  const handleChangeQuantity = (id: string, newQuantity: number) => {
     const updatedCartList = cartList.map((item) =>
       item.id === id ? { ...item, quantity: newQuantity } : item
     );
@@ -70,13 +70,13 @@ export const ModalWindowCart: FC<IModalWindowCartProps> = ({
         </MyButton>
       </div>
       <div className={classes.cartContainer}>
-        {cartList.map(({ src, productName, productPrice, id, quantity }) => (
+        {cartList.map(({ src, name, price, id, quantity }) => (
           <div className={classes.cardContainer} key={id}>
             <CardOfProductModalCart
               key={id}
               src={src}
-              productName={productName}
-              productPrice={productPrice}
+              name={name}
+              price={price}
               id={id}
               quantity={quantity}
               deleteCard={() => deleteCard(id)}

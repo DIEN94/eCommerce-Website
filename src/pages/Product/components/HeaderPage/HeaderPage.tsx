@@ -3,10 +3,10 @@ import arrow from "assets/Product/arrow.webp";
 import classes from "./HeaderPage.module.scss";
 
 interface IHeaderPageProps {
-  productName: string;
+  name: string;
 }
 
-export const HeaderPage: React.FC<IHeaderPageProps> = ({ productName }) => {
+export const HeaderPage: React.FC<IHeaderPageProps> = ({ name }) => {
   return (
     <div className={classes.headerPage}>
       <div className={classes.staticContainer}>
@@ -19,7 +19,7 @@ export const HeaderPage: React.FC<IHeaderPageProps> = ({ productName }) => {
           <img src={arrow} alt="arrow" />
         </div>
       </div>
-      <p className={classes.textProductName}>{productName}</p>
+      <p className={classes.textProductName}>{name}</p>
     </div>
   );
 };

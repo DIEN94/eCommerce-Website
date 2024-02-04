@@ -1,5 +1,4 @@
-import React, { FC, useMemo, useState } from "react";
-import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
+import React, { FC, useState } from "react";
 import { useParams } from "react-router-dom";
 import { HeaderPage } from "./components/HeaderPage/HeaderPage";
 import { MyButton } from "components";
@@ -8,6 +7,7 @@ import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
 import { useAddedToCart } from "hooks/useAddedToCart";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
 import { NotFoundPage } from "pages/NotFoundPage/NotFoundPage";
+import { useFetchProductsData } from "hooks/useFetchProductsData";
 import classes from "./Product.module.scss";
 
 export const Product: FC = () => {
@@ -15,11 +15,15 @@ export const Product: FC = () => {
   const dispatch = useAppDispatch();
   const { cartList } = useAppSelector((state) => state.cart);
   const { id } = useParams();
+  const page = 1;
+  const limit = 18;
+
+  const { productsList, totalPages } = useFetchProductsData(page, limit);
 
   let addedToCart: boolean = useAddedToCart(id);
 
   const product = id
-    ? postsListShop.find((item) => item.id === parseInt(id, 10))
+    ? productsList.find((product) => product._id === id)
     : undefined;
 
   if (!product) {
@@ -31,7 +35,7 @@ export const Product: FC = () => {
       return;
     }
     const updatedCartList = cartList.map((item) =>
-      item.id === product.id ? { ...item, quantity: quantity - 1 } : item
+      item.id === product._id ? { ...item, quantity: quantity - 1 } : item
     );
     dispatch(cartFetchingSuccess(updatedCartList));
     setQuantity(quantity - 1);
@@ -39,22 +43,22 @@ export const Product: FC = () => {
 
   const handlePlus = () => {
     const updatedCartList = cartList.map((item) =>
-      item.id === product.id ? { ...item, quantity: quantity + 1 } : item
+      item.id === product._id ? { ...item, quantity: quantity + 1 } : item
     );
     dispatch(cartFetchingSuccess(updatedCartList));
     setQuantity(quantity + 1);
   };
 
   const addToCart = (
-    src: string,
-    productName: string,
-    productPrice: string,
-    id: number
+    src: string[],
+    name: string,
+    price: number,
+    id: string
   ) => {
     const newItem = {
       src: src,
-      productName: productName,
-      productPrice: productPrice,
+      name: name,
+      price: price,
       id: id,
       quantity: quantity,
     };
@@ -75,14 +79,14 @@ export const Product: FC = () => {
 
   return (
     <div className={classes.product}>
-      <HeaderPage productName={product.productName} />
+      <HeaderPage name={product.name} />
       <div className={classes.productContainer}>
         <div className={classes.productImg}>
-          <img src={product.src} alt={`${product.src}`} />
+          <img src={product.img[0]} alt={`${product.img}`} />
         </div>
         <div className={classes.productInfo}>
-          <h1 className={classes.productNameText}>{product.productName}</h1>
-          <p className={classes.productPriceText}>{product.fixPrice}</p>
+          <h1 className={classes.productNameText}>{product.name}</h1>
+          <p className={classes.productPriceText}>{product.price}</p>
           <p className={classes.productDescription}>
             Setting the bar as one of the loudest speakers in its class, the
             Kilburn is a compact, stout-hearted hero with a well-balanced audio
@@ -120,10 +124,10 @@ export const Product: FC = () => {
                 className={classes.buttonCart}
                 onClick={() =>
                   addToCart(
-                    product.src,
-                    product.productName,
-                    product.fixPrice,
-                    product.id
+                    product.img,
+                    product.name,
+                    product.price,
+                    product._id
                   )
                 }
               >

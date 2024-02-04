@@ -20,7 +20,7 @@ export const registerFormFieldsConfig = [
     },
     {
         label: "Username",
-        name: "username",
+        name: "name",
         validationRules: {
           required: "This field is required",
         },
