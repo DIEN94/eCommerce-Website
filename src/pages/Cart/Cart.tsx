@@ -38,10 +38,8 @@ export const Cart: FC = () => {
                   price={price}
                   id={id}
                   quantity={quantity}
-                  deleteCard={() => deleteCard(id)}
-                  onChangeQuantity={(newQuantity) => {
-                    handleChangeQuantity(id, newQuantity);
-                  }}
+                  deleteCard={deleteCard}
+                  onChangeQuantity={handleChangeQuantity}
                 />
               </div>
             ))}

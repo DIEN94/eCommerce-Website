@@ -5,6 +5,7 @@ import { FormField } from "components/FormField/FormField";
 import { registerFormFieldsConfig } from "./config";
 import { postRequest } from "utils/postRequest";
 import { useNavigate } from "react-router-dom";
+import { urlRegister } from "API/consts";
 import classes from "./Registration.module.scss";
 
 type RequestRegistration = {
@@ -24,8 +25,6 @@ export const Registration: FC = () => {
     handleSubmit,
     reset,
   } = useForm({ mode: "onBlur" });
-
-  const urlRegister = "http://localhost:8000/account/register";
 
   const onSubmit = async (dataSubmit: any) => {
     const config = {

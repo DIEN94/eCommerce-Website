@@ -1,31 +1,35 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC, useState } from "react";
 import { MyInput } from "components";
 import iconSearch from "assets/page-Search/iconSearch.webp";
 import { SearchList } from "./components/SearchList/SearchList";
-import { useFetchProductsData } from "hooks/useFetchProductsData";
+import { productsAPI } from "API/productsAPI";
+import { useDebounce } from "hooks/useDebaunce";
 import classes from "./Search.module.scss";
 
 export const Search: FC = () => {
-  const [searchValue, setSearchValue] = useState<string>();
-  const page = 1;
-  const limit = 18;
+  const [searchProducts, setSearchProducts] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { productsList, totalPages } = useFetchProductsData(page, limit);
+  const debouncedSearch = useDebounce({
+    callback: async (value: string) => {
+      try {
+        setIsLoading(true);
+        const result = await productsAPI.getProductsSearch(value.toLowerCase());
+        setSearchProducts(result?.product || []);
+      } catch (error) {
+        console.error("Error:", error);
+        setSearchProducts([]);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    delay: 500,
+  });
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    setSearchValue(inputValue);
+    debouncedSearch(inputValue);
   };
-
-  const searchProducts = useMemo(() => {
-    if (!searchValue) {
-      return [];
-    }
-
-    return productsList.filter((product) =>
-      product.name.toLowerCase().startsWith(searchValue.toLowerCase())
-    );
-  }, [searchValue]);
 
   return (
     <div className={classes.search}>
@@ -33,16 +37,22 @@ export const Search: FC = () => {
         <img src={iconSearch} alt="iconSearch" />
         <div className={classes.searchInput}>
           <MyInput
-            placeholder="Search..."
+            placeholder="Еnter at least one word to search..."
             type="string"
             onChange={handleSearch}
           />
         </div>
       </div>
-      {searchProducts.length ? (
-        <SearchList searchProducts={searchProducts} />
+      {isLoading ? (
+        <p className={classes.emptyText}>Loading...</p>
       ) : (
-        <p className={classes.emptyText}>No matches found</p>
+        <>
+          {searchProducts.length ? (
+            <SearchList product={searchProducts} />
+          ) : (
+            <p className={classes.emptyText}>No matches found</p>
+          )}
+        </>
       )}
     </div>
   );

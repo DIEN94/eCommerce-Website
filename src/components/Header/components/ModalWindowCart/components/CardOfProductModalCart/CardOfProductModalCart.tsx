@@ -47,7 +47,7 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
             onChange={handleQuantityChange}
           />
           <p>x</p>
-          <p>{`${price}.00`}</p>
+          <p>{`${price.toFixed(2)}`}</p>
         </div>
       </div>
       <div className={classes.buttonContainer}>

@@ -1,5 +1,5 @@
 
-type IConfig  = {
+export type IPostRequestConfig  = {
   headers?: HeadersInit;
   data: Record<string, any>;
   method?: 'POST' | 'GET' | 'PUT' | 'DELETE'
@@ -10,7 +10,7 @@ type ResponseType <TResponse> = {
   error?: string;
 }
 
-export const postRequest = async <TResponse>(url: string, config: IConfig)  => {
+export const postRequest = async <TResponse>(url: string, config: IPostRequestConfig)  => {
   let postResult = {} as ResponseType<TResponse>
   let method = config.method || 'POST'  
   const requestHeaders = {

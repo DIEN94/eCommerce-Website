@@ -50,7 +50,7 @@ export const CartTotalsWindow: FC<ICartTotalsWindowProps> = ({ cartList }) => {
       <p className={classes.cartTotalHeaderText}>Cart Totals</p>
       <div className={classes.totalContainer}>
         <p>Total</p>
-        <p>{totalSum ? `${totalSum}.00 ${currency}` : "-"}</p>
+        <p>{totalSum ? `${totalSum.toFixed(2)} ${currency}` : "-"}</p>
       </div>
       <MyButton
         variant="no-fill"

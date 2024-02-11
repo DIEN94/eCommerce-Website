@@ -14,6 +14,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import exit from "assets/page-Login/components/ModalWindowRegister/exit.webp";
 import classes from "./ModalWindowLogin.module.scss";
+import { urlLogin } from "API/consts";
 
 export interface IModalWindowLoginProps
   extends Pick<IModal, "onClose" | "isOpen"> {}
@@ -37,7 +38,6 @@ export const ModalWindowLogin: FC<IModalWindowLoginProps> = ({
     onClose();
   };
   const navigate = useNavigate();
-  const urlLogin = "http://localhost:8000/account/login";
 
   const dispatch = useAppDispatch();
   const { isAuth, isLoading, error } = useAppSelector((state) => state.auth);
@@ -52,7 +52,6 @@ export const ModalWindowLogin: FC<IModalWindowLoginProps> = ({
         urlLogin,
         config
       );
-      console.log(tokenUserAuthorization);
 
       if (tokenUserAuthorization.data) {
         localStorage.setItem(

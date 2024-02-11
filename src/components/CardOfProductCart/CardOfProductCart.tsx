@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { MyButton, MyInput } from "components";
 import imgCart from "assets/CardOfProductCart/imgCart.webp";
+import defaultIcon from "assets/CardOfProductCart/default-image-icon.webp";
 import classes from "./CardOfProductCart.module.scss";
 
 interface ICardOfProductCartProps {
@@ -9,8 +10,8 @@ interface ICardOfProductCartProps {
   price: number;
   id: string;
   quantity: number;
-  deleteCard: () => void;
-  onChangeQuantity: (newQuantity: number) => void;
+  deleteCard: (id: string) => void;
+  onChangeQuantity: (id: string, newQuantity: number) => void;
 }
 
 export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
@@ -24,7 +25,7 @@ export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
 }) => {
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
-    onChangeQuantity(newQuantity);
+    onChangeQuantity(id, newQuantity);
   };
 
   const newTotalSum = price * quantity;
@@ -33,24 +34,26 @@ export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src[0]} alt={`${name}`} />
+        <img src={src[0] ? src[0] : defaultIcon} alt={`${name}`} />
       </div>
       <div className={classes.cardContainer}>
         <h1>{name}</h1>
-        <p>{`${price}.00`}</p>
+        <p>{`${price.toFixed(2)}`}</p>
         <MyInput
           className={classes.input}
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
         />
-        <p>{`${calculatedPrice}.00`}</p>
+        <p>{`${
+          calculatedPrice !== "-" ? calculatedPrice.toFixed(2) : calculatedPrice
+        }`}</p>
       </div>
       <div className={classes.buttonContainer}>
         <MyButton
           variant="no-fill"
           className={classes.button}
-          onClick={deleteCard}
+          onClick={() => deleteCard(id)}
         >
           <img src={imgCart} alt="iconCart" />
         </MyButton>

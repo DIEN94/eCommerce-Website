@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Hover } from "./components/Hover/Hover";
 import { DiscountLabel } from "components/DiscountLabel/DiscountLabel";
 import { currency } from "consts/consts";
+import defaultIcon from "assets/CardOfProduct/default-image-icon.webp";
 import clsx from "clsx";
 import classes from "./CardOfProduct.module.scss";
 
@@ -45,21 +46,29 @@ export const CardOfProduct: FC<ICardProps> = ({
     >
       <div className={classes.imgBox}>
         <div className={classes.imgContainer}>
-          <img className={classes.img} src={src[0]} alt={`${name}`} />
+          <img
+            className={classes.img}
+            src={src[0] ? src[0] : defaultIcon}
+            alt={`${name}`}
+          />
         </div>
-        <DiscountLabel number={discountPercent} />
+        {discount ? <DiscountLabel number={discountPercent} /> : null}
       </div>
       <div className={classes.textContainer}>
         <div className={classes.textCard}>
           <h1 className={classes.productName}>{name}</h1>
           <p className={classes.description}>{description}</p>
           <div className={classes.priceBox}>
-            <p className={classes.fixPrice}>{`${fixPrice}.00 ${currency}`}</p>
+            <p className={classes.fixPrice}>{`${fixPrice.toFixed(
+              2
+            )} ${currency}`}</p>
             <p
               className={clsx(classes.originalPrice, {
                 [classes.show]: discount,
               })}
-            >{`${originalPrice}.00 ${currency}`}</p>
+            >{`${
+              originalPrice ? originalPrice.toFixed(2) : originalPrice
+            } ${currency}`}</p>
           </div>
         </div>
       </div>

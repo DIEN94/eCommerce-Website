@@ -6,6 +6,7 @@ import { useAppDispatch } from "hooks/redux";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
 import { DiscountLabel } from "components/DiscountLabel/DiscountLabel";
 import { currency } from "consts/consts";
+import defaultIcon from "assets/CardOfProductWide/default-image-icon.webp";
 import clsx from "clsx";
 import classes from "./CardOfProductWide.module.scss";
 
@@ -67,21 +68,29 @@ export const CardOfProductWide: FC<ICardWide> = ({
       <div className={classes.leftContainer}>
         <div className={classes.imgBox}>
           <div className={classes.imgContainer}>
-            <img className={classes.img} src={src[0]} alt={`${name}`} />
+            <img
+              className={classes.img}
+              src={src[0] ? src[0] : defaultIcon}
+              alt={`${name}`}
+            />
           </div>
-          <DiscountLabel number={discountPercent} />
+          {discount ? <DiscountLabel number={discountPercent} /> : null}
         </div>
         <div className={classes.textContainer}>
           <div className={classes.textCard}>
             <h1 className={classes.productName}>{name}</h1>
             <p className={classes.sortDescription}>{description}</p>
             <div className={classes.priceBox}>
-              <p className={classes.fixPrice}>{`${fixPrice}.00 ${currency}`}</p>
+              <p className={classes.fixPrice}>{`${fixPrice.toFixed(
+                2
+              )} ${currency}`}</p>
               <p
                 className={clsx(classes.originalPrice, {
                   [classes.show]: discount,
                 })}
-              >{`${originalPrice}.00 ${currency}`}</p>
+              >{`${
+                originalPrice ? originalPrice.toFixed(2) : originalPrice
+              } ${currency}`}</p>
             </div>
           </div>
         </div>

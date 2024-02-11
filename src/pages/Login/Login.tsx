@@ -11,6 +11,7 @@ import {
   authFetchingError,
   authFetchingSuccess,
 } from "store/reducers/auth";
+import { urlLogin } from "API/consts";
 import classes from "./Login.module.scss";
 
 type RequestAuthorization = {
@@ -27,7 +28,6 @@ export const Login: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isLoading, error } = useAppSelector((state) => state.auth);
-  const urlLogin = "http://localhost:8000/account/login";
 
   const onSubmit = async (dataSubmit: any) => {
     const config = {

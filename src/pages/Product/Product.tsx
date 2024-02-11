@@ -6,30 +6,44 @@ import { Link } from "react-router-dom";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
 import { useAddedToCart } from "hooks/useAddedToCart";
 import { useAppDispatch, useAppSelector } from "hooks/redux";
-import { NotFoundPage } from "pages/NotFoundPage/NotFoundPage";
-import { useFetchProductsData } from "hooks/useFetchProductsData";
+import { currency } from "consts/consts";
+import { useFetchData } from "hooks/useFetchData";
+import { IFetchProductById } from "API/types";
+import { urlProductById } from "API/consts";
 import classes from "./Product.module.scss";
 
 export const Product: FC = () => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
   const { cartList } = useAppSelector((state) => state.cart);
-  const { id } = useParams();
-  const page = 1;
-  const limit = 18;
-
-  const { productsList, totalPages } = useFetchProductsData(page, limit);
-
+  const { id } = useParams<{ id: string }>();
   let addedToCart: boolean = useAddedToCart(id);
 
-  const product = id
-    ? productsList.find((product) => product._id === id)
-    : undefined;
+  const ProductByIdConfig = {
+    data: {
+      id: id,
+    },
+  };
 
-  if (!product) {
-    return <NotFoundPage />;
+  const { data, error, isLoading } = useFetchData<IFetchProductById>(
+    urlProductById,
+    ProductByIdConfig,
+    [id]
+  );
+
+  const product = data?.product;
+
+  if (isLoading) {
+    return <p>Loading...</p>;
   }
 
+  if (!product) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   const handleMinus = () => {
     if (quantity === 1) {
       return;
@@ -86,7 +100,9 @@ export const Product: FC = () => {
         </div>
         <div className={classes.productInfo}>
           <h1 className={classes.productNameText}>{product.name}</h1>
-          <p className={classes.productPriceText}>{product.price}</p>
+          <p className={classes.productPriceText}>{`${product.price.toFixed(
+            2
+          )} ${currency}`}</p>
           <p className={classes.productDescription}>
             Setting the bar as one of the loudest speakers in its class, the
             Kilburn is a compact, stout-hearted hero with a well-balanced audio
@@ -122,14 +138,10 @@ export const Product: FC = () => {
               <MyButton
                 variant="no-fill"
                 className={classes.buttonCart}
-                onClick={() =>
-                  addToCart(
-                    product.img,
-                    product.name,
-                    product.price,
-                    product._id
-                  )
-                }
+                onClick={() => {
+                  let { img, name, price, _id } = product;
+                  addToCart(img, name, price, _id);
+                }}
               >
                 Add to cart
               </MyButton>

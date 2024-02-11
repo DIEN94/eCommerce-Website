@@ -1,20 +1,37 @@
 import React from "react";
 import { CardOfProduct, MyButton } from "components";
 import { Link } from "react-router-dom";
-import { useFetchProductsData } from "hooks/useFetchProductsData";
+import { useFetchData } from "hooks/useFetchData";
+import { IFetchProductsData } from "API/types";
+import { urlProducts } from "API/consts";
 import classes from "./ProductListHome.module.scss";
 
-export const ProductListHome = () => {
-  const page = 1;
-  const limit = 8;
+const ProductListHomeConfig = {
+  data: {
+    page: 1,
+    limit: 8,
+  },
+};
 
-  const productsList = useFetchProductsData(page, limit).productsList;
+export const ProductListHome = () => {
+  const { data, error, isLoading } = useFetchData<IFetchProductsData>(
+    urlProducts,
+    ProductListHomeConfig
+  );
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className={classes.productListHome}>
       <p className={classes.firstLevelText}>Our Products</p>
       <div className={classes.productBox}>
-        {productsList.map((product) => (
+        {data?.products.map((product) => (
           <div className={classes.cardContainer} key={product._id}>
             <CardOfProduct
               key={product._id}

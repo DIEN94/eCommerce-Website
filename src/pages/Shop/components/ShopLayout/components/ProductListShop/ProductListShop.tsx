@@ -1,27 +1,38 @@
 import React, { useMemo, useState } from "react";
 import { CardOfProduct, CardOfProductWide, MyButton } from "components";
 import { Pagination } from "./components/Pagination/Pagination";
-import { useFetchProductsData } from "hooks/useFetchProductsData";
+import { useFetchData } from "hooks/useFetchData";
+import { IFetchProductsData } from "API/types";
+import { urlProducts } from "API/consts";
 import classes from "./ProductListShop.module.scss";
 
 interface IProductListShopProps {
   limitCardNumber: number;
   typeCard: string;
-  onChangeTotalQuantity: (newQuantity: number) => void;
 }
 
 export const ProductListShop: React.FC<IProductListShopProps> = ({
   limitCardNumber,
   typeCard,
-  onChangeTotalQuantity,
 }) => {
   const [page, setPage] = useState(1);
 
-  const { productsList, totalPages } = useFetchProductsData(
-    page,
-    limitCardNumber
+  const ProductListConfig = {
+    data: {
+      page: page,
+      limit: limitCardNumber,
+    },
+  };
+
+  const { data, error, isLoading } = useFetchData<IFetchProductsData>(
+    urlProducts,
+    ProductListConfig,
+    [page, limitCardNumber]
   );
-  onChangeTotalQuantity(totalPages * productsList.length);
+
+  let productsList = data ? data.products : [];
+  let totalPages = data ? data.totalPages : 0;
+
   const CardComponent = typeCard === "Card" ? CardOfProduct : CardOfProductWide;
 
   const cardArray = useMemo(() => {
@@ -31,6 +42,14 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
     }
     return newCardArray;
   }, [totalPages]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className={classes.productListShop}>

@@ -34,7 +34,7 @@ export const CartTotalsWindowModal: FC<ICartTotalsWindowModalProps> = ({
     <div className={classes.cartTotalsContainer}>
       <p className={classes.totalText}>Total</p>
       <p className={classes.priceText}>
-        {totalSum ? `${totalSum}.00 ${currency}` : "-"}
+        {totalSum ? `${totalSum.toFixed(2)} ${currency}` : "-"}
       </p>
     </div>
   );

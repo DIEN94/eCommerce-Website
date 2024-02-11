@@ -27,12 +27,14 @@ export const CheckoutWindow = () => {
               <p>x</p>
               <p>{quantity}</p>
             </div>
-            <p>{`${price}.00`}</p>
+            <p>{`${price.toFixed(2)}`}</p>
           </div>
         ))}
         <div className={classes.totalContainer}>
           <p className={classes.totalText}>Total</p>
-          <p className={classes.totalSumText}>{`${totalSum}.00 ${currency}`}</p>
+          <p className={classes.totalSumText}>{`${totalSum.toFixed(
+            2
+          )} ${currency}`}</p>
         </div>
       </div>
       <p className={classes.infoContainer}>

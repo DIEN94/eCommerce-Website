@@ -1,28 +1,43 @@
-import React, { FC, useMemo } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { CardOfProduct, PosterPage } from "components";
 import { useAppSelector } from "hooks/redux";
-import { useFetchProductsData } from "hooks/useFetchProductsData";
+import { productsAPI } from "API/productsAPI";
 import classes from "./Like.module.scss";
 
 export const Like: FC = () => {
   const { likeListId } = useAppSelector((state) => state.like);
-  const page = 1;
-  const limit = 18;
+  const [likeListChange, setLikeListChange] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { productsList, totalPages } = useFetchProductsData(page, limit);
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      const fetchedProducts = await Promise.all(
+        likeListId.map(async (item) => {
+          try {
+            const result = await productsAPI.getProductById(item.id);
+            return result?.product;
+          } catch (error) {
+            console.error("Error fetching data:", error);
+            return null;
+          }
+        })
+      );
+      setIsLoading(false);
+      setLikeListChange(fetchedProducts.filter((product) => product !== null));
+    };
 
-  let likeListChange = useMemo(() => {
-    return productsList.filter((product) =>
-      likeListId.some((likedProduct) => likedProduct.id === product._id)
-    );
-  }, [likeListId, productsList]);
+    fetchData();
+  }, [likeListId]);
 
   return (
     <div className={classes.like}>
       <PosterPage namePage="Like list" />
       <div className={classes.likeListContainer}>
         <div className={classes.likeListBox}>
-          {likeListChange.length ? (
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : likeListChange.length ? (
             likeListChange.map((product) => (
               <div className={classes.cardContainer} key={product._id}>
                 <CardOfProduct

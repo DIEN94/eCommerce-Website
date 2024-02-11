@@ -8,14 +8,12 @@ import {
 import classes from "./ControlInterface.module.scss";
 
 interface IControlInterfaceProps {
-  totalNumberCard: number;
   onChangeShowingNumberCards: (currentNumberCard: number) => void;
   onChangeSortCards: (currentSortValue: string) => void;
   onChangeCardsType: (currentType: string) => void;
 }
 
 export const ControlInterface: React.FC<IControlInterfaceProps> = ({
-  totalNumberCard,
   onChangeShowingNumberCards,
   onChangeSortCards,
   onChangeCardsType,
@@ -60,9 +58,6 @@ export const ControlInterface: React.FC<IControlInterfaceProps> = ({
             <img src={imgControlInterfaceConfig.scrollIcon} alt="scrollIcon" />
           </MyButton>
         </div>
-        <p className={classes.numberShowingCards}>
-          Showing 1–16 of {totalNumberCard} results
-        </p>
       </div>
       <div className={classes.dropDownBox}>
         <div className={classes.dropDownContainer}>
