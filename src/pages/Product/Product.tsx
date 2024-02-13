@@ -38,7 +38,7 @@ export const Product: FC = () => {
   }
 
   if (!product) {
-    return <p>Loading...</p>;
+    return <div></div>;
   }
 
   if (error) {
