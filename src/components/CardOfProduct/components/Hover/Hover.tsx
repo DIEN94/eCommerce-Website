@@ -13,19 +13,13 @@ import classes from "./Hover.module.scss";
 
 interface IHover {
   isHovered: boolean;
-  src: string;
-  productName: string;
-  productPrice: string;
-  id: number;
+  src: string[];
+  name: string;
+  price: number;
+  id: string;
 }
 
-export const Hover: FC<IHover> = ({
-  isHovered,
-  src,
-  productName,
-  productPrice,
-  id,
-}) => {
+export const Hover: FC<IHover> = ({ isHovered, src, name, price, id }) => {
   const dispatch = useAppDispatch();
   const methods: Record<Keys, () => void> = {
     share: () => {
@@ -36,7 +30,7 @@ export const Hover: FC<IHover> = ({
     },
   };
 
-  const addToLikeList = (id: number) => {
+  const addToLikeList = (id: string) => {
     const newLikeItem = {
       id: id,
     };
@@ -55,9 +49,9 @@ export const Hover: FC<IHover> = ({
     }
   };
 
-  const deleteLike = (id: number) => {
+  const deleteLike = (id: string) => {
     interface LikeListItem {
-      id: number;
+      id: string;
     }
     const likeListToken = localStorage.getItem("LikeArray");
     if (likeListToken) {
@@ -79,15 +73,15 @@ export const Hover: FC<IHover> = ({
   }, [likeListId]);
 
   const addToCart = (
-    src: string,
-    productName: string,
-    productPrice: string,
-    id: number
+    src: string[],
+    name: string,
+    price: number,
+    id: string
   ) => {
     const newItem = {
       src: src,
-      productName: productName,
-      productPrice: productPrice,
+      name: name,
+      price: price,
       id: id,
       quantity: 1,
     };
@@ -130,7 +124,7 @@ export const Hover: FC<IHover> = ({
             <MyButton
               variant="fill-white"
               className={classes.buttonBig}
-              onClick={() => addToCart(src, productName, productPrice, id)}
+              onClick={() => addToCart(src, name, price, id)}
             >
               Add to cart
             </MyButton>

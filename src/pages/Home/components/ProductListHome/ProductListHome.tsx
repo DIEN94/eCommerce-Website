@@ -1,27 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { CardOfProduct, MyButton } from "components";
 import { Link } from "react-router-dom";
-import { postsListShop } from "pages/Shop/components/ShopLayout/components/ProductListShop/config";
+import { useFetchData } from "hooks/useFetchData";
+import { IFetchProductsData } from "API/types";
+import { urlProducts } from "API/consts";
 import classes from "./ProductListHome.module.scss";
 
+const ProductListHomeConfig = {
+  data: {
+    page: 1,
+    limit: 8,
+  },
+};
+
 export const ProductListHome = () => {
-  const [posts, setPosts] = useState(postsListShop);
+  const { data, error, isLoading } = useFetchData<IFetchProductsData>(
+    urlProducts,
+    ProductListHomeConfig
+  );
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className={classes.productListHome}>
       <p className={classes.firstLevelText}>Our Products</p>
       <div className={classes.productBox}>
-        {posts.slice(-8).map((post) => (
-          <div className={classes.cardContainer} key={post.id}>
+        {data?.products.map((product) => (
+          <div className={classes.cardContainer} key={product._id}>
             <CardOfProduct
-              key={post.id}
-              src={post.src}
-              label={post.label}
-              productName={post.productName}
-              sortDescription={post.sortDescription}
-              fixPrice={post.fixPrice}
-              originalPrice={post.originalPrice}
-              id={post.id}
+              key={product._id}
+              src={product.img}
+              discount={
+                product.discount !== null ? product.discount : undefined
+              }
+              name={product.name}
+              description={product.description}
+              price={product.price}
+              id={product._id}
             />
           </div>
         ))}

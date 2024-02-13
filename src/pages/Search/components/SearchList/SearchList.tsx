@@ -1,65 +1,21 @@
 import React, { FC } from "react";
 import { CardOfProductWide } from "components";
-import { useAppDispatch } from "hooks/redux";
-import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
+import { IFetchSearchProducts } from "API/types";
 import classes from "./SearchList.module.scss";
 
-interface ISearchListProps {
-  searchProducts: {
-    id: number;
-    src: string;
-    label?: string;
-    productName: string;
-    sortDescription: string;
-    fixPrice: string;
-    OriginalPrice?: string;
-  }[];
-}
-
-export const SearchList: FC<ISearchListProps> = ({ searchProducts }) => {
-  const dispatch = useAppDispatch();
-
-  const addToCart = (
-    src: string,
-    productName: string,
-    productPrice: string,
-    id: number
-  ) => {
-    const newItem = {
-      src: src,
-      ProductName: productName,
-      ProductPrice: productPrice,
-      id: id,
-      quantity: 1,
-    };
-
-    try {
-      const cartListToken = localStorage.getItem("CartArray");
-      if (cartListToken) {
-        const storedCartArray = JSON.parse(cartListToken);
-        storedCartArray.push(newItem);
-        dispatch(cartFetchingSuccess(storedCartArray));
-      } else {
-        dispatch(cartFetchingError("Error"));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+export const SearchList: FC<IFetchSearchProducts> = ({ product }) => {
   return (
     <div className={classes.searchListContainer}>
-      {searchProducts.map((post) => (
-        <div className={classes.cardContainer} key={post.id}>
+      {product.map((product) => (
+        <div className={classes.cardContainer} key={product._id}>
           <CardOfProductWide
-            key={post.id}
-            src={post.src}
-            label={post.label}
-            productName={post.productName}
-            sortDescription={post.sortDescription}
-            fixPrice={post.fixPrice}
-            originalPrice={post.OriginalPrice}
-            id={post.id}
+            key={product._id}
+            src={product.img}
+            discount={product.discount !== null ? product.discount : undefined}
+            name={product.name}
+            description={product.description}
+            price={product.price}
+            id={product._id}
           />
         </div>
       ))}

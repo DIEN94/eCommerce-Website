@@ -1,43 +1,48 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { MyButton } from "./../Button/MyButton";
 import { useAddedToCart } from "hooks/useAddedToCart";
 import { useAppDispatch } from "hooks/redux";
 import { cartFetchingError, cartFetchingSuccess } from "store/reducers/cart";
+import { DiscountLabel } from "components/DiscountLabel/DiscountLabel";
+import { currency } from "consts/consts";
+import defaultIcon from "assets/CardOfProductWide/default-image-icon.webp";
 import clsx from "clsx";
 import classes from "./CardOfProductWide.module.scss";
 
 interface ICardWide {
-  src: string;
-  label?: string;
-  productName: string;
-  sortDescription: string;
-  fixPrice: string;
-  originalPrice?: string;
-  id: number;
+  src: string[];
+  discount?: number;
+  name: string;
+  description: string;
+  price: number;
+  id: string;
 }
 
 export const CardOfProductWide: FC<ICardWide> = ({
   src,
-  label,
-  productName,
-  sortDescription,
-  fixPrice,
-  originalPrice,
+  discount,
+  name,
+  description,
+  price,
   id,
 }) => {
+  let fixPrice = discount ? price - discount : price;
+  let originalPrice = discount ? price : null;
+  let discountPercent = discount ? Math.floor(discount / (price / 100)) : 0;
+
   const dispatch = useAppDispatch();
 
   const addToCart = (
-    src: string,
-    productName: string,
-    productPrice: string,
-    id: number
+    src: string[],
+    name: string,
+    price: number,
+    id: string
   ) => {
     const newItem = {
       src: src,
-      productName: productName,
-      productPrice: productPrice,
+      name: name,
+      price: price,
       id: id,
       quantity: 1,
     };
@@ -63,21 +68,29 @@ export const CardOfProductWide: FC<ICardWide> = ({
       <div className={classes.leftContainer}>
         <div className={classes.imgBox}>
           <div className={classes.imgContainer}>
-            <img className={classes.img} src={src} alt={`${productName}`} />
+            <img
+              className={classes.img}
+              src={src[0] ? src[0] : defaultIcon}
+              alt={`${name}`}
+            />
           </div>
-          <img
-            className={clsx(classes.label, { [classes.show]: label })}
-            src={label}
-            alt={`${label}`}
-          />
+          {discount ? <DiscountLabel number={discountPercent} /> : null}
         </div>
         <div className={classes.textContainer}>
           <div className={classes.textCard}>
-            <h1 className={classes.productName}>{productName}</h1>
-            <p className={classes.sortDescription}>{sortDescription}</p>
+            <h1 className={classes.productName}>{name}</h1>
+            <p className={classes.sortDescription}>{description}</p>
             <div className={classes.priceBox}>
-              <p className={classes.fixPrice}>{fixPrice}</p>
-              <p className={classes.originalPrice}>{originalPrice}</p>
+              <p className={classes.fixPrice}>{`${fixPrice.toFixed(
+                2
+              )} ${currency}`}</p>
+              <p
+                className={clsx(classes.originalPrice, {
+                  [classes.show]: discount,
+                })}
+              >{`${
+                originalPrice ? originalPrice.toFixed(2) : originalPrice
+              } ${currency}`}</p>
             </div>
           </div>
         </div>
@@ -98,7 +111,7 @@ export const CardOfProductWide: FC<ICardWide> = ({
           <MyButton
             variant="fill-white"
             className={classes.button}
-            onClick={() => addToCart(src, productName, fixPrice, id)}
+            onClick={() => addToCart(src, name, fixPrice, id)}
           >
             Add to cart
           </MyButton>

@@ -4,10 +4,10 @@ import deleteModalCart from "assets/header/ModalWindowCart/CardOfProductModalCar
 import classes from "./CardOfProductModalCart.module.scss";
 
 interface ICardOfProductModalCartProps {
-  src: string;
-  productName: string;
-  productPrice: string;
-  id: number;
+  src: string[];
+  name: string;
+  price: number;
+  id: string;
   quantity: number;
   deleteCard: () => void;
   onChangeQuantity: (newQuantity: number) => void;
@@ -15,8 +15,8 @@ interface ICardOfProductModalCartProps {
 
 export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
   src,
-  productName,
-  productPrice,
+  name,
+  price,
   id,
   quantity,
   deleteCard,
@@ -35,10 +35,10 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src} alt={`${productName}`} />
+        <img src={src[0]} alt={`${name}`} />
       </div>
       <div className={classes.cardContainer}>
-        <h1>{productName}</h1>
+        <h1>{name}</h1>
         <div className={classes.priceContainer}>
           <MyInput
             className={classes.input}
@@ -47,7 +47,7 @@ export const CardOfProductModalCart: FC<ICardOfProductModalCartProps> = ({
             onChange={handleQuantityChange}
           />
           <p>x</p>
-          <p>{productPrice}</p>
+          <p>{`${price.toFixed(2)}`}</p>
         </div>
       </div>
       <div className={classes.buttonContainer}>

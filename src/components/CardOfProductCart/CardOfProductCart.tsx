@@ -1,22 +1,23 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC } from "react";
 import { MyButton, MyInput } from "components";
 import imgCart from "assets/CardOfProductCart/imgCart.webp";
+import defaultIcon from "assets/CardOfProductCart/default-image-icon.webp";
 import classes from "./CardOfProductCart.module.scss";
 
 interface ICardOfProductCartProps {
-  src: string;
-  productName: string;
-  productPrice: string;
-  id: number;
+  src: string[];
+  name: string;
+  price: number;
+  id: string;
   quantity: number;
-  deleteCard: () => void;
-  onChangeQuantity: (newQuantity: number) => void;
+  deleteCard: (id: string) => void;
+  onChangeQuantity: (id: string, newQuantity: number) => void;
 }
 
 export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
   src,
-  productName,
-  productPrice,
+  name,
+  price,
   id,
   quantity,
   deleteCard,
@@ -24,37 +25,35 @@ export const CardOfProductCart: FC<ICardOfProductCartProps> = ({
 }) => {
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
-    onChangeQuantity(newQuantity);
+    onChangeQuantity(id, newQuantity);
   };
 
-  const priceString = productPrice.replace("Rp ", "");
-  const priceNumber = parseFloat(priceString.replace(/\./g, ""));
-  const newTotalSum = priceNumber * quantity;
-  const calculatedPrice = newTotalSum
-    ? newTotalSum.toLocaleString("en-US")
-    : "-";
+  const newTotalSum = price * quantity;
+  const calculatedPrice = newTotalSum ? newTotalSum : "-";
 
   return (
     <div className={classes.myCard}>
       <div className={classes.imgContainer}>
-        <img src={src} alt={`${productName}`} />
+        <img src={src[0] ? src[0] : defaultIcon} alt={`${name}`} />
       </div>
       <div className={classes.cardContainer}>
-        <h1>{productName}</h1>
-        <p>{productPrice}</p>
+        <h1>{name}</h1>
+        <p>{`${price.toFixed(2)}`}</p>
         <MyInput
           className={classes.input}
           type="number"
           value={quantity}
           onChange={handleQuantityChange}
         />
-        <p>{calculatedPrice}</p>
+        <p>{`${
+          calculatedPrice !== "-" ? calculatedPrice.toFixed(2) : calculatedPrice
+        }`}</p>
       </div>
       <div className={classes.buttonContainer}>
         <MyButton
           variant="no-fill"
           className={classes.button}
-          onClick={deleteCard}
+          onClick={() => deleteCard(id)}
         >
           <img src={imgCart} alt="iconCart" />
         </MyButton>

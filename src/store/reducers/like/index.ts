@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type likeProps = {
-    id:number;
+    id: string;
 }
 
 interface LikeState {

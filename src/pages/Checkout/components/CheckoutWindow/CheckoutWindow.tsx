@@ -1,14 +1,13 @@
 import React from "react";
-import { MyButton, MyInput, PosterPage } from "components";
+import { MyButton } from "components";
 import { useAppSelector } from "hooks/redux";
+import { currency } from "consts/consts";
 import classes from "./CheckoutWindow.module.scss";
 
-export const CheckoutWindow = (isValid: any) => {
+export const CheckoutWindow = () => {
   const { cartList } = useAppSelector((state) => state.cart);
   const totalSumLS = localStorage.getItem("totalSum");
-  const totalSum = totalSumLS
-    ? parseFloat(totalSumLS).toLocaleString("en-US")
-    : 0;
+  const totalSum = totalSumLS ? parseFloat(totalSumLS) : 0;
 
   const placeOrder = () => {
     alert("Order is accepted!");
@@ -21,19 +20,21 @@ export const CheckoutWindow = (isValid: any) => {
         <p>Subtotal</p>
       </div>
       <div className={classes.checkoutListContainer}>
-        {cartList.map(({ productName, productPrice, id, quantity }) => (
+        {cartList.map(({ name, price, id, quantity }) => (
           <div className={classes.cardContainer} key={id}>
             <div className={classes.nameContainer}>
-              <p>{productName}</p>
+              <p>{name}</p>
               <p>x</p>
               <p>{quantity}</p>
             </div>
-            <p>{productPrice}</p>
+            <p>{`${price.toFixed(2)}`}</p>
           </div>
         ))}
         <div className={classes.totalContainer}>
           <p className={classes.totalText}>Total</p>
-          <p className={classes.totalSumText}>Rp {totalSum}.00</p>
+          <p className={classes.totalSumText}>{`${totalSum.toFixed(
+            2
+          )} ${currency}`}</p>
         </div>
       </div>
       <p className={classes.infoContainer}>
