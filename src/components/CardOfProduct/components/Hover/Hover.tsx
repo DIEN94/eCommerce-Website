@@ -23,7 +23,10 @@ export const Hover: FC<IHover> = ({ isHovered, src, name, price, id }) => {
   const dispatch = useAppDispatch();
   const methods: Record<Keys, () => void> = {
     share: () => {
-      console.log("done share");
+      navigator.clipboard
+        .writeText(`http://localhost:3000/shop/${id}`)
+        .then(() => alert("Product link copied"))
+        .catch((err) => console.error(err));
     },
     compare: () => {
       console.log("done compare");

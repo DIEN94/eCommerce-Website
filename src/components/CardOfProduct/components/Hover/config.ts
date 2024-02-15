@@ -7,5 +7,5 @@ export type Keys = "share" | "compare"
 
 export const hoverConfig: Array<{key: Keys, src:string, text:string}> = [
     { key: "share",src: share, text:"Share"}, 
-    { key: "compare",src: compare, text:"Compare"}, 
+    // { key: "compare",src: compare, text:"Compare"}, 
 ]

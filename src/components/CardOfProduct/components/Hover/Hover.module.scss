@@ -83,7 +83,7 @@
     max-width: 252px;
     max-height: 24px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
     @media (max-width: 1200px) {
@@ -96,6 +96,7 @@
 .buttonBoxElementsLiked {
     max-width: max-content;
     height: 24px;
+    margin: 0 5px 0 5px;
 
     @media (max-width: 1200px) {
         margin-bottom: 10px;
