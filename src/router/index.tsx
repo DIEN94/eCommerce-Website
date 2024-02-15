@@ -1,8 +1,18 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Navigate, RouteProps } from 'react-router-dom';
-import { About, Cabinet, Cart, Checkout, Contact, Home, Like, Login, NotFoundPage, Search, Shop, Registration, Product } from "pages";
-
-
+const Home = lazy(() => import("pages").then(module => ({ default: module.Home })));
+const About = lazy(() => import("pages").then(module => ({ default: module.About })));
+const Cabinet = lazy(() => import("pages").then(module => ({ default: module.Cabinet })));
+const Cart = lazy(() => import("pages").then(module => ({ default: module.Cart })));
+const Checkout = lazy(() => import("pages").then(module => ({ default: module.Checkout })));
+const Contact = lazy(() => import("pages").then(module => ({ default: module.Contact })));
+const Like = lazy(() => import("pages").then(module => ({ default: module.Like })));
+const Login = lazy(() => import("pages").then(module => ({ default: module.Login })));
+const NotFoundPage = lazy(() => import("pages").then(module => ({ default: module.NotFoundPage })));
+const Search = lazy(() => import("pages").then(module => ({ default: module.Search })));
+const Shop = lazy(() => import("pages").then(module => ({ default: module.Shop })));
+const Registration = lazy(() => import("pages").then(module => ({ default: module.Registration })));
+const Product = lazy(() => import("pages").then(module => ({ default: module.Product })));
 
 export enum RouteNames {
     HOME = '/',
