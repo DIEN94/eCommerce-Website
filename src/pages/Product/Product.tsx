@@ -10,6 +10,7 @@ import { currency } from "consts/consts";
 import { useFetchData } from "hooks/useFetchData";
 import { IFetchProductById } from "API/types";
 import { urlProductById } from "API/consts";
+import { Preloader } from "components/Preloader/Preloader";
 import classes from "./Product.module.scss";
 
 export const Product: FC = () => {
@@ -34,7 +35,7 @@ export const Product: FC = () => {
   const product = data?.product;
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Preloader />;
   }
 
   if (!product) {

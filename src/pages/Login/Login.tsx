@@ -13,6 +13,7 @@ import {
 } from "store/reducers/auth";
 import { urlLogin } from "API/consts";
 import classes from "./Login.module.scss";
+import { Preloader } from "components/Preloader/Preloader";
 
 type RequestAuthorization = {
   token: string;
@@ -90,7 +91,7 @@ export const Login: FC = () => {
                 Create account
               </MyButton>
             </Link>
-            {isLoading && <h1>Loading...</h1>}
+            {isLoading && <Preloader />}
             {error && <h1>{error}</h1>}
           </div>
         </form>

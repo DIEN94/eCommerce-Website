@@ -4,6 +4,7 @@ import { Pagination } from "./components/Pagination/Pagination";
 import { useFetchData } from "hooks/useFetchData";
 import { IFetchProductsData } from "API/types";
 import { urlProducts } from "API/consts";
+import { Preloader } from "components/Preloader/Preloader";
 import classes from "./ProductListShop.module.scss";
 
 interface IProductListShopProps {
@@ -44,7 +45,7 @@ export const ProductListShop: React.FC<IProductListShopProps> = ({
   }, [totalPages]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Preloader />;
   }
 
   if (error) {

@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { CardOfProduct, PosterPage } from "components";
 import { useAppSelector } from "hooks/redux";
 import { productsAPI } from "API/productsAPI";
+import { Preloader } from "components/Preloader/Preloader";
 import classes from "./Like.module.scss";
 
 export const Like: FC = () => {
@@ -36,7 +37,7 @@ export const Like: FC = () => {
       <div className={classes.likeListContainer}>
         <div className={classes.likeListBox}>
           {isLoading ? (
-            <p>Loading...</p>
+            <Preloader />
           ) : likeListChange.length ? (
             likeListChange.map((product) => (
               <div className={classes.cardContainer} key={product._id}>

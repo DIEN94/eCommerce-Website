@@ -4,6 +4,7 @@ import iconSearch from "assets/page-Search/iconSearch.webp";
 import { SearchList } from "./components/SearchList/SearchList";
 import { productsAPI } from "API/productsAPI";
 import { useDebounce } from "hooks/useDebaunce";
+import { Preloader } from "components/Preloader/Preloader";
 import classes from "./Search.module.scss";
 
 export const Search: FC = () => {
@@ -44,7 +45,7 @@ export const Search: FC = () => {
         </div>
       </div>
       {isLoading ? (
-        <p className={classes.emptyText}>Loading...</p>
+        <Preloader />
       ) : (
         <>
           {searchProducts.length ? (

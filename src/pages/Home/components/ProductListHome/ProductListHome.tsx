@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useFetchData } from "hooks/useFetchData";
 import { IFetchProductsData } from "API/types";
 import { urlProducts } from "API/consts";
+import { Preloader } from "components/Preloader/Preloader";
 import classes from "./ProductListHome.module.scss";
 
 const ProductListHomeConfig = {
@@ -20,7 +21,7 @@ export const ProductListHome = () => {
   );
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Preloader />;
   }
 
   if (error) {

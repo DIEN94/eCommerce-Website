@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import exit from "assets/page-Login/components/ModalWindowRegister/exit.webp";
 import classes from "./ModalWindowLogin.module.scss";
 import { urlLogin } from "API/consts";
+import { Preloader } from "components/Preloader/Preloader";
 
 export interface IModalWindowLoginProps
   extends Pick<IModal, "onClose" | "isOpen"> {}
@@ -110,7 +111,7 @@ export const ModalWindowLogin: FC<IModalWindowLoginProps> = ({
               Create account
             </MyButton>
           </Link>
-          {isLoading && <h1>Loading...</h1>}
+          {isLoading && <Preloader />}
           {error && <h1>{error}</h1>}
         </div>
       </form>
