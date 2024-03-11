@@ -14,4 +14,4 @@ export {MyModal} from './Modal/MyModal';
 export {default as ModalPortal} from './Modal/components/ModalPortal/ModalPortal';
 export {PosterPage} from './PosterPage/PosterPage';
 export {Providers} from './Providers/Providers';
-export {Slider} from './Slider/Slider';
+export {SliderSlick} from './SliderSlick/SliderSlick';
