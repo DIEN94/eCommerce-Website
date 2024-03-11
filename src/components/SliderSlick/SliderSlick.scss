@@ -1,0 +1,166 @@
+@import "src/styles/variables";
+
+.slick-slide img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 600px;
+    margin: 0 auto;
+    padding: 0 10px;
+    outline: transparent;
+  }
+  
+  .slick-slider {
+    position: relative;
+    margin-bottom: 30px;
+
+    @media (max-width: $mobile-size) {
+      margin-bottom: 0;
+    }
+  }
+  
+  .slick-slider .slick-dots {
+    display: flex !important;
+    justify-content: center;
+    bottom: -45px;
+
+    @media (max-width: $mobile-size) {
+      bottom: -30px;
+    }
+    
+  }
+  
+  .slick-slider .slick-dots li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    width: 30px;
+    cursor: pointer;
+
+    @media (max-width: $mobile-size) {
+      width: 15px;
+    }
+  }
+  
+  .slick-slider .slick-dots li button {
+    padding: 0;
+    font-size: 0;
+    max-width: 100%;
+    width: 15px;
+    height: 15px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 50%;
+    outline: transparent;
+    transition: 0.15s;
+
+    @media (max-width: $mobile-size) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  .slick-slider .slick-dots li button:hover {
+    background-color: #b9b5b5;
+  }
+  
+  .slick-slider .slick-dots li.slick-active button {
+    background-color: var(--button-color);
+    outline: transparent;
+  }
+  
+  .slick-slider .slick-dots li button:before,
+  .slick-slider .slick-dots li.slick-active button:before {
+    color: transparent;
+  }
+  
+  .slick-list,
+  .slick-track {
+    touch-action: pan-y;
+  }
+  
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+    touch-action: pan-y;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+    opacity: 0 !important;
+  }
+  
+  .Slider {
+    &-Arrow {
+      position: absolute !important;
+      top: 50% !important;
+      z-index: 1 !important;
+  
+      &.slick-disabled {
+        .Slider-ArrowButton {
+          display: none;
+        }
+      }
+    }
+  
+    &-ArrowButton {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      height: 40px;
+      width: 40px;
+      background-color: var(--slider-arrow-backgroundColor);
+      border-radius: 50%;
+      box-shadow: none;
+      opacity: var(--slider-arrow-opacity);
+      transition: 0.15s;
+      font-family: var(--font-primary);
+      font-size: 2.8rem;
+      font-weight: 200;
+      color: black;
+
+      @media (max-width: $mobile-size) {
+        width: 30px;
+        height: 30px;
+      }
+  
+      &__left {
+        left: 25px;
+      }
+  
+      &__right {
+        right: 25px;
+      }
+  
+      &:hover {
+        background-color: var(--button-color);
+        color: white;
+        opacity: 0.8;
+      }
+    }
+  
+    &-ArrowCustom {
+      svg {
+        fill: white;
+        height: 16px;
+        width: 8px;
+      }
+    }
+  }
+
+
+.sliderSlickItem {
+  width: 100%;
+  position: relative;
+  
+  div {
+    width: 100%;
+  }
+}
+  
+.sliderSlickImage {
+  cursor: pointer;
+}
